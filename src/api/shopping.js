@@ -29,7 +29,6 @@ export const getShoppingItems = (success, failure) => {
     .catch((error) => failure(error));
 };
 
-
 export const getSellers = (success, failure) => {
   axiosWithAuth()
     .get(`${baseUrl}/api/v1/admin/users/sellers`)

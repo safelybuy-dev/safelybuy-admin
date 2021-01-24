@@ -3,6 +3,7 @@ import {
   getShoppingDashboard,
   getShoppingOrders,
   getShoppingItems,
+  getSellers,
   acceptOrder,
   denyOrder,
   shipOrder,
@@ -45,6 +46,10 @@ export const SELLOUT_ITEM_FAILURE = "SELLOUT_ITEM_FAILURE";
 export const GET_SHOPPING_ORDERS = "GET_SHOPPING_ORDERS";
 export const GET_SHOPPING_ORDERS_SUCCESS = "GET_SHOPPING_ORDERS_SUCCESS";
 export const GET_SHOPPING_ORDERS_FAILURE = "GET_SHOPPING_ORDERS_FAILURE";
+
+export const GET_SELLERS = "GET_SELLERS";
+export const GET_SELLERS_SUCCESS = "GET_SELLERS_SUCCESS";
+export const GET_SELLERS_FAILURE = "GET_SELLERS_FAILURE";
 
 export const ACCEPT_ORDER = "ACCEPT_ORDER";
 export const ACCEPT_ORDER_SUCCESS = "ACCEPT_ORDER_SUCCESS";
@@ -115,6 +120,18 @@ export const fetchShoppingItems = (dispatch) => {
     },
     (err) => {
       dispatch(action(GET_SHOPPING_ITEMS_FAILURE, err.response));
+    }
+  );
+};
+
+export const fetchSellers = (dispatch) => {
+  dispatch(action(GET_SELLERS));
+  getSellers(
+    (res) => {
+      dispatch(action(GET_SELLERS_SUCCESS, res.data));
+    },
+    (err) => {
+      dispatch(action(GET_SELLERS_FAILURE, err.response));
     }
   );
 };

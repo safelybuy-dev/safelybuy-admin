@@ -5,7 +5,7 @@ import TableBody from "./TableBody";
 import ProductDetails from "./ProductDetails";
 import SellerDetails from "./SellerDetails";
 
-const InventoryTableView = ({ loading, items }) => {
+const InventoryTableView = ({ loading, items, sellers, loadingSellers }) => {
   const [active, setActive] = useState("all");
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [selectedSeller, setSelectedSeller] = useState(null);
@@ -51,6 +51,8 @@ const InventoryTableView = ({ loading, items }) => {
             active={active}
             setActive={setActive}
             items={items}
+            sellers={sellers}
+            loadingSellers={loadingSellers}
           />
         )}
       </div>

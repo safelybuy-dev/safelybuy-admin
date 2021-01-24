@@ -1,18 +1,19 @@
 import React, { useReducer, useEffect } from "react";
 import Breadcrumb from "../../../components/Breadcrumb";
-import Button from "../../../components/Button";
+// import Button from "../../../components/Button";
 import InventoryTableView from "./InventoryTableView";
 import { shopping } from "../../../reducers/initialState";
 import shoppingReducer from "../../../reducers/shopping";
-import { fetchShoppingItems } from "../../../actions/shopping";
+import { fetchSellers, fetchShoppingItems } from "../../../actions/shopping";
 
 const Inventory = () => {
   const [state, dispatch] = useReducer(shoppingReducer, shopping);
 
-  const { items, isLoadingItems } = state;
+  const { items, isLoadingItems, sellers, isLoadingSellers } = state;
 
   useEffect(() => {
     fetchShoppingItems(dispatch);
+    fetchSellers(dispatch);
   }, [dispatch]);
 
   return (
@@ -37,7 +38,12 @@ const Inventory = () => {
           <Button text="Recent" secondary roundedFull preTagText="50" />
         </span> */}
       </div>
-      <InventoryTableView loading={isLoadingItems} items={items} />
+      <InventoryTableView
+        loading={isLoadingItems}
+        items={items}
+        sellers={sellers}
+        loadingSellers={isLoadingSellers}
+      />
     </div>
   );
 };

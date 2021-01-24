@@ -7,6 +7,10 @@ export const shopping = {
   isLoadingItems: false,
   itemsError: "",
 
+  sellers: {},
+  isLoadingSellers: false,
+  sellersError: "",
+
   dashboard: {},
   isLoadingDashboard: false,
   dashboardError: "",

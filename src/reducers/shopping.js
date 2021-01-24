@@ -81,6 +81,30 @@ export default function shoppingReducer(state, action) {
         ordersError: "",
       };
 
+    case type.GET_SELLERS:
+      return {
+        ...state,
+        isLoadingSellers: true,
+        sellersError: "",
+      };
+    case type.GET_SELLERS_SUCCESS:
+      const sellerObject = {};
+      action.payload.users.forEach((e) => {
+        sellerObject[e.id] = e;
+      });
+      return {
+        ...state,
+        isLoadingSellers: false,
+        sellersError: "",
+        sellers: sellerObject,
+      };
+    case type.GET_SELLERS_FAILURE:
+      return {
+        ...state,
+        isLoadingSellers: false,
+        sellersError: action.payload,
+      };
+
     case type.ACCEPT_ORDER:
       return {
         ...state,
