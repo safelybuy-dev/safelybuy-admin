@@ -10,6 +10,9 @@ const KeyValue = ({ title, value }) => (
 
 const SellerDetails = ({ selectedSeller, setSelectedSeller }) => {
   if (!selectedSeller) return null;
+  console.log(selectedSeller);
+
+  const {firstname, lastname, dob, business_name, email, phone, } = selectedSeller
   return (
     <div
       onClick={() => setSelectedSeller(null)}
@@ -33,21 +36,21 @@ const SellerDetails = ({ selectedSeller, setSelectedSeller }) => {
             <div className="flex pb-4 items-center w-full">
               <UserAvatar scale={4.65} />
               <div className="flex ml-3 flex-col">
-                <p className="text-xl">Kareem Chibuzor</p>
-                <p className="text-purple-500">kareemdaman@gmail.com</p>
+                <p className="text-xl">{`${firstname} ${lastname}`}</p>
+                <p className="text-purple-500">{email}</p>
               </div>
             </div>
             <div className="flex flex-wrap">
-              <KeyValue title="Phone Number" value="+234 8232 334 3434" />
+              <KeyValue title="Phone Number" value={phone} />
               <div className="p-4"></div>
-              <KeyValue title="Date of Birth" value="+12 Sept, 2020" />
+              <KeyValue title="Date of Birth" value={dob || "NIL"} />
             </div>
           </div>
           <div className="flex flex-col w-7/12 ml-10 md:ml-0 md:w-full">
             <h4 className="text-xl text-purple-500">Business Information</h4>
             <div className="flex mt-2 border-b mb-6 pb-6">
               <div className="flex flex-col w-6/12">
-                <KeyValue title="Business Name" value="Chibuzorzeem Limited" />
+                <KeyValue title="Business Name" value={business_name || "NIL"} />
                 <KeyValue
                   title="Tax Identification Number"
                   value="#123234343334444"
