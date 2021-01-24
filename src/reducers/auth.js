@@ -21,7 +21,7 @@ export default function userReducer(state, action) {
         ...state,
         loadingUser: false,
         error: "",
-        user: action.payload.user,
+        user: action.payload.data,
       };
     case type.ERROR:
       return {

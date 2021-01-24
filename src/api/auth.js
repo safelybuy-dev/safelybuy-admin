@@ -10,7 +10,7 @@ export const signIn = (success, failure, data) => {
 
 export const getUser = (success, failure, data) => {
   axiosWithAuth()
-    .get(`${baseUrl}/api/v1/admin/user/id`, data)
+    .get(`${baseUrl}/api/v1/profile`, data)
     .then((response) => success(response))
     .catch((error) => failure(error));
 };

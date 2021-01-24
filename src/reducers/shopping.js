@@ -2,7 +2,6 @@ import * as type from "../actions/shopping";
 
 export default function shoppingReducer(state, action) {
   switch (action.type) {
-
     case type.GET_MAIN_DASHBOARD:
       return {
         ...state,
@@ -54,7 +53,7 @@ export default function shoppingReducer(state, action) {
         ...state,
         isLoadingItems: false,
         itemsError: "",
-        items: action.payload,
+        items: action.payload.items,
       };
     case type.GET_SHOPPING_ITEMS_FAILURE:
       return {

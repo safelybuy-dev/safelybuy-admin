@@ -1,17 +1,19 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { ArrowDown, ArrowUp, AngleRight, UserAvatar } from "../../../svg";
 import { buttonStyles } from "./Header";
 import { UserMenuMobile } from "./UserMenuMobile";
 import { ContextUser } from "../../../context";
-// import { fetchUser } from "../../../actions/auth";
+import { fetchUser } from "../../../actions/auth";
 
 const User = ({ userIsVisible, setUserIsVisible, userRef }) => {
   // const history = useHistory();
-  const [state] = useContext(ContextUser);
-  // useEffect(() => {
-  //   fetchUser(dispatch, localStorage.getItem('safely_buy_id'))
-  // }, [dispatch]);
+  const [state, dispatch] = useContext(ContextUser);
+  useEffect(() => {
+    if (state.user.firstname) return;
+    fetchUser(dispatch);
+  }, [dispatch, state.user.firstname]);
+
   return (
     <div className="relative">
       <div className="relative">
@@ -26,12 +28,19 @@ const User = ({ userIsVisible, setUserIsVisible, userRef }) => {
           )}`}
         >
           {<UserAvatar scale={1.5} />}
-          <div className="ml-3 flex flex-col md:hidden">
-            <span className="font-normal capitalize text-xs">{`${state.user.firstname} ${state.user.lastname}`}</span>
-            <span className="uppercase text-gray-400 text-xs">
-              {state.user.role}
-            </span>
-          </div>
+          {state.loadingUser ? (
+            <div className="animate-pulse space-y-2 ml-3">
+              <div className="h-4 w-16 bg-gray-200 rounded"></div>
+              <div className="h-4 w-16 bg-gray-100 rounded"></div>
+            </div>
+          ) : (
+            <div className="ml-3 flex flex-col md:hidden">
+              <span className="font-normal capitalize text-xs">{`${state.user.firstname} ${state.user.lastname}`}</span>
+              <span className="uppercase text-gray-400 text-xs">
+                {state.user.role}
+              </span>
+            </div>
+          )}
           <div className="ml-4 flex flex-col justify-between md:hidden">
             <div className="mb-px">
               <ArrowUp />

@@ -39,7 +39,7 @@ export const login = (dispatch, data, history, toast) => {
   );
 };
 
-export const fetchUser = (dispatch, id) => {
+export const fetchUser = (dispatch) => {
   dispatch(action(LOADING));
   getUser(
     (res) => {
@@ -52,6 +52,5 @@ export const fetchUser = (dispatch, id) => {
         dispatch(action(ERROR, err.message));
       }
     },
-    id
   );
 };
