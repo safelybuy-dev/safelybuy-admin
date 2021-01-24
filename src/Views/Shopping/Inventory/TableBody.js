@@ -54,7 +54,7 @@ const TableBody = ({
         ),
         seller: (
           <p
-            onClick={() => setSelectedSeller(item.user_id)}
+            onClick={() => setSelectedSeller(sellers[item?.user_id])}
             className="text-purple-500 cursor-pointer min-w-max"
           >
             {loadingSellers && (

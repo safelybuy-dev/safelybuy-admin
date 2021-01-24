@@ -4,7 +4,7 @@ import { CloseIcon } from "../../../svg";
 const KeyValue = ({ title, value }) => (
   <div className="flex my-3 flex-col">
     <small className="text-gray-500">{title}</small>
-    <h5 className="text-lg">{value}</h5>
+    <h5 className="text-lg capitalize">{value}</h5>
   </div>
 );
 
@@ -50,22 +50,25 @@ const ProductDetails = ({ selectedProduct, setSelectedProduct }) => {
             </h4>
             <div className="flex mt-6">
               <div className="flex flex-col w-6/12">
-                <KeyValue title="Product Title" value="iPhone Xmax" />
+                <KeyValue title="Product Title" value={selectedProduct.title} />
                 <KeyValue
                   title="Internal Memory (Hard disk size)"
-                  value="64GB"
+                  value={selectedProduct.internal_memory}
                 />
-                <KeyValue title="Display" value="6.1 inches IPS LCD Display" />
-                <KeyValue title="CPU Speed" value="2.4GHz" />
-                <KeyValue title="Operating System" value="iOS 12" />
-                <KeyValue title="Weight (kg)" value="0.208 Kg" />
+                <KeyValue title="Display" value={selectedProduct.display} />
+                <KeyValue title="CPU Speed" value={selectedProduct.cpu_speed}/>
+                <KeyValue title="Operating System" value={selectedProduct.operating_system} />
+                <KeyValue title="Weight (kg)" value={selectedProduct.weight} />
               </div>
               <div className="flex flex-col w-6/12">
-                <KeyValue title="RAM" value="12GB" />
-                <KeyValue title="Processor" value="Octa-core MediaTek MT6873" />
-                <KeyValue title="Battery" value="4300mAh" />
-                <KeyValue title="Network Connectivity" value="4G LTE" />
-                <KeyValue title="Colour" value="Gold" />
+                <KeyValue title="RAM" value={selectedProduct.ram_size} />
+                <KeyValue title="Processor" value={selectedProduct.processor} />
+                <KeyValue title="Battery" value={selectedProduct.battery} />
+                <KeyValue
+                  title="Network Connectivity"
+                  value={selectedProduct.network}
+                />
+                <KeyValue title="Colour" value={selectedProduct.colour} />
               </div>
             </div>
           </div>
