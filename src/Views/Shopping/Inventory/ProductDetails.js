@@ -10,6 +10,7 @@ const KeyValue = ({ title, value }) => (
 
 const ProductDetails = ({ selectedProduct, setSelectedProduct }) => {
   if (!selectedProduct) return null;
+  console.log(selectedProduct);
   return (
     <div
       onClick={() => setSelectedProduct(null)}
@@ -31,17 +32,20 @@ const ProductDetails = ({ selectedProduct, setSelectedProduct }) => {
         <div className="flex mr-4 md:mr-0 md:flex-col">
           <div className="flex flex-col w-6/12 md:w-full">
             <div className="border-b border-gray-100 pb-4 w-full">
-              <div className="w-28 md:w-24 rounded-xl h-28 md:h-24 bg-gray-200"></div>
+              <img
+                className="w-28 md:w-24 rounded-xl object-cover h-28 md:h-24"
+                alt={selectedProduct.title}
+                src={selectedProduct.main_image}
+              />
             </div>
             <div className="flex flex-wrap">
-              <div className="w-28 md:w-24 rounded-xl mt-4 mr-4 h-28 md:h-24 bg-gray-200"></div>
-              <div className="w-28 md:w-24 rounded-xl mt-4 mr-4 h-28 md:h-24 bg-gray-200"></div>
-              <div className="w-28 md:w-24 rounded-xl mt-4 mr-4 h-28 md:h-24 bg-gray-200"></div>
-              <div className="w-28 md:w-24 rounded-xl mt-4 mr-4 h-28 md:h-24 bg-gray-200"></div>
-              <div className="w-28 md:w-24 rounded-xl mt-4 mr-4 h-28 md:h-24 bg-gray-200"></div>
-              <div className="w-28 md:w-24 rounded-xl mt-4 mr-4 h-28 md:h-24 bg-gray-200"></div>
-              <div className="w-28 md:w-24 rounded-xl mt-4 mr-4 h-28 md:h-24 bg-gray-200"></div>
-              <div className="w-28 md:w-24 rounded-xl mt-4 mr-4 h-28 md:h-24 bg-gray-200"></div>
+              {selectedProduct.images.map((e) => (
+                <img
+                  className="w-28 md:w-24 object-cover rounded-xl mt-4 mr-4 h-28 md:h-24 bg-gray-200"
+                  alt={selectedProduct.title}
+                  src={e}
+                />
+              ))}
             </div>
           </div>
           <div className="flex flex-col w-6/12 ml-4 md:w-full md:ml-0 md:mt-4">
@@ -56,8 +60,11 @@ const ProductDetails = ({ selectedProduct, setSelectedProduct }) => {
                   value={selectedProduct.internal_memory}
                 />
                 <KeyValue title="Display" value={selectedProduct.display} />
-                <KeyValue title="CPU Speed" value={selectedProduct.cpu_speed}/>
-                <KeyValue title="Operating System" value={selectedProduct.operating_system} />
+                <KeyValue title="CPU Speed" value={selectedProduct.cpu_speed} />
+                <KeyValue
+                  title="Operating System"
+                  value={selectedProduct.operating_system}
+                />
                 <KeyValue title="Weight (kg)" value={selectedProduct.weight} />
               </div>
               <div className="flex flex-col w-6/12">

@@ -16,17 +16,20 @@ const TableBody = ({
     items &&
     items
       .sort((a, b) => new Date(b.created_at) - new Date(a.created_at))
+      .filter((item) => item.status === active || active === "all")
       .map((item) => ({
         id: item.id,
         status: (
           <div className="min-w-max">{capitalizeFirstLetter(item.status)}</div>
         ),
         image: (
-          <img
-            className="w-12 h-12 object-cover rounded-lg"
-            src={item.main_image}
-            alt="..."
-          />
+          <div className="min-w-max">
+            <img
+              className="w-12 h-12 object-cover rounded-lg"
+              src={item.main_image}
+              alt="..."
+            />
+          </div>
         ),
         sku: (
           <div className="min-w-max">
@@ -37,7 +40,7 @@ const TableBody = ({
           </div>
         ),
         desc: (
-          <div>
+          <div className="min-w-max">
             <p
               onClick={() => setSelectedProduct(item)}
               className="text-purple-600 cursor-pointer text-sm"

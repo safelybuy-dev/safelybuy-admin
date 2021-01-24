@@ -33,7 +33,13 @@ const TabbedButton = ({ text, position = 1, active, svg, tag }) => {
   );
 };
 
-export default function TabHeader({ active, setActive }) {
+export default function TabHeader({
+  active,
+  setActive,
+  length,
+  activeLength,
+  inactiveLength,
+}) {
   return (
     <div className="flex overflow-x md:-mx-6">
       <div
@@ -55,7 +61,7 @@ export default function TabHeader({ active, setActive }) {
           text="All"
           position={3}
           active={active === "all"}
-          tag={40}
+          tag={length}
         />
       </div>
       <div
@@ -77,7 +83,7 @@ export default function TabHeader({ active, setActive }) {
               }`}
             />
           }
-          tag="23"
+          tag={activeLength}
         />
       </div>
       <div
@@ -99,7 +105,7 @@ export default function TabHeader({ active, setActive }) {
               }`}
             />
           }
-          tag="11"
+          tag={inactiveLength}
         />
       </div>
     </div>
