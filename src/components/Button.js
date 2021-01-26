@@ -36,7 +36,7 @@ const Button = ({
       type={submit ? "submit" : ""}
       className={`${
         primary ? `bg-green-500 text-white px-10 py-2 border-green-500` : ""
-      } ${alternate ? `text-white bg-black px-6 py-1 text-sm md:px-1` : ""} ${
+      } ${alternate ? `text-white bg-black px-6 py-1 text-sm md:px-2` : ""} ${
         underlined ? `border-b-2 border-black pb-1 mr-3` : ""
       } ${rounded ? `rounded` : ""} ${roundedMd ? `rounded-md` : ""} ${
         roundedLg ? `rounded-lg` : ""
@@ -54,7 +54,7 @@ const Button = ({
         dangerOutline
           ? `border-2 border-red-500 text-red-500 bg-white  px-8 py-2`
           : ""
-      }`}
+      } transform hover:shadow-2xl hover:-translate-y-0.5 active:shadow:sm active:translate-y-0 focus:outline-none`}
       disabled={disabled}
       style={{ [xSmall && "fontSize"]: "7px" }}
     >

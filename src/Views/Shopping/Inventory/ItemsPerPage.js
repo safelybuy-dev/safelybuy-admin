@@ -11,7 +11,7 @@ export default function ItemsPerPage({ selectRef, isVisible, setIsVisible }) {
   const [selected, setSelected] = useState(options[0]);
 
   return (
-    <div className="mx-2 w-48 relative md:w-1/2 md:mx-0">
+    <div className="mx-2 w-48 z-10 relative md:w-1/2 md:mx-0">
       <button
         onClick={(e) => {
           if (isVisible) setIsVisible(false);
@@ -34,7 +34,7 @@ export default function ItemsPerPage({ selectRef, isVisible, setIsVisible }) {
         ref={selectRef}
         className={`transition ease-in duration-100 ${
           isVisible ? "block" : "hidden"
-        } absolute mt-1 w-full rounded-md bg-white shadow-lg`}
+        } absolute mt-1 w-full rounded-md bg-white shadow-xl`}
       >
         <ul className="max-h-56 rounded-md py-1 text-base ring-1 ring-black ring-opacity-5 overflow-auto focus:outline-none sm:text-sm">
           {options.map((option) => (
