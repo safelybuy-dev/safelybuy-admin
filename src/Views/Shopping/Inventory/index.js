@@ -1,31 +1,31 @@
-import React, { useReducer, useEffect } from "react";
-import Breadcrumb from "../../../components/Breadcrumb";
+import React, { useReducer, useEffect } from 'react';
+import Breadcrumb from '../../../components/Breadcrumb';
 // import Button from "../../../components/Button";
-import InventoryTableView from "./InventoryTableView";
-import { shopping } from "../../../reducers/initialState";
-import shoppingReducer from "../../../reducers/shopping";
-import { fetchSellers, fetchShoppingItems } from "../../../actions/shopping";
+import InventoryTableView from './InventoryTableView';
+import { shopping } from '../../../reducers/initialState';
+import shoppingReducer from '../../../reducers/shopping';
+import { fetchShoppingItems } from '../../../actions/shopping';
 
 const Inventory = () => {
   const [state, dispatch] = useReducer(shoppingReducer, shopping);
 
-  const { items, isLoadingItems, sellers, isLoadingSellers } = state;
+  const { items, isLoadingItems } = state;
 
   useEffect(() => {
     fetchShoppingItems(dispatch);
-    fetchSellers(dispatch);
   }, [dispatch]);
 
+
   return (
-    <div className="flex flex-col w-full items-start">
+    <div className='flex flex-col w-full items-start'>
       <Breadcrumb
-        parentText="Shopping"
-        parentLink="/shopping"
-        childText="Manage Inventory"
-        childLink="/shopping/inventory"
+        parentText='Shopping'
+        parentLink='/shopping'
+        childText='Manage Inventory'
+        childLink='/shopping/inventory'
       />
-      <div className="flex justify-between w-full">
-        <h2 className="text-xl">Manage Inventory</h2>
+      <div className='flex justify-between w-full'>
+        <h2 className='text-xl'>Manage Inventory</h2>
         {/* <span className="inline-block md:hidden">
           <Button
             text="View recently added"
@@ -41,8 +41,7 @@ const Inventory = () => {
       <InventoryTableView
         loading={isLoadingItems}
         items={items}
-        sellers={sellers}
-        loadingSellers={isLoadingSellers}
+        dispatch={dispatch}
       />
     </div>
   );

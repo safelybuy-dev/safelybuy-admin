@@ -73,28 +73,28 @@ export const returnOrder = (success, failure, id) => {
 
 export const approveItem = (success, failure, id) => {
   axiosWithAuth()
-    .post(`${baseUrl}/api/v1/admin/item/approve/${id}`)
+    .get(`${baseUrl}/api/v1/admin/item/approve/${id}`)
     .then((response) => success(response))
     .catch((error) => failure(error));
 };
 
 export const denyItem = (success, failure, id) => {
   axiosWithAuth()
-    .post(`${baseUrl}/api/v1/admin/item/deny/${id}`)
+    .get(`${baseUrl}/api/v1/admin/item/deny/${id}`)
     .then((response) => success(response))
     .catch((error) => failure(error));
 };
 
 export const deleteItem = (success, failure, id) => {
   axiosWithAuth()
-    .post(`${baseUrl}/api/v1/admin/item/delete/${id}`)
+    .get(`${baseUrl}/api/v1/admin/item/delete/${id}`)
     .then((response) => success(response))
     .catch((error) => failure(error));
 };
 
 export const selloutItem = (success, failure, id) => {
   axiosWithAuth()
-    .post(`${baseUrl}/api/v1/admin/item/sellout/${id}`)
+    .get(`${baseUrl}/api/v1/admin/item/sellout/${id}`)
     .then((response) => success(response))
     .catch((error) => failure(error));
 };

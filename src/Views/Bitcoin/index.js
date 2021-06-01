@@ -60,10 +60,10 @@ const Bitcoin = () => {
 
   const {
     dashboard,
-    dashboardError,
-    history,
-    loadingHistory,
-    historyError,
+    // dashboardError
+    // history,
+    // loadingHistory,
+    // historyError,
     loadingDashboard,
     recent_rates,
   } = state;

@@ -1,4 +1,4 @@
-import * as type from "../actions/shopping";
+import * as type from '../actions/shopping';
 
 export default function shoppingReducer(state, action) {
   switch (action.type) {
@@ -6,13 +6,13 @@ export default function shoppingReducer(state, action) {
       return {
         ...state,
         loading: true,
-        error: "",
+        error: '',
       };
     case type.GET_MAIN_DASHBOARD_SUCCESS:
       return {
         ...state,
         loading: false,
-        error: "",
+        error: '',
         admin: action.payload,
       };
     case type.GET_MAIN_DASHBOARD_FAILURE:
@@ -26,13 +26,13 @@ export default function shoppingReducer(state, action) {
       return {
         ...state,
         isLoadingDashboard: true,
-        dashboardError: "",
+        dashboardError: '',
       };
     case type.GET_SHOPPING_DASHBOARD_SUCCESS:
       return {
         ...state,
         isLoadingDashboard: false,
-        dashboardError: "",
+        dashboardError: '',
         dashboard: action.payload,
       };
     case type.GET_SHOPPING_DASHBOARD_FAILURE:
@@ -46,13 +46,13 @@ export default function shoppingReducer(state, action) {
       return {
         ...state,
         isLoadingItems: true,
-        itemsError: "",
+        itemsError: '',
       };
     case type.GET_SHOPPING_ITEMS_SUCCESS:
       return {
         ...state,
         isLoadingItems: false,
-        itemsError: "",
+        itemsError: '',
         items: action.payload.items,
       };
     case type.GET_SHOPPING_ITEMS_FAILURE:
@@ -66,26 +66,26 @@ export default function shoppingReducer(state, action) {
       return {
         ...state,
         isLoadingOrders: true,
-        ordersError: "",
+        ordersError: '',
       };
     case type.GET_SHOPPING_ORDERS_SUCCESS:
       return {
         ...state,
         isLoadingOrders: false,
-        ordersError: "",
+        ordersError: '',
       };
     case type.GET_SHOPPING_ORDERS_FAILURE:
       return {
         ...state,
         isLoadingOrders: true,
-        ordersError: "",
+        ordersError: '',
       };
 
     case type.GET_SELLERS:
       return {
         ...state,
         isLoadingSellers: true,
-        sellersError: "",
+        sellersError: '',
       };
     case type.GET_SELLERS_SUCCESS:
       const sellerObject = {};
@@ -95,7 +95,7 @@ export default function shoppingReducer(state, action) {
       return {
         ...state,
         isLoadingSellers: false,
-        sellersError: "",
+        sellersError: '',
         sellers: sellerObject,
       };
     case type.GET_SELLERS_FAILURE:
@@ -109,13 +109,13 @@ export default function shoppingReducer(state, action) {
       return {
         ...state,
         orderActionLoading: true,
-        orderActionError: "",
+        orderActionError: '',
       };
     case type.ACCEPT_ORDER_SUCCESS:
       return {
         ...state,
         orderActionLoading: false,
-        orderActionError: "",
+        orderActionError: '',
         // orders: state.orders.map(e => e)
       };
     case type.ACCEPT_ORDER_FAILURE:
@@ -129,13 +129,13 @@ export default function shoppingReducer(state, action) {
       return {
         ...state,
         orderActionLoading: true,
-        orderActionError: "",
+        orderActionError: '',
       };
     case type.DENY_ORDER_SUCCESS:
       return {
         ...state,
         orderActionLoading: false,
-        orderActionError: "",
+        orderActionError: '',
         // orders: state.orders.map(e => e)
       };
     case type.DENY_ORDER_FAILURE:
@@ -149,7 +149,7 @@ export default function shoppingReducer(state, action) {
       return {
         ...state,
         orderActionLoading: true,
-        orderActionError: "",
+        orderActionError: '',
       };
     case type.SHIP_ORDER_FAILURE:
       return {
@@ -161,7 +161,7 @@ export default function shoppingReducer(state, action) {
       return {
         ...state,
         orderActionLoading: false,
-        orderActionError: "",
+        orderActionError: '',
         // orders: state.orders.map(e => e)
       };
 
@@ -169,13 +169,13 @@ export default function shoppingReducer(state, action) {
       return {
         ...state,
         orderActionLoading: true,
-        orderActionError: "",
+        orderActionError: '',
       };
     case type.DELIVER_ORDER_SUCCESS:
       return {
         ...state,
         orderActionLoading: false,
-        orderActionError: "",
+        orderActionError: '',
         // orders: state.orders.map(e => e)
       };
     case type.DELIVER_ORDER_FAILURE:
@@ -189,13 +189,13 @@ export default function shoppingReducer(state, action) {
       return {
         ...state,
         orderActionLoading: true,
-        orderActionError: "",
+        orderActionError: '',
       };
     case type.RETURN_ORDER_SUCCESS:
       return {
         ...state,
         orderActionLoading: false,
-        orderActionError: "",
+        orderActionError: '',
         // orders: state.orders.map(e => e)
       };
     case type.RETURN_ORDER_FAILURE:
@@ -211,8 +211,8 @@ export default function shoppingReducer(state, action) {
     case type.SELLOUT_ITEM:
       return {
         ...state,
-        itemActionLoading: true,
-        itemActionError: "",
+        isLoadingItems: true,
+        itemActionError: '',
       };
 
     case type.APPROVE_ITEM_FAILURE:
@@ -221,7 +221,7 @@ export default function shoppingReducer(state, action) {
     case type.SELLOUT_ITEM_FAILURE:
       return {
         ...state,
-        itemActionLoading: false,
+        isLoadingItems: false,
         itemActionError: action.payload,
       };
 
@@ -231,8 +231,8 @@ export default function shoppingReducer(state, action) {
     case type.SELLOUT_ITEM_SUCCESS:
       return {
         ...state,
-        itemActionLoading: false,
-        itemActionError: action.payload,
+        isLoadingItems: false,
+        itemActionError: '',
         // items: items.map(item => item)
       };
 

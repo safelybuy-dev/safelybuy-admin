@@ -13,63 +13,63 @@ import {
   denyItem,
   deleteItem,
   selloutItem,
-} from "../api/shopping";
+} from '../api/shopping';
 
-export const GET_MAIN_DASHBOARD = "GET_MAIN_DASHBOARD";
-export const GET_MAIN_DASHBOARD_SUCCESS = "GET_MAIN_DASHBOARD_SUCCESS";
-export const GET_MAIN_DASHBOARD_FAILURE = "GET_MAIN_DASHBOARD_FAILURE";
+export const GET_MAIN_DASHBOARD = 'GET_MAIN_DASHBOARD';
+export const GET_MAIN_DASHBOARD_SUCCESS = 'GET_MAIN_DASHBOARD_SUCCESS';
+export const GET_MAIN_DASHBOARD_FAILURE = 'GET_MAIN_DASHBOARD_FAILURE';
 
-export const GET_SHOPPING_DASHBOARD = "GET_SHOPPING_DASHBOARD";
-export const GET_SHOPPING_DASHBOARD_SUCCESS = "GET_SHOPPING_DASHBOARD_SUCCESS";
-export const GET_SHOPPING_DASHBOARD_FAILURE = "GET_SHOPPING_DASHBOARD_FAILURE";
+export const GET_SHOPPING_DASHBOARD = 'GET_SHOPPING_DASHBOARD';
+export const GET_SHOPPING_DASHBOARD_SUCCESS = 'GET_SHOPPING_DASHBOARD_SUCCESS';
+export const GET_SHOPPING_DASHBOARD_FAILURE = 'GET_SHOPPING_DASHBOARD_FAILURE';
 
-export const GET_SHOPPING_ITEMS = "GET_SHOPPING_ITEMS";
-export const GET_SHOPPING_ITEMS_SUCCESS = "GET_SHOPPING_ITEMS_SUCCESS";
-export const GET_SHOPPING_ITEMS_FAILURE = "GET_SHOPPING_ITEMS_FAILURE";
+export const GET_SHOPPING_ITEMS = 'GET_SHOPPING_ITEMS';
+export const GET_SHOPPING_ITEMS_SUCCESS = 'GET_SHOPPING_ITEMS_SUCCESS';
+export const GET_SHOPPING_ITEMS_FAILURE = 'GET_SHOPPING_ITEMS_FAILURE';
 
-export const APPROVE_ITEM = "APPROVE_ITEM";
-export const APPROVE_ITEM_SUCCESS = "APPROVE_ITEM_SUCCESS";
-export const APPROVE_ITEM_FAILURE = "APPROVE_ITEM_FAILURE";
+export const APPROVE_ITEM = 'APPROVE_ITEM';
+export const APPROVE_ITEM_SUCCESS = 'APPROVE_ITEM_SUCCESS';
+export const APPROVE_ITEM_FAILURE = 'APPROVE_ITEM_FAILURE';
 
-export const DENY_ITEM = "DENY_ITEM";
-export const DENY_ITEM_SUCCESS = "DENY_ITEM_SUCCESS";
-export const DENY_ITEM_FAILURE = "DENY_ITEM_FAILURE";
+export const DENY_ITEM = 'DENY_ITEM';
+export const DENY_ITEM_SUCCESS = 'DENY_ITEM_SUCCESS';
+export const DENY_ITEM_FAILURE = 'DENY_ITEM_FAILURE';
 
-export const DELETE_ITEM = "DELETE_ITEM";
-export const DELETE_ITEM_SUCCESS = "DELETE_ITEM_SUCCESS";
-export const DELETE_ITEM_FAILURE = "DELETE_ITEM_FAILURE";
+export const DELETE_ITEM = 'DELETE_ITEM';
+export const DELETE_ITEM_SUCCESS = 'DELETE_ITEM_SUCCESS';
+export const DELETE_ITEM_FAILURE = 'DELETE_ITEM_FAILURE';
 
-export const SELLOUT_ITEM = "SELLOUT_ITEM";
-export const SELLOUT_ITEM_SUCCESS = "SELLOUT_ITEM_SUCCESS";
-export const SELLOUT_ITEM_FAILURE = "SELLOUT_ITEM_FAILURE";
+export const SELLOUT_ITEM = 'SELLOUT_ITEM';
+export const SELLOUT_ITEM_SUCCESS = 'SELLOUT_ITEM_SUCCESS';
+export const SELLOUT_ITEM_FAILURE = 'SELLOUT_ITEM_FAILURE';
 
-export const GET_SHOPPING_ORDERS = "GET_SHOPPING_ORDERS";
-export const GET_SHOPPING_ORDERS_SUCCESS = "GET_SHOPPING_ORDERS_SUCCESS";
-export const GET_SHOPPING_ORDERS_FAILURE = "GET_SHOPPING_ORDERS_FAILURE";
+export const GET_SHOPPING_ORDERS = 'GET_SHOPPING_ORDERS';
+export const GET_SHOPPING_ORDERS_SUCCESS = 'GET_SHOPPING_ORDERS_SUCCESS';
+export const GET_SHOPPING_ORDERS_FAILURE = 'GET_SHOPPING_ORDERS_FAILURE';
 
-export const GET_SELLERS = "GET_SELLERS";
-export const GET_SELLERS_SUCCESS = "GET_SELLERS_SUCCESS";
-export const GET_SELLERS_FAILURE = "GET_SELLERS_FAILURE";
+export const GET_SELLERS = 'GET_SELLERS';
+export const GET_SELLERS_SUCCESS = 'GET_SELLERS_SUCCESS';
+export const GET_SELLERS_FAILURE = 'GET_SELLERS_FAILURE';
 
-export const ACCEPT_ORDER = "ACCEPT_ORDER";
-export const ACCEPT_ORDER_SUCCESS = "ACCEPT_ORDER_SUCCESS";
-export const ACCEPT_ORDER_FAILURE = "ACCEPT_ORDER_FAILURE";
+export const ACCEPT_ORDER = 'ACCEPT_ORDER';
+export const ACCEPT_ORDER_SUCCESS = 'ACCEPT_ORDER_SUCCESS';
+export const ACCEPT_ORDER_FAILURE = 'ACCEPT_ORDER_FAILURE';
 
-export const DENY_ORDER = "DENY_ORDER";
-export const DENY_ORDER_SUCCESS = "DENY_ORDER_SUCCESS";
-export const DENY_ORDER_FAILURE = "DENY_ORDER_FAILURE";
+export const DENY_ORDER = 'DENY_ORDER';
+export const DENY_ORDER_SUCCESS = 'DENY_ORDER_SUCCESS';
+export const DENY_ORDER_FAILURE = 'DENY_ORDER_FAILURE';
 
-export const SHIP_ORDER = "SHIP_ORDER";
-export const SHIP_ORDER_SUCCESS = "SHIP_ORDER_SUCCESS";
-export const SHIP_ORDER_FAILURE = "SHIP_ORDER_FAILURE";
+export const SHIP_ORDER = 'SHIP_ORDER';
+export const SHIP_ORDER_SUCCESS = 'SHIP_ORDER_SUCCESS';
+export const SHIP_ORDER_FAILURE = 'SHIP_ORDER_FAILURE';
 
-export const DELIVER_ORDER = "DELIVER_ORDER";
-export const DELIVER_ORDER_SUCCESS = "DELIVER_ORDER_SUCCESS";
-export const DELIVER_ORDER_FAILURE = "DELIVER_ORDER_FAILURE";
+export const DELIVER_ORDER = 'DELIVER_ORDER';
+export const DELIVER_ORDER_SUCCESS = 'DELIVER_ORDER_SUCCESS';
+export const DELIVER_ORDER_FAILURE = 'DELIVER_ORDER_FAILURE';
 
-export const RETURN_ORDER = "RETURN_ORDER";
-export const RETURN_ORDER_SUCCESS = "RETURN_ORDER_SUCCESS";
-export const RETURN_ORDER_FAILURE = "RETURN_ORDER_FAILURE";
+export const RETURN_ORDER = 'RETURN_ORDER';
+export const RETURN_ORDER_SUCCESS = 'RETURN_ORDER_SUCCESS';
+export const RETURN_ORDER_FAILURE = 'RETURN_ORDER_FAILURE';
 
 export const action = (type, payload) => ({
   type,
@@ -206,6 +206,7 @@ export const postApproveItem = (dispatch, id) => {
   approveItem(
     (res) => {
       dispatch(action(APPROVE_ITEM_SUCCESS, res.data));
+      fetchShoppingItems(dispatch);
     },
     (err) => {
       dispatch(action(APPROVE_ITEM_FAILURE, err.response));
@@ -219,6 +220,7 @@ export const postDenyItem = (dispatch, id) => {
   denyItem(
     (res) => {
       dispatch(action(DENY_ITEM_SUCCESS, res.data));
+      fetchShoppingItems(dispatch);
     },
     (err) => {
       dispatch(action(DENY_ITEM_FAILURE, err.response));
@@ -232,6 +234,7 @@ export const postDeleteItem = (dispatch, id) => {
   deleteItem(
     (res) => {
       dispatch(action(DELETE_ITEM_SUCCESS, res.data));
+      fetchShoppingItems(dispatch);
     },
     (err) => {
       dispatch(action(DELETE_ITEM_FAILURE, err.response));
@@ -245,6 +248,7 @@ export const postSelloutItem = (dispatch, id) => {
   selloutItem(
     (res) => {
       dispatch(action(SELLOUT_ITEM_SUCCESS, res.data));
+      fetchShoppingItems(dispatch);
     },
     (err) => {
       dispatch(action(SELLOUT_ITEM_FAILURE, err.response));

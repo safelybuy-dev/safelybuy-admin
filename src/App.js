@@ -10,6 +10,7 @@ import SamplePage from "./Views/SamplePage";
 import LoginPage from "./Views/LoginPage";
 import { auth } from "./reducers/initialState";
 import userReducer from "./reducers/auth";
+import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
 
 function App() {
   const [state, dispatch] = useReducer(userReducer, auth);

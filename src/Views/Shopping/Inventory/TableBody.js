@@ -1,6 +1,13 @@
 import React from 'react';
 import { useTable } from 'react-table';
 import Button from '../../../components/Button';
+import { confirmAlert } from 'react-confirm-alert'; // Import
+import {
+  postApproveItem,
+  postDenyItem,
+  postDeleteItem,
+  postSelloutItem,
+} from '../../../actions/shopping';
 
 const TableBody = ({
   active,
@@ -8,19 +15,98 @@ const TableBody = ({
   setSelectedProduct,
   setSelectedSeller,
   items,
-  sellers,
-  loadingSellers,
+  dispatch,
 }) => {
+  const handleDelete = React.useCallback(
+    (id) => {
+      confirmAlert({
+        title: 'Delete Item',
+        message: 'Are you sure you want to delete this item?',
+        buttons: [
+          {
+            label: 'Yes',
+            onClick: () => postDeleteItem(dispatch, id),
+          },
+          {
+            label: 'No',
+            onClick: () => {},
+          },
+        ],
+      });
+    },
+    [dispatch]
+  );
+
+  const handleApprove = React.useCallback(
+    (id) => {
+      confirmAlert({
+        title: 'Approve Item',
+        message: 'Are you sure you want to approve this item?',
+        buttons: [
+          {
+            label: 'Yes',
+            onClick: () => postApproveItem(dispatch, id),
+          },
+          {
+            label: 'No',
+            onClick: () => {},
+          },
+        ],
+      });
+    },
+    [dispatch]
+  );
+
+  const handleDeny = React.useCallback(
+    (id) => {
+      confirmAlert({
+        title: 'Reject Item',
+        message: 'Are you sure you want to reject this item??',
+        buttons: [
+          {
+            label: 'Yes',
+            onClick: () => postDenyItem(dispatch, id),
+          },
+          {
+            label: 'No',
+            onClick: () => {},
+          },
+        ],
+      });
+    },
+    [dispatch]
+  );
+
+  const handleSellout = React.useCallback(
+    (id) => {
+      confirmAlert({
+        title: 'Sellout Item',
+        message: 'Are you sure you want to mark this item as sold out??',
+        buttons: [
+          {
+            label: 'Yes',
+            onClick: () => postSelloutItem(dispatch, id),
+          },
+          {
+            label: 'No',
+            onClick: () => {},
+          },
+        ],
+      });
+    },
+    [dispatch]
+  );
+
   const itemsData =
     items &&
     items
-      .sort((a, b) => new Date(b.created_at) - new Date(a.created_at))
+      .sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at))
       .filter((item) => item.status === active || active === 'all')
       .map((item) => ({
         id: item.id,
-        status: <div className='min-w-max capitalize'>{item.status}</div>,
+        // status: <div className='min-w-max capitalize'>{item.status}</div>,
         image: (
-          <div className='min-w-max'>
+          <div>
             <img
               className='w-12 h-12 object-cover rounded-lg'
               src={item.main_image}
@@ -29,13 +115,13 @@ const TableBody = ({
           </div>
         ),
         sku: (
-          <div className='min-w-max'>
+          <div>
             <div>{item.seller_sku}</div>
             <div className='text-sm text-gray-400'>{item.condition}</div>
           </div>
         ),
         desc: (
-          <div className='min-w-max'>
+          <div>
             <p
               onClick={() => setSelectedProduct(item)}
               className='text-purple-600 cursor-pointer text-sm'
@@ -46,41 +132,14 @@ const TableBody = ({
           </div>
         ),
         location: (
-          <div className='min-w-max'>{`${
-            item.shipping_city
-          }, ${item.shipping_state}`}</div>
+          <div className='min-w-max'>{`${item.shipping_city}, ${item.shipping_state}`}</div>
         ),
         seller: (
           <p
-            onClick={() => setSelectedSeller(sellers[item?.user_id])}
+            onClick={() => setSelectedSeller(item.seller)}
             className='text-purple-500 cursor-pointer min-w-max'
           >
-            {loadingSellers && (
-              <svg
-                className='animate-spin -ml-1 mr-3 h-5 w-5 text-purple-500'
-                xmlns='http://www.w3.org/2000/svg'
-                fill='none'
-                viewBox='0 0 24 24'
-              >
-                <circle
-                  className='opacity-25'
-                  cx='12'
-                  cy='12'
-                  r='10'
-                  stroke='currentColor'
-                  strokeWidth='4'
-                ></circle>
-                <path
-                  className='opacity-75'
-                  fill='currentColor'
-                  d='M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z'
-                ></path>
-              </svg>
-            )}
-            {!loadingSellers &&
-              `${sellers[item?.user_id]?.firstname} ${
-                sellers[item?.user_id]?.lastname
-              }`}
+            {item?.seller?.business_name}
           </p>
         ),
         date: (
@@ -112,49 +171,56 @@ const TableBody = ({
             {item.approval_status === 'pending' ? (
               <>
                 {' '}
-                <Button roundedFull primary>
-                  Approve
-                </Button>
+                <div onClick={() => handleApprove(item.id)}>
+                  <Button roundedFull primary>
+                    Approve
+                  </Button>
+                </div>
                 <span className='inline-block p-1'></span>
-                <Button roundedFull danger>
-                  Deny
-                </Button>
+                <div onClick={() => handleDeny(item.id)}>
+                  <Button roundedFull danger>
+                    Reject
+                  </Button>
+                </div>
               </>
             ) : item.approval_status === 'approved' ? (
               <>
-                <div className='justify-around'>
-                  <Button rounded secondary>
-                    Edit
-                  </Button>
-                  <span className='inline-block p-2'></span>
-                  <Button rounded primary>
-                    Print Details
-                  </Button>
-                </div>
                 <span className='inline-block p-px'></span>
                 <div className='justify-around'>
-                  <Button rounded alternate>
-                    Sold Out
-                  </Button>
+                  {/* <span onClick={() => handleSellout(item.id)}>
+                    <Button rounded alternate>
+                      Sold Out
+                    </Button>
+                  </span> */}
                   <span className='inline-block p-2'></span>
-                  <Button rounded danger>
-                    Delete
-                  </Button>
+                  <span onClick={() => handleDelete(item.id)}>
+                    <Button rounded danger>
+                      Delete
+                    </Button>
+                  </span>
                 </div>
               </>
             ) : (
-              <p className='text-gray-300'>Item denied</p>
+              <>
+                <p className='text-gray-300 p-4'>Item denied</p>
+                <div className='inline-block p-2'></div>
+                <span onClick={() => handleDelete(item.id)}>
+                  <Button rounded danger>
+                    Delete
+                  </Button>
+                </span>
+              </>
             )}
           </div>
         ),
       }));
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  const data = React.useMemo(() => itemsData || [], [itemsData, sellers]);
+  const data = React.useMemo(() => itemsData || [], [itemsData]);
 
   const columns = React.useMemo(
     () => [
-      { Header: 'Status', accessor: 'status' },
+      // { Header: 'Status', accessor: 'status' },
       { Header: 'Image', accessor: 'image' },
       {
         Header: (
@@ -220,7 +286,8 @@ const TableBody = ({
                 {row.cells.map((cell) => {
                   return (
                     <td
-                      className='border-b-2 pr-4 min-w-max border-gray-100 py-4'
+                      style={{ minWidth: '50px', maxWidth: '100px' }}
+                      className='border-b-2 pr-4 border-gray-100 py-4'
                       {...cell.getCellProps()}
                     >
                       {cell.render('Cell')}
