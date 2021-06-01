@@ -6,7 +6,7 @@ import {
   postApproveItem,
   postDenyItem,
   postDeleteItem,
-  postSelloutItem,
+  // postSelloutItem,
 } from '../../../actions/shopping';
 
 const TableBody = ({
@@ -77,25 +77,25 @@ const TableBody = ({
     [dispatch]
   );
 
-  const handleSellout = React.useCallback(
-    (id) => {
-      confirmAlert({
-        title: 'Sellout Item',
-        message: 'Are you sure you want to mark this item as sold out??',
-        buttons: [
-          {
-            label: 'Yes',
-            onClick: () => postSelloutItem(dispatch, id),
-          },
-          {
-            label: 'No',
-            onClick: () => {},
-          },
-        ],
-      });
-    },
-    [dispatch]
-  );
+  // const handleSellout = React.useCallback(
+  //   (id) => {
+  //     confirmAlert({
+  //       title: 'Sellout Item',
+  //       message: 'Are you sure you want to mark this item as sold out??',
+  //       buttons: [
+  //         {
+  //           label: 'Yes',
+  //           onClick: () => postSelloutItem(dispatch, id),
+  //         },
+  //         {
+  //           label: 'No',
+  //           onClick: () => {},
+  //         },
+  //       ],
+  //     });
+  //   },
+  //   [dispatch]
+  // );
 
   const itemsData =
     items &&
