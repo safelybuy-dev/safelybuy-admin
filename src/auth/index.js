@@ -3,7 +3,7 @@ import axios from 'axios';
 
 export const Auth = {
   isAuthenticated() {
-    const token = localStorage.safely_buy_token;
+    const token = localStorage.safelybuy_admin_token;
     if (!token) return false;
     let decoded;
     try {
@@ -23,13 +23,13 @@ export const Auth = {
     return decoded.exp > Date.now() / 1000 ? true : false;
   },
   signout(cb) {
-    localStorage.removeItem('safely_buy_token');
+    localStorage.removeItem('safelybuy_admin_token');
     cb();
   },
 };
 
 export const axiosWithAuth = () => {
-  const token = localStorage.getItem('safely_buy_token');
+  const token = localStorage.getItem('safelybuy_admin_token');
 
   return axios.create({
     // withCredentials: false,
