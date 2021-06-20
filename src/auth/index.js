@@ -32,11 +32,7 @@ export const axiosWithAuth = () => {
   const token = localStorage.getItem('safelybuy_admin_token');
 
   return axios.create({
-    // withCredentials: false,
     headers: {
-      // 'Access-Control-Allow-Headers':
-      //   'Access-Control-Allow-Origin, Access-Control-Allow-Headers, Content-Type, x-xsrf-token',
-      // 'Access-Control-Allow-Origin': '*',
       Authorization: `Bearer ${token}`,
     },
   });

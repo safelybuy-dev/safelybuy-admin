@@ -3,7 +3,7 @@ import { baseUrl } from "./";
 
 export const getMainDashboard = (success, failure) => {
   axiosWithAuth()
-    .get(`${baseUrl}/api/v1/admin/`)
+    .get(`${baseUrl}/api/v1/admin`)
     .then((response) => success(response))
     .catch((error) => failure(error));
 };

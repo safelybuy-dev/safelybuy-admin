@@ -3,8 +3,6 @@ import {
   Bag,
   BitcoinIcon,
   DeliveryIcon,
-  DevicesIcon,
-  DevicesIconMobile,
   SellSwapPhone,
   Tickets,
 } from "../svg";
@@ -84,10 +82,10 @@ const SamplePage = () => (
     </div>
     <div className="relative z-10">
       <div className="relative hidden justify-center mt-10 md:flex">
-        {<DevicesIconMobile />}
+        {<image src={'devices mobile'}/>}
       </div>
       <div className="px-12 relative flex justify-center mt-10 md:hidden">
-        {<DevicesIcon />}
+        {<image src={'device icon'}/>}
       </div>
       <Footer />
     </div>
