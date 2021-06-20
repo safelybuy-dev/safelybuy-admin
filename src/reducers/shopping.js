@@ -105,6 +105,30 @@ export default function shoppingReducer(state, action) {
         sellersError: action.payload,
       };
 
+      case type.GET_CUSTOMERS:
+        return {
+          ...state,
+          isLoadingCustomers: true,
+          customersError: '',
+        };
+      case type.GET_CUSTOMERS_SUCCESS:
+        const customerObject = {};
+        action.payload.users.forEach((e) => {
+          customerObject[e.id] = e;
+        });
+        return {
+          ...state,
+          isLoadingCustomers: false,
+          customersError: '',
+          customers: customerObject,
+        };
+      case type.GET_CUSTOMERS_FAILURE:
+        return {
+          ...state,
+          isLoadingCustomers: false,
+          customersError: action.payload,
+        };
+
     case type.ACCEPT_ORDER:
       return {
         ...state,

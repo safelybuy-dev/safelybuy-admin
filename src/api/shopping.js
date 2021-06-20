@@ -36,6 +36,13 @@ export const getSellers = (success, failure) => {
     .catch((error) => failure(error));
 }
 
+export const getCustomers = (success, failure) => {
+  axiosWithAuth()
+    .get(`${baseUrl}/api/v1/admin/users/customers`)
+    .then((response) => success(response))
+    .catch((error) => failure(error));
+}
+
 export const acceptOrder = (success, failure, id) => {
   axiosWithAuth()
     .post(`${baseUrl}/api/v1/admin/orders/accept/${id}`)

@@ -9,7 +9,7 @@ import {
   DeliveryIcon,
   // ArrowRight,
 } from '../../../svg';
-import { fetchMainDashboard } from '../../../actions/shopping';
+import { fetchCustomers, fetchMainDashboard } from '../../../actions/shopping';
 import shoppingReducer from '../../../reducers/shopping';
 import { shopping } from '../../../reducers/initialState';
 import { ContextShopping } from '../../../context';
@@ -19,6 +19,7 @@ const Main = () => {
   const { admin, loading } = state;
   useEffect(() => {
     fetchMainDashboard(dispatch);
+    fetchCustomers(dispatch);
   }, [dispatch]);
   return (
     <ContextShopping.Provider value={[state, dispatch]}>

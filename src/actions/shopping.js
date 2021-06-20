@@ -13,6 +13,7 @@ import {
   denyItem,
   deleteItem,
   selloutItem,
+  getCustomers,
 } from '../api/shopping';
 
 export const GET_MAIN_DASHBOARD = 'GET_MAIN_DASHBOARD';
@@ -50,6 +51,10 @@ export const GET_SHOPPING_ORDERS_FAILURE = 'GET_SHOPPING_ORDERS_FAILURE';
 export const GET_SELLERS = 'GET_SELLERS';
 export const GET_SELLERS_SUCCESS = 'GET_SELLERS_SUCCESS';
 export const GET_SELLERS_FAILURE = 'GET_SELLERS_FAILURE';
+
+export const GET_CUSTOMERS = 'GET_CUSTOMERS';
+export const GET_CUSTOMERS_SUCCESS = 'GET_CUSTOMERS_SUCCESS';
+export const GET_CUSTOMERS_FAILURE = 'GET_CUSTOMERS_FAILURE';
 
 export const ACCEPT_ORDER = 'ACCEPT_ORDER';
 export const ACCEPT_ORDER_SUCCESS = 'ACCEPT_ORDER_SUCCESS';
@@ -132,6 +137,18 @@ export const fetchSellers = (dispatch) => {
     },
     (err) => {
       dispatch(action(GET_SELLERS_FAILURE, err.response));
+    }
+  );
+};
+
+export const fetchCustomers = (dispatch) => {
+  dispatch(action(GET_CUSTOMERS));
+  getCustomers(
+    (res) => {
+      dispatch(action(GET_CUSTOMERS_SUCCESS, res.data));
+    },
+    (err) => {
+      dispatch(action(GET_CUSTOMERS_FAILURE, err.response));
     }
   );
 };

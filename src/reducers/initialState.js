@@ -11,6 +11,10 @@ export const shopping = {
   isLoadingSellers: false,
   sellersError: '',
 
+  customers: {},
+  isLoadingCustomers: false,
+  customersError: '',
+
   dashboard: {},
   isLoadingDashboard: false,
   dashboardError: '',
