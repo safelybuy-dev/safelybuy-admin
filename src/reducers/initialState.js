@@ -10,8 +10,10 @@ export const shopping = {
   sellers: {},
   isLoadingSellers: false,
   sellersError: '',
+  sellersArray: [],
 
   customers: {},
+  customersArray: [],
   isLoadingCustomers: false,
   customersError: '',
 

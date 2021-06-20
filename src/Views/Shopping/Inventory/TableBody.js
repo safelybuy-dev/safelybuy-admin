@@ -1,13 +1,15 @@
-import React, { useState } from 'react';
+import React 
+// { useState } 
+from 'react';
 import {
   useTable,
-  useFilters,
-  useGlobalFilter,
-  useAsyncDebounce,
+  // useFilters,
+  // useGlobalFilter,
+  // useAsyncDebounce,
 } from 'react-table';
 import Button from '../../../components/Button';
 import { confirmAlert } from 'react-confirm-alert'; // Import
-import TableHeader from './TableHeader';
+// import TableHeader from './TableHeader';
 import {
   postApproveItem,
   postDenyItem,
@@ -268,16 +270,18 @@ const TableBody = ({
     headerGroups,
     rows,
     prepareRow,
-    state,
+    // state,
     // visibleColumns,
     // preGlobalFilteredRows,
-    setGlobalFilter,
-  } = useTable({ columns, data }, useFilters,  useGlobalFilter);
+    // setGlobalFilter,
+  } = useTable({ columns, data }, 
+    // useFilters,  useGlobalFilter
+    );
 
-  const [filterInput, setFilterInput] = useState(state.globalFilter);
-  const handleFilterChange = useAsyncDebounce((value) => {
-    setGlobalFilter(value || undefined);
-  }, 200);
+  // const [filterInput, setFilterInput] = useState(state.globalFilter);
+  // const handleFilterChange = useAsyncDebounce((value) => {
+  //   setGlobalFilter(value || undefined);
+  // }, 200);
 
   return (
     <>

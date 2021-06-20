@@ -105,3 +105,17 @@ export const selloutItem = (success, failure, id) => {
     .then((response) => success(response))
     .catch((error) => failure(error));
 };
+
+export const banUser = (success, failure, id) => {
+  axiosWithAuth()
+    .post(`${baseUrl}/api/v1/admin/user/suspend/${id}`)
+    .then((response) => success(response))
+    .catch((error) => failure(error));
+};
+
+export const deleteUser = (success, failure, id) => {
+  axiosWithAuth()
+    .post(`${baseUrl}/api/v1/admin/user/delete/${id}`)
+    .then((response) => success(response))
+    .catch((error) => failure(error));
+};

@@ -14,6 +14,8 @@ import {
   deleteItem,
   selloutItem,
   getCustomers,
+  banUser,
+  deleteUser,
 } from '../api/shopping';
 
 export const GET_MAIN_DASHBOARD = 'GET_MAIN_DASHBOARD';
@@ -75,6 +77,14 @@ export const DELIVER_ORDER_FAILURE = 'DELIVER_ORDER_FAILURE';
 export const RETURN_ORDER = 'RETURN_ORDER';
 export const RETURN_ORDER_SUCCESS = 'RETURN_ORDER_SUCCESS';
 export const RETURN_ORDER_FAILURE = 'RETURN_ORDER_FAILURE';
+
+export const SUSPEND_USER = 'SUSPEND_USER';
+export const SUSPEND_USER_SUCCESS = 'SUSPEND_USER_SUCCESS';
+export const SUSPEND_USER_FAILURE = 'SUSPEND_USER_FAILURE';
+
+export const DELETE_USER = 'DELETE_USER';
+export const DELETE_USER_SUCCESS = 'DELETE_USER_SUCCESS';
+export const DELETE_USER_FAILURE = 'DELETE_USER_FAILURE';
 
 export const action = (type, payload) => ({
   type,
@@ -269,6 +279,36 @@ export const postSelloutItem = (dispatch, id) => {
     },
     (err) => {
       dispatch(action(SELLOUT_ITEM_FAILURE, err.response));
+    },
+    id
+  );
+};
+
+export const suspendUser = (dispatch, id) => {
+  dispatch(action(SUSPEND_USER));
+  banUser(
+    (res) => {
+      dispatch(action(SUSPEND_USER_SUCCESS, res.data));
+      fetchCustomers(dispatch);
+      fetchSellers(dispatch);
+    },
+    (err) => {
+      dispatch(action(SUSPEND_USER_FAILURE, err.response));
+    },
+    id
+  );
+};
+
+export const terminateUser = (dispatch, id) => {
+  dispatch(action(DELETE_USER));
+  deleteUser(
+    (res) => {
+      dispatch(action(DELETE_USER_SUCCESS, res.data));
+      fetchCustomers(dispatch);
+      fetchSellers(dispatch);
+    },
+    (err) => {
+      dispatch(action(DELETE_USER_FAILURE, err.response));
     },
     id
   );

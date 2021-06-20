@@ -52,18 +52,18 @@ const SellerDetails = ({ selectedSeller, setSelectedSeller }) => {
                 <KeyValue title="Business Name" value={business_name || "NIL"} />
                 <KeyValue
                   title="Tax Identification Number"
-                  value="#123234343334444"
+                  value="#"
                 />
                 <KeyValue
                   title="Business Registration Number"
-                  value="#12239748639748"
+                  value="#"
                 />
                 <KeyValue title="VAT Registered" value="NIL" />
               </div>
               <div className="flex flex-col w-6/12">
                 <KeyValue
                   title="Address"
-                  value="12 Ipaja roundabout, Lekki palms,Warri, Delta"
+                  value=""
                 />
                 <KeyValue title="Legal Form" value="National ID Card" />
                 <KeyValue title="VAT Information File" value="VATinfo.pdf" />
@@ -73,11 +73,11 @@ const SellerDetails = ({ selectedSeller, setSelectedSeller }) => {
             <h4 className="text-xl text-purple-500">Bank Details</h4>
             <div className="flex mt-2">
               <div className="flex flex-col w-6/12">
-                <KeyValue title="Account Name" value="Kareem Chibuzor" />
-                <KeyValue title="Bank Name" value="GTBank" />
+                <KeyValue title="Account Name" value="" />
+                <KeyValue title="Bank Name" value="" />
               </div>
               <div className="flex flex-col w-6/12">
-                <KeyValue title="Account Number" value="01 2344 3434" />
+                <KeyValue title="Account Number" value="" />
               </div>
             </div>
           </div>

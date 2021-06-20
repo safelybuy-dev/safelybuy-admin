@@ -9,7 +9,7 @@ const Inventory = () => {
       <Breadcrumb parentText="Customer Management" parentLink="/customers" />
       <div className="flex justify-between w-full">
         <h2 className="text-xl">Customer Management</h2>
-        <span className="inline-block md:hidden">
+        {/* <span className="inline-block md:hidden">
           <Button
             text="Export to CSV"
             secondary
@@ -29,7 +29,7 @@ const Inventory = () => {
               </svg>
             }
           />
-        </span>
+        </span> */}
         <span className="hidden bg-purple-600 px-3 rounded-full py-3 md:inline-block">
           <svg
             width="14"

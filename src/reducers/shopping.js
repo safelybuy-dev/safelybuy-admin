@@ -97,6 +97,7 @@ export default function shoppingReducer(state, action) {
         isLoadingSellers: false,
         sellersError: '',
         sellers: sellerObject,
+        sellersArray: action.payload.users,
       };
     case type.GET_SELLERS_FAILURE:
       return {
@@ -105,29 +106,30 @@ export default function shoppingReducer(state, action) {
         sellersError: action.payload,
       };
 
-      case type.GET_CUSTOMERS:
-        return {
-          ...state,
-          isLoadingCustomers: true,
-          customersError: '',
-        };
-      case type.GET_CUSTOMERS_SUCCESS:
-        const customerObject = {};
-        action.payload.users.forEach((e) => {
-          customerObject[e.id] = e;
-        });
-        return {
-          ...state,
-          isLoadingCustomers: false,
-          customersError: '',
-          customers: customerObject,
-        };
-      case type.GET_CUSTOMERS_FAILURE:
-        return {
-          ...state,
-          isLoadingCustomers: false,
-          customersError: action.payload,
-        };
+    case type.GET_CUSTOMERS:
+      return {
+        ...state,
+        isLoadingCustomers: true,
+        customersError: '',
+      };
+    case type.GET_CUSTOMERS_SUCCESS:
+      const customerObject = {};
+      action.payload.users.forEach((e) => {
+        customerObject[e.id] = e;
+      });
+      return {
+        ...state,
+        isLoadingCustomers: false,
+        customersError: '',
+        customers: customerObject,
+        customersArray: action.payload.users,
+      };
+    case type.GET_CUSTOMERS_FAILURE:
+      return {
+        ...state,
+        isLoadingCustomers: false,
+        customersError: action.payload,
+      };
 
     case type.ACCEPT_ORDER:
       return {
@@ -258,6 +260,35 @@ export default function shoppingReducer(state, action) {
         isLoadingItems: false,
         itemActionError: '',
         // items: items.map(item => item)
+      };
+    case type.SUSPEND_USER:
+    case type.DELETE_USER:
+      return {
+        ...state,
+        isLoadingCustomers: true,
+        isLoadingSellers: true,
+        customersError: '',
+        sellersError: '',
+      };
+
+    case type.SUSPEND_USER_FAILURE:
+    case type.DELETE_USER_FAILURE:
+      return {
+        ...state,
+        isLoadingCustomers: false,
+        isLoadingSellers: false,
+        customersError: action.payload,
+        sellersError: action.payload,
+      };
+
+    case type.SUSPEND_USER_SUCCESS:
+    case type.DELETE_USER_SUCCESS:
+      return {
+        ...state,
+        isLoadingCustomers: false,
+        isLoadingSellers: false,
+        customersError: '',
+        sellersError: '',
       };
 
     default:
