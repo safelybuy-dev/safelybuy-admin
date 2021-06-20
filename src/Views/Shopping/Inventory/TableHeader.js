@@ -4,7 +4,13 @@ import { SearchIcon } from '../../../svg';
 // import ItemsPerPage from './ItemsPerPage';
 // import { useComponentVisible } from '../../../hooks';
 
-export default function TableHeader({ active, setActive }) {
+export default function TableHeader({
+  active,
+  setActive,
+  filterInput,
+  handleFilterChange,
+  setFilterInput,
+}) {
   // const {
   //   ref: sortRef,
   //   isComponentVisible: isSortVisible,
@@ -24,6 +30,11 @@ export default function TableHeader({ active, setActive }) {
             className='border-2 border-purple-100 w-full focus:outline-none mb-4 px-12 py-2 rounded-full'
             type='search'
             placeholder='Search by SKU, Product Name...'
+            value={filterInput || ''}
+            onChange={(e) => {
+              setFilterInput(e.target.value);
+              handleFilterChange(e.target.value);
+            }}
           />
           <span className='absolute top-3 left-4'>
             <SearchIcon color='#8661FF' />

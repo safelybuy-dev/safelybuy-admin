@@ -1,14 +1,20 @@
 import React, { useState } from 'react';
 import TabHeader from './TabHeader';
-import TableHeader from './TableHeader';
+// import TableHeader from './TableHeader';
 import TableBody from './TableBody';
 import ProductDetails from './ProductDetails';
 import SellerDetails from './SellerDetails';
 
 const InventoryTableView = ({ loading, items, dispatch }) => {
   const [active, setActive] = useState('all');
+  // const [filterInput, setFilterInput] = useState('');
+  // const handleFilterChange = (e) => {
+  //   const value = e.target.value || undefined;
+  //   setFilterInput(value);
+  // };
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [selectedSeller, setSelectedSeller] = useState(null);
+  // console.log(filterInput);
   return (
     <div className='w-full mt-8'>
       <TabHeader
@@ -20,7 +26,12 @@ const InventoryTableView = ({ loading, items, dispatch }) => {
         inactiveLength={items.filter((item) => item.status !== 'active').length}
       />
       <div className='bg-white overflow-x relative rounded-b-2xl rounded-tr-2xl p-10 z-40 md:p-4 md:-mx-6'>
-        <TableHeader active={active} setActive={setActive} />
+        {/* <TableHeader
+          active={active}
+          // setActive={setActive}
+          // filterInput={filterInput}
+          // handleFilterChange={handleFilterChange}
+        /> */}
         {loading ? (
           <div className='mt-20 mb-20 flex justify-center'>
             <svg
@@ -55,6 +66,7 @@ const InventoryTableView = ({ loading, items, dispatch }) => {
             setActive={setActive}
             items={items}
             dispatch={dispatch}
+            // filterInput={filterInput}
           />
         )}
       </div>

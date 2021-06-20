@@ -1,7 +1,13 @@
-import React from 'react';
-import { useTable } from 'react-table';
+import React, { useState } from 'react';
+import {
+  useTable,
+  useFilters,
+  useGlobalFilter,
+  useAsyncDebounce,
+} from 'react-table';
 import Button from '../../../components/Button';
 import { confirmAlert } from 'react-confirm-alert'; // Import
+import TableHeader from './TableHeader';
 import {
   postApproveItem,
   postDenyItem,
@@ -262,44 +268,62 @@ const TableBody = ({
     headerGroups,
     rows,
     prepareRow,
-  } = useTable({ columns, data });
+    state,
+    // visibleColumns,
+    // preGlobalFilteredRows,
+    setGlobalFilter,
+  } = useTable({ columns, data }, useFilters,  useGlobalFilter);
+
+  const [filterInput, setFilterInput] = useState(state.globalFilter);
+  const handleFilterChange = useAsyncDebounce((value) => {
+    setGlobalFilter(value || undefined);
+  }, 200);
 
   return (
-    <div className='overflow-x-scroll mt-8'>
-      <table {...getTableProps()} className='w-full text-sm'>
-        <thead className='text-left border-b-2 border-gray-100'>
-          {headerGroups.map((headerGroup) => (
-            <tr {...headerGroup.getHeaderGroupProps()}>
-              {headerGroup.headers.map((column) => (
-                <th className='pb-4 font-normal' {...column.getHeaderProps()}>
-                  {column.render('Header')}
-                </th>
-              ))}
-            </tr>
-          ))}
-        </thead>
-        <tbody {...getTableBodyProps()}>
-          {rows.map((row) => {
-            prepareRow(row);
-            return (
-              <tr {...row.getRowProps()}>
-                {row.cells.map((cell) => {
-                  return (
-                    <td
-                      style={{ minWidth: '50px', maxWidth: '100px' }}
-                      className='border-b-2 pr-4 border-gray-100 py-4'
-                      {...cell.getCellProps()}
-                    >
-                      {cell.render('Cell')}
-                    </td>
-                  );
-                })}
+    <>
+      {/* <TableHeader
+        active={active}
+        setActive={setActive}
+        filterInput={filterInput}
+        handleFilterChange={handleFilterChange}
+        setFilterInput={setFilterInput}
+      /> */}
+      <div className='overflow-x-scroll mt-8'>
+        <table {...getTableProps()} className='w-full text-sm'>
+          <thead className='text-left border-b-2 border-gray-100'>
+            {headerGroups.map((headerGroup) => (
+              <tr {...headerGroup.getHeaderGroupProps()}>
+                {headerGroup.headers.map((column) => (
+                  <th className='pb-4 font-normal' {...column.getHeaderProps()}>
+                    {column.render('Header')}
+                  </th>
+                ))}
               </tr>
-            );
-          })}
-        </tbody>
-      </table>
-    </div>
+            ))}
+          </thead>
+          <tbody {...getTableBodyProps()}>
+            {rows.map((row) => {
+              prepareRow(row);
+              return (
+                <tr {...row.getRowProps()}>
+                  {row.cells.map((cell) => {
+                    return (
+                      <td
+                        style={{ minWidth: '50px', maxWidth: '100px' }}
+                        className='border-b-2 pr-4 border-gray-100 py-4'
+                        {...cell.getCellProps()}
+                      >
+                        {cell.render('Cell')}
+                      </td>
+                    );
+                  })}
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
+    </>
   );
 };
 

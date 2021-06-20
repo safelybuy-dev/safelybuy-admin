@@ -15,7 +15,6 @@ const Inventory = () => {
     fetchShoppingItems(dispatch);
   }, [dispatch]);
 
-
   return (
     <div className='flex flex-col w-full items-start'>
       <Breadcrumb
