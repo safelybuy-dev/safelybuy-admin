@@ -38,7 +38,7 @@ const TabbedButton = ({ text, position = 1, active, svg, tag }) => {
 };
 
 export default function TabHeader({ active, setActive }) {
-  const [{ customersArray }] = useContext(ContextShopping);
+  const [{ sellersArray }] = useContext(ContextShopping);
 
   return (
     <div className='flex overflow-x md:-mx-6'>
@@ -61,7 +61,7 @@ export default function TabHeader({ active, setActive }) {
           text='All'
           position={3}
           active={active === 'all'}
-          tag={customersArray.length}
+          tag={sellersArray.length}
         />
       </div>
       {/* <div

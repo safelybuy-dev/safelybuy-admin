@@ -184,7 +184,7 @@ const TableBody = ({ active, setActive, setSelectedSeller }) => {
           ></path>
         </svg>
         <span className='text-purple-500 animate-pulse'>
-          Loading customers...
+          Loading sellers...
         </span>
       </div>
     );
