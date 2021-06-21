@@ -1,9 +1,9 @@
 import React, { useEffect, useContext, useState } from 'react';
-import { useTable } from 'react-table';
+import { useTable, useGlobalFilter, useAsyncDebounce } from 'react-table';
 import Button from '../../components/Button';
 import { confirmAlert } from 'react-confirm-alert'; // Import
 import { ContextShopping } from '../../context';
-import TableHeader from "./TableHeader";
+import TableHeader from './TableHeader';
 
 import {
   fetchCustomers,
@@ -68,31 +68,26 @@ const TableBody = ({ active, setActive, setSelectedSeller }) => {
     .filter((item) => item.status === active || active === 'all')
     .map((user) => ({
       status: 'Active',
-      referral: <p>{user.referral_code}</p>,
+      referral: user.referral_code,
       email: user.email,
-      seller: (
-        <p
-          // onClick={() => setSelectedSeller(user)}
-          className='text-purple-500 cursor-pointer'
-        >
-          {user.firstname} {user.lastname}
-          <br /> <span className='text-gray-800'>({user.phone})</span>
-        </p>
-      ),
-      date: (
-        <div>
-          <p className=''>
-            {new Intl.DateTimeFormat('en-GB', {
-              year: 'numeric',
-              month: 'short',
-              day: 'numeric',
-              hour: 'numeric',
-              hour12: true,
-              minute: 'numeric',
-            }).format(Date.parse(user.created_at))}
-          </p>
-        </div>
-      ),
+      seller: user.firstname + ' ' + user.lastname,
+      // (
+      //   <p
+      //     // onClick={() => setSelectedSeller(user)}
+      //     className='text-purple-500 cursor-pointer'
+      //   >
+      //     {user.firstname} {user.lastname}
+      //     <br /> <span className='text-gray-800'>({user.phone})</span>
+      //   </p>
+      // ),
+      date: new Intl.DateTimeFormat('en-GB', {
+        year: 'numeric',
+        month: 'short',
+        day: 'numeric',
+        hour: 'numeric',
+        hour12: true,
+        minute: 'numeric',
+      }).format(Date.parse(user.created_at)),
       actions: (
         <div className='justify-around'>
           {customersArray.length &&
@@ -158,7 +153,14 @@ const TableBody = ({ active, setActive, setSelectedSeller }) => {
     headerGroups,
     rows,
     prepareRow,
-  } = useTable({ columns, data });
+    state,
+    // visibleColumns,
+    // preGlobalFilteredRows,
+    setGlobalFilter,
+  } = useTable(
+    { columns, data, autoResetGlobalFilter: false },
+    useGlobalFilter
+  );
 
   if (isLoadingCustomers && customersArray.length === 0) {
     return (
@@ -192,7 +194,14 @@ const TableBody = ({ active, setActive, setSelectedSeller }) => {
 
   return (
     <>
-      <TableHeader active={active} setActive={setActive} />
+      <TableHeader
+        active={active}
+        setActive={setActive}
+        // preGlobalFilteredRows={preGlobalFilteredRows}
+        globalFilter={state.globalFilter}
+        setGlobalFilter={setGlobalFilter}
+        useAsyncDebounce={useAsyncDebounce}
+      />
       <div className='overflow-x-scroll mt-8'>
         <table {...getTableProps()} className='w-full text-sm'>
           <thead className='text-left border-b-2 border-gray-100'>
