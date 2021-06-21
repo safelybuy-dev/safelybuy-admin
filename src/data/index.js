@@ -61,7 +61,7 @@ export const mainMenuItems = [
   { url: '/customers', text: 'Customer Management' },
   { url: '/contents', text: 'Content Management' },
   { url: '/discounts', text: 'Discount Promotion Management' },
-  { url: '/sellers', text: 'Sellers Management' },
+  { url: '/sellers', text: 'Seller Management' },
   { url: '/mails', text: 'Email Marketing' },
   { url: '/referrals', text: 'Referral Management' },
   { url: '/payments', text: 'Payment Request' },
