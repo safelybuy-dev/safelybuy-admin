@@ -1,7 +1,9 @@
-import React, { useReducer } from 'react';
-import { Active, Inactive, List } from '../../svg';
-import shoppingReducer from '../../reducers/shopping';
-import { shopping } from '../../reducers/initialState';
+import React, { useContext } from 'react';
+import { ContextShopping } from '../../context';
+import {
+  // Active, Inactive,
+  List,
+} from '../../svg';
 
 const TabbedButton = ({ text, position = 1, active, svg, tag }) => {
   return (
@@ -36,8 +38,8 @@ const TabbedButton = ({ text, position = 1, active, svg, tag }) => {
 };
 
 export default function TabHeader({ active, setActive }) {
-  const [state] = useReducer(shoppingReducer, shopping);
-  console.log(state);
+  const [{ customersArray }] = useContext(ContextShopping);
+
   return (
     <div className='flex overflow-x md:-mx-6'>
       <div
@@ -59,7 +61,7 @@ export default function TabHeader({ active, setActive }) {
           text='All'
           position={3}
           active={active === 'all'}
-          tag={state.customersArray.length}
+          tag={customersArray.length}
         />
       </div>
       {/* <div
