@@ -11,7 +11,6 @@ const KeyValue = ({ title, value }) => (
 const SenderDetails = ({ selectedSender, setSelectedSender }) => {
   if (!selectedSender) return null;
 
-  console.log(selectedSender);
 
   const { firstname, lastname, email, phone, dob, location } = selectedSender;
 
