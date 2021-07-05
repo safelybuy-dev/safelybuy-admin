@@ -1,6 +1,8 @@
 import {
   getMainDashboard,
   getShoppingDashboard,
+  getDeliveryDashboard,
+  getDeliveryOrders,
   getShoppingOrders,
   getShoppingItems,
   getSellers,
@@ -21,6 +23,10 @@ import {
 export const GET_MAIN_DASHBOARD = 'GET_MAIN_DASHBOARD';
 export const GET_MAIN_DASHBOARD_SUCCESS = 'GET_MAIN_DASHBOARD_SUCCESS';
 export const GET_MAIN_DASHBOARD_FAILURE = 'GET_MAIN_DASHBOARD_FAILURE';
+
+export const GET_DELIVERY_DASHBOARD = 'GET_DELIVERY_DASHBOARD';
+export const GET_DELIVERY_DASHBOARD_SUCCESS = 'GET_DELIVERY_DASHBOARD_SUCCESS';
+export const GET_DELIVERY_DASHBOARD_FAILURE = 'GET_DELIVERY_DASHBOARD_FAILURE';
 
 export const GET_SHOPPING_DASHBOARD = 'GET_SHOPPING_DASHBOARD';
 export const GET_SHOPPING_DASHBOARD_SUCCESS = 'GET_SHOPPING_DASHBOARD_SUCCESS';
@@ -49,6 +55,10 @@ export const SELLOUT_ITEM_FAILURE = 'SELLOUT_ITEM_FAILURE';
 export const GET_SHOPPING_ORDERS = 'GET_SHOPPING_ORDERS';
 export const GET_SHOPPING_ORDERS_SUCCESS = 'GET_SHOPPING_ORDERS_SUCCESS';
 export const GET_SHOPPING_ORDERS_FAILURE = 'GET_SHOPPING_ORDERS_FAILURE';
+
+export const GET_DELIVERY_ORDERS = 'GET_DELIVERY_ORDERS';
+export const GET_DELIVERY_ORDERS_SUCCESS = 'GET_DELIVERY_ORDERS_SUCCESS';
+export const GET_DELIVERY_ORDERS_FAILURE = 'GET_DELIVERY_ORDERS_FAILURE';
 
 export const GET_SELLERS = 'GET_SELLERS';
 export const GET_SELLERS_SUCCESS = 'GET_SELLERS_SUCCESS';
@@ -115,6 +125,18 @@ export const fetchMainDashboard = (dispatch) => {
   );
 };
 
+export const fetchDeliveryDashboard = (dispatch) => {
+  dispatch(action(GET_DELIVERY_DASHBOARD));
+  getDeliveryDashboard(
+    (res) => {
+      dispatch(action(GET_DELIVERY_DASHBOARD_SUCCESS, res.data));
+    },
+    (err) => {
+      dispatch(action(GET_DELIVERY_DASHBOARD_FAILURE, err.response));
+    }
+  );
+};
+
 export const fetchShoppingOrders = (dispatch) => {
   dispatch(action(GET_SHOPPING_ORDERS));
   getShoppingOrders(
@@ -123,6 +145,18 @@ export const fetchShoppingOrders = (dispatch) => {
     },
     (err) => {
       dispatch(action(GET_SHOPPING_ORDERS_FAILURE, err.response));
+    }
+  );
+};
+
+export const fetchDeliveryOrders = (dispatch) => {
+  dispatch(action(GET_DELIVERY_ORDERS));
+  getDeliveryOrders(
+    (res) => {
+      dispatch(action(GET_DELIVERY_ORDERS_SUCCESS, res.data));
+    },
+    (err) => {
+      dispatch(action(GET_DELIVERY_ORDERS_FAILURE, err.response));
     }
   );
 };

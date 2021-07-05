@@ -15,6 +15,20 @@ export const getShoppingDashboard = (success, failure) => {
     .catch((error) => failure(error));
 };
 
+export const getDeliveryDashboard = (success, failure) => {
+  axiosWithAuth()
+  .get(`${baseUrl}/api/v1/admin/delivery`)
+  .then((response) => success(response))
+  .catch((error) => failure(error));
+}
+
+export const getDeliveryOrders = (success, failure) => {
+  axiosWithAuth()
+    .get(`${baseUrl}/api/v1/admin/delivery/orders`)
+    .then((response) => success(response))
+    .catch((error) => failure(error));
+};
+
 export const getShoppingOrders = (success, failure) => {
   axiosWithAuth()
     .get(`${baseUrl}/api/v1/admin/orders`)

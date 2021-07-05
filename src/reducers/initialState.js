@@ -30,6 +30,9 @@ export const shopping = {
 
   itemActionLoading: false,
   itemActionError: '',
+
+  deliveryDashboard: {},
+  deliveryOrders: [],
 };
 
 export const bitcoin = {

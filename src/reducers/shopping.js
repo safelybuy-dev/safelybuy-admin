@@ -22,6 +22,26 @@ export default function shoppingReducer(state, action) {
         error: action.payload,
       };
 
+    case type.GET_DELIVERY_DASHBOARD:
+      return {
+        ...state,
+        loading: true,
+        error: '',
+      };
+    case type.GET_DELIVERY_DASHBOARD_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        error: '',
+        deliveryDashboard: action.payload,
+      };
+    case type.GET_DELIVERY_DASHBOARD_FAILURE:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
+      };
+
     case type.GET_SHOPPING_DASHBOARD:
       return {
         ...state,
@@ -77,9 +97,29 @@ export default function shoppingReducer(state, action) {
     case type.GET_SHOPPING_ORDERS_FAILURE:
       return {
         ...state,
-        isLoadingOrders: true,
+        isLoadingOrders: false,
         ordersError: '',
       };
+
+      case type.GET_DELIVERY_ORDERS:
+        return {
+          ...state,
+          loading: true,
+          error: '',
+        };
+      case type.GET_DELIVERY_ORDERS_SUCCESS:
+        return {
+          ...state,
+          loading: false,
+          deliveryOrders: action.payload.orders,
+          error: '',
+        };
+      case type.GET_DELIVERY_ORDERS_FAILURE:
+        return {
+          ...state,
+          loading: false,
+          error: action.payload,
+        };
 
     case type.GET_SELLERS:
       return {
