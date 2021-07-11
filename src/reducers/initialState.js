@@ -17,6 +17,9 @@ export const shopping = {
   isLoadingCustomers: false,
   customersError: '',
 
+  users: {},
+  usersArray: [],
+
   dashboard: {},
   isLoadingDashboard: false,
   dashboardError: '',

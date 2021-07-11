@@ -17,6 +17,7 @@ import {
   deleteItem,
   selloutItem,
   getCustomers,
+  getUsers,
   banUser,
   deleteUser,
 } from '../api/shopping';
@@ -64,6 +65,10 @@ export const GET_SHOPPING_ORDERS_FAILURE = 'GET_SHOPPING_ORDERS_FAILURE';
 export const GET_DELIVERY_ORDERS = 'GET_DELIVERY_ORDERS';
 export const GET_DELIVERY_ORDERS_SUCCESS = 'GET_DELIVERY_ORDERS_SUCCESS';
 export const GET_DELIVERY_ORDERS_FAILURE = 'GET_DELIVERY_ORDERS_FAILURE';
+
+export const GET_USERS = 'GET_USERS';
+export const GET_USERS_SUCCESS = 'GET_USERS_SUCCESS';
+export const GET_USERS_FAILURE = 'GET_USERS_FAILURE';
 
 export const GET_SELLERS = 'GET_SELLERS';
 export const GET_SELLERS_SUCCESS = 'GET_SELLERS_SUCCESS';
@@ -213,6 +218,18 @@ export const fetchCustomers = (dispatch) => {
     }
   );
 };
+
+export const fetchUsers = (dispatch) => {
+  dispatch(action(GET_USERS));
+  getUsers(
+    (res) => {
+      dispatch(action(GET_USERS_SUCCESS, res.data));
+    },
+    (err) => {
+      dispatch(action(GET_USERS_FAILURE, err.response));
+    }
+  );
+}
 
 export const postAcceptOrder = (dispatch, id) => {
   dispatch(action(ACCEPT_ORDER));

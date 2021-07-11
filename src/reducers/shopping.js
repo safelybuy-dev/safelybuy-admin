@@ -22,7 +22,7 @@ export default function shoppingReducer(state, action) {
         error: action.payload,
       };
 
-      case type.GET_GIFTCARD_DASHBOARD:
+    case type.GET_GIFTCARD_DASHBOARD:
       return {
         ...state,
         loading: true,
@@ -121,25 +121,25 @@ export default function shoppingReducer(state, action) {
         ordersError: '',
       };
 
-      case type.GET_DELIVERY_ORDERS:
-        return {
-          ...state,
-          loading: true,
-          error: '',
-        };
-      case type.GET_DELIVERY_ORDERS_SUCCESS:
-        return {
-          ...state,
-          loading: false,
-          deliveryOrders: action.payload.orders,
-          error: '',
-        };
-      case type.GET_DELIVERY_ORDERS_FAILURE:
-        return {
-          ...state,
-          loading: false,
-          error: action.payload,
-        };
+    case type.GET_DELIVERY_ORDERS:
+      return {
+        ...state,
+        loading: true,
+        error: '',
+      };
+    case type.GET_DELIVERY_ORDERS_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        deliveryOrders: action.payload.orders,
+        error: '',
+      };
+    case type.GET_DELIVERY_ORDERS_FAILURE:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
+      };
 
     case type.GET_SELLERS:
       return {
@@ -189,6 +189,31 @@ export default function shoppingReducer(state, action) {
         ...state,
         isLoadingCustomers: false,
         customersError: action.payload,
+      };
+
+    case type.GET_USERS:
+      return {
+        ...state,
+        loading: true,
+        error: '',
+      };
+    case type.GET_USERS_SUCCESS:
+      const usersObject = {};
+      action.payload.users.forEach((e) => {
+        usersObject[e.id] = e;
+      });
+      return {
+        ...state,
+        loading: false,
+        error: '',
+        users: usersObject,
+        usersArray: action.payload.users,
+      };
+    case type.GET_USERS_FAILURE:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
       };
 
     case type.ACCEPT_ORDER:
@@ -327,6 +352,7 @@ export default function shoppingReducer(state, action) {
         ...state,
         isLoadingCustomers: true,
         isLoadingSellers: true,
+        loading: true,
         customersError: '',
         sellersError: '',
       };
@@ -337,6 +363,8 @@ export default function shoppingReducer(state, action) {
         ...state,
         isLoadingCustomers: false,
         isLoadingSellers: false,
+        loading: false,
+        error: action.payload,
         customersError: action.payload,
         sellersError: action.payload,
       };
@@ -347,6 +375,8 @@ export default function shoppingReducer(state, action) {
         ...state,
         isLoadingCustomers: false,
         isLoadingSellers: false,
+        loading: false,
+        error: '',
         customersError: '',
         sellersError: '',
       };

@@ -1,5 +1,5 @@
-import { axiosWithAuth } from "../auth";
-import { baseUrl } from "./";
+import { axiosWithAuth } from '../auth';
+import { baseUrl } from './';
 
 export const getMainDashboard = (success, failure) => {
   axiosWithAuth()
@@ -24,10 +24,10 @@ export const getGiftCardDashboard = (success, failure) => {
 
 export const getDeliveryDashboard = (success, failure) => {
   axiosWithAuth()
-  .get(`${baseUrl}/api/v1/admin/delivery`)
-  .then((response) => success(response))
-  .catch((error) => failure(error));
-}
+    .get(`${baseUrl}/api/v1/admin/delivery`)
+    .then((response) => success(response))
+    .catch((error) => failure(error));
+};
 
 export const getDeliveryOrders = (success, failure) => {
   axiosWithAuth()
@@ -55,14 +55,21 @@ export const getSellers = (success, failure) => {
     .get(`${baseUrl}/api/v1/admin/users/sellers`)
     .then((response) => success(response))
     .catch((error) => failure(error));
-}
+};
 
 export const getCustomers = (success, failure) => {
   axiosWithAuth()
     .get(`${baseUrl}/api/v1/admin/users/customers`)
     .then((response) => success(response))
     .catch((error) => failure(error));
-}
+};
+
+export const getUsers = (success, failure) => {
+  axiosWithAuth()
+    .get(`${baseUrl}/api/v1/admin/users/admins`)
+    .then((response) => success(response))
+    .catch((error) => failure(error));
+};
 
 export const acceptOrder = (success, failure, id) => {
   axiosWithAuth()
