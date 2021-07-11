@@ -24,7 +24,7 @@ export default function Highlight() {
       </p>
       <h3 className="text-2xl pb-4">Most sold giftcard</h3>
       <div className="flex flex-col bg-purple-700 rounded-2xl p-3 divide-y divide-purple-500">
-        <div className="flex pb-4 items-center md:justify-center">
+        {/* <div className="flex pb-4 items-center md:justify-center">
           <span className="inline-block px-4 py-3 bg-white rounded-full mr-2">
             {<AppleIcon />}
           </span>
@@ -43,7 +43,8 @@ export default function Highlight() {
             500,590<span className="text-lg">NGN</span>
           </span>
           <div className="text mt-2 opacity-60">Total sales this month</div>
-        </div>
+        </div> */}
+        No data available
       </div>
     </div>
   );

@@ -1,8 +1,4 @@
-import React, { 
-  // useEffect, 
-  useReducer, 
-  // useState 
-} from 'react';
+import React, { useReducer } from 'react';
 import Breadcrumb from '../../components/Breadcrumb';
 // import Button from '../../components/Button';
 import CustomersTableView from './TableView';
