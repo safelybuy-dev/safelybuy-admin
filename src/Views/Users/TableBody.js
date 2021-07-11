@@ -22,8 +22,8 @@ const TableBody = ({
     (id) => {
       setSelectedId(id);
       confirmAlert({
-        title: 'Terminate Customer',
-        message: 'Are you sure you want to terminate this customer?',
+        title: 'Remove User',
+        message: 'Are you sure you want to remove this user?',
         buttons: [
           {
             label: 'Yes',
@@ -88,12 +88,12 @@ const TableBody = ({
             </svg>
           ) : (
             <div className='justify-around'>
-              <span onClick={() => setSelectedSeller(user)}>
+              {/* <span onClick={() => setSelectedSeller(user)}>
                 <Button roundedFull secondary>
                   Manage User
                 </Button>
               </span>
-              <span className='inline-block p-2'></span>
+              <span className='inline-block p-2'></span> */}
               <span onClick={() => handleDelete(user.id)}>
                 <Button roundedFull dangerOutline>
                   Remove

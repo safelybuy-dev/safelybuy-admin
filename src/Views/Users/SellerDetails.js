@@ -63,7 +63,6 @@ const SellerDetails = ({ selectedSeller, setSelectedSeller }) => {
     return isValid;
   };
 
-  console.log(selectedSeller);
   const togglePassword = () => {
     const password = document.querySelector('#userPassword');
     const passwordHide = document.querySelector('#userPasswordHide');

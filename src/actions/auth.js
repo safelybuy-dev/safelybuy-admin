@@ -25,6 +25,7 @@ export const login = (dispatch, data, history, toast) => {
     },
     (err) => {
       if (err.response) {
+        console.log(err.response)
         dispatch(action(ERROR, err.response.data.message));
         toast(err.response.data.message, {
           appearance: 'error',

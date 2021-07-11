@@ -147,3 +147,10 @@ export const deleteUser = (success, failure, id) => {
     .then((response) => success(response))
     .catch((error) => failure(error));
 };
+
+export const addUser = (success, failure, data) => {
+  axiosWithAuth()
+    .post(`${baseUrl}/api/v1/admin/users/add`, data)
+    .then((response) => success(response))
+    .catch((error) => failure(error));
+};

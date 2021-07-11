@@ -229,7 +229,7 @@ export const fetchUsers = (dispatch) => {
       dispatch(action(GET_USERS_FAILURE, err.response));
     }
   );
-}
+};
 
 export const postAcceptOrder = (dispatch, id) => {
   dispatch(action(ACCEPT_ORDER));
@@ -374,6 +374,7 @@ export const terminateUser = (dispatch, id) => {
       dispatch(action(DELETE_USER_SUCCESS, res.data));
       fetchCustomers(dispatch);
       fetchSellers(dispatch);
+      fetchUsers(dispatch);
     },
     (err) => {
       dispatch(action(DELETE_USER_FAILURE, err.response));

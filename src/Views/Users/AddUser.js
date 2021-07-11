@@ -1,15 +1,85 @@
-import React from 'react';
+import React, { useState, useContext } from 'react';
 import Button from '../../components/Button';
 import { CloseIcon } from '../../svg';
+import { useForm } from 'react-hook-form';
+import { useToasts } from 'react-toast-notifications';
+import * as yup from 'yup';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { addUser } from '../../api/shopping';
+import { fetchUsers } from '../../actions/shopping';
+import { ContextShopping } from '../../context';
+
+const isValidEmail = (email) =>
+  // eslint-disable-next-line no-useless-escape
+  /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
+    email
+  );
+
+const addUserSchema = yup.object().shape({
+  firstname: yup
+    .string()
+    .required('Please enter name')
+    .matches(/^[a-zA-Z][a-zA-Z '-]*$/, 'Invalid character supplied'),
+  lastname: yup
+    .string()
+    .required('Please enter name')
+    .matches(/^[a-zA-Z][a-zA-Z '-]*$/, 'Invalid character supplied'),
+  email: yup.string().email().required(),
+  password: yup
+    .string()
+    .required('Password required')
+    .min(8, 'Password must be at least 8 characters long'),
+});
 
 const SellerDetails = ({ selectedSeller, setSelectedSeller }) => {
-  if (!selectedSeller) return null;
+  const [, dispatch] = useContext(ContextShopping);
+  const [loading, setLoading] = useState(false);
+  const { addToast } = useToasts();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm({
+    resolver: yupResolver(addUserSchema),
+  });
+
+  const onSubmit = async (data) => {
+    // addUser(data);
+    data.role = 'admin';
+    setLoading(true);
+    addUser(
+      (res) => {
+        setLoading(false);
+        addToast('User added successfully', {
+          appearance: 'success',
+          autoDismiss: true,
+        });
+        fetchUsers(dispatch);
+        setSelectedSeller(null);
+        reset();
+      },
+      (err) => {
+        setLoading(false);
+        console.log(err.response);
+      },
+      data
+    );
+  };
+
+  const handleEmailValidation = (email) => {
+    const isValid = isValidEmail(email);
+    return isValid;
+  };
+
   const togglePassword = () => {
     const password = document.querySelector('#userPassword');
     const passwordHide = document.querySelector('#userPasswordHide');
     password.type = password.type === 'password' ? 'text' : 'password';
     passwordHide.hidden = password.type === 'password' ? true : false;
   };
+
+  if (!selectedSeller) return null;
   return (
     <div
       onClick={() => setSelectedSeller(null)}
@@ -29,19 +99,52 @@ const SellerDetails = ({ selectedSeller, setSelectedSeller }) => {
           </span>
         </div>
         <div className='overflow-scroll w-96 pt-6'>
-          <div className=''>
+          <form
+            onSubmit={handleSubmit(onSubmit)}
+            className='flex mt-6 flex-col md:px-8 w-full'
+          >
             <div className=''>
-              <label className='text-sm my-2' htmlFor='userFullname'>
-                Full Name
+              <label className='text-sm my-2' htmlFor='userFirstname'>
+                First Name
               </label>
               <div className='relative md:w-full mb-6 mt-2'>
                 <input
                   type='text'
-                  placeholder='Ana Pence'
-                  name='userFullname'
-                  id='userFullname'
-                  className='border w-full border-black rounded-full px-6 py-2 focus:outline-none focus:shadow-xl'
+                  placeholder='Chibuzor'
+                  {...register('firstname', {
+                    required: true,
+                  })}
+                  id='firstname'
+                  required
+                  className={`border ${
+                    errors.firstname ? 'border-red' : 'border-black'
+                  } w-full rounded-full px-6 py-2 focus:outline-none focus:shadow-xl`}
                 />
+                <div className='text-red-500'>
+                  {errors.firstname && <span>{errors.firstname.message}</span>}
+                </div>
+              </div>
+            </div>
+            <div className=''>
+              <label className='text-sm my-2' htmlFor='userLastname'>
+                Last Name
+              </label>
+              <div className='relative md:w-full mb-6 mt-2'>
+                <input
+                  type='text'
+                  placeholder='Oluwabukola'
+                  {...register('lastname', {
+                    required: true,
+                  })}
+                  id='lastname'
+                  required
+                  className={`border ${
+                    errors.lastname ? 'border-red' : 'border-black'
+                  } w-full rounded-full px-6 py-2 focus:outline-none focus:shadow-xl`}
+                />
+                <div className='text-red-500'>
+                  {errors.lastname && <span>{errors.lastname.message}</span>}
+                </div>
               </div>
             </div>
             <div className=''>
@@ -51,11 +154,20 @@ const SellerDetails = ({ selectedSeller, setSelectedSeller }) => {
               <div className='relative md:w-full mb-6 mt-2'>
                 <input
                   type='email'
-                  placeholder='email@example.com'
-                  name='userEmail'
-                  id='userEmail'
-                  className='border w-full border-black rounded-full px-6 py-2 focus:outline-none focus:shadow-xl'
+                  placeholder='user@safelybuy.com'
+                  {...register('email', {
+                    required: true,
+                    validate: handleEmailValidation,
+                  })}
+                  id='email'
+                  required
+                  className={`border ${
+                    errors.email ? 'border-red' : 'border-black'
+                  } w-full rounded-full px-6 py-2 focus:outline-none focus:shadow-xl`}
                 />
+                <div className='text-red-500'>
+                  {errors.email && 'Email is not valid'}
+                </div>
               </div>
             </div>
             <div className=''>
@@ -66,10 +178,16 @@ const SellerDetails = ({ selectedSeller, setSelectedSeller }) => {
                 <input
                   type='password'
                   placeholder='*********'
-                  name='userPassword'
-                  id='userPassword'
-                  className='border w-full border-black rounded-full px-6 py-2 focus:outline-none focus:shadow-xl'
+                  {...register('password', { required: true })}
+                  id='password'
+                  required
+                  className={`border ${
+                    errors.password ? 'border-red' : 'border-black'
+                  } w-full rounded-full px-6 py-2 focus:outline-none focus:shadow-xl`}
                 />
+                <div className='text-red-500'>
+                  {errors.password && errors.password.message}
+                </div>
                 <span
                   onClick={togglePassword}
                   className='absolute top-3 right-3'
@@ -101,11 +219,33 @@ const SellerDetails = ({ selectedSeller, setSelectedSeller }) => {
                 </span>
               </div>
             </div>
-          </div>
-
-          <div className='mt-16'>
-            <Button primary text='Add User' roundedFull />
-          </div>
+            <div className='mt-6'>
+              {loading ? (
+                <svg
+                  className='animate-spin mr-3 h-5 w-5 text-purple-500'
+                  xmlns='http://www.w3.org/2000/svg'
+                  fill='none'
+                  viewBox='0 0 24 24'
+                >
+                  <circle
+                    className='opacity-25'
+                    cx='12'
+                    cy='12'
+                    r='10'
+                    stroke='currentColor'
+                    strokeWidth='4'
+                  ></circle>
+                  <path
+                    className='opacity-75'
+                    fill='currentColor'
+                    d='M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z'
+                  ></path>
+                </svg>
+              ) : (
+                <Button submit primary text='Add User' roundedFull />
+              )}
+            </div>
+          </form>
         </div>
       </div>
     </div>

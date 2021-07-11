@@ -64,7 +64,7 @@ const Button = ({
     >
       {text || children}
     </button>
-    <div style={{ top: 12, right: 24 }} className='absolute '>
+    <div style={{ top: 12, right: 24, lineHeight: 1 }} className='absolute '>
       {icon}
     </div>
   </div>
