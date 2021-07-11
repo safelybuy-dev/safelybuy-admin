@@ -2,6 +2,7 @@ import {
   getMainDashboard,
   getShoppingDashboard,
   getDeliveryDashboard,
+  getGiftCardDashboard,
   getDeliveryOrders,
   getShoppingOrders,
   getShoppingItems,
@@ -27,6 +28,10 @@ export const GET_MAIN_DASHBOARD_FAILURE = 'GET_MAIN_DASHBOARD_FAILURE';
 export const GET_DELIVERY_DASHBOARD = 'GET_DELIVERY_DASHBOARD';
 export const GET_DELIVERY_DASHBOARD_SUCCESS = 'GET_DELIVERY_DASHBOARD_SUCCESS';
 export const GET_DELIVERY_DASHBOARD_FAILURE = 'GET_DELIVERY_DASHBOARD_FAILURE';
+
+export const GET_GIFTCARD_DASHBOARD = 'GET_GIFTCARD_DASHBOARD';
+export const GET_GIFTCARD_DASHBOARD_SUCCESS = 'GET_GIFTCARD_DASHBOARD_SUCCESS';
+export const GET_GIFTCARD_DASHBOARD_FAILURE = 'GET_GIFTCARD_DASHBOARD_FAILURE';
 
 export const GET_SHOPPING_DASHBOARD = 'GET_SHOPPING_DASHBOARD';
 export const GET_SHOPPING_DASHBOARD_SUCCESS = 'GET_SHOPPING_DASHBOARD_SUCCESS';
@@ -109,6 +114,18 @@ export const fetchShoppingDashboard = (dispatch) => {
     },
     (err) => {
       dispatch(action(GET_SHOPPING_DASHBOARD_FAILURE, err.response));
+    }
+  );
+};
+
+export const fetchGiftcardDashboard = (dispatch) => {
+  dispatch(action(GET_GIFTCARD_DASHBOARD));
+  getGiftCardDashboard(
+    (res) => {
+      dispatch(action(GET_GIFTCARD_DASHBOARD_SUCCESS, res.data));
+    },
+    (err) => {
+      dispatch(action(GET_GIFTCARD_DASHBOARD_FAILURE, err.response));
     }
   );
 };

@@ -22,6 +22,26 @@ export default function shoppingReducer(state, action) {
         error: action.payload,
       };
 
+      case type.GET_GIFTCARD_DASHBOARD:
+      return {
+        ...state,
+        loading: true,
+        error: '',
+      };
+    case type.GET_GIFTCARD_DASHBOARD_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        error: '',
+        giftcard: action.payload,
+      };
+    case type.GET_GIFTCARD_DASHBOARD_FAILURE:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
+      };
+
     case type.GET_DELIVERY_DASHBOARD:
       return {
         ...state,

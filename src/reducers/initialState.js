@@ -33,6 +33,8 @@ export const shopping = {
 
   deliveryDashboard: {},
   deliveryOrders: [],
+
+  giftcard: {},
 };
 
 export const bitcoin = {
