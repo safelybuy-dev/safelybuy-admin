@@ -15,6 +15,13 @@ export const getShoppingDashboard = (success, failure) => {
     .catch((error) => failure(error));
 };
 
+export const getDiscountDashboard = (success, failure) => {
+  axiosWithAuth()
+    .get(`${baseUrl}/api/v1/admin/promotions`)
+    .then((response) => success(response))
+    .catch((error) => failure(error));
+};
+
 export const getGiftCardDashboard = (success, failure) => {
   axiosWithAuth()
     .get(`${baseUrl}/api/v1/admin/trading/giftcard`)
