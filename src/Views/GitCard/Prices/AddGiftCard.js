@@ -1,15 +1,54 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Button from '../../../components/Button';
 import { CloseIcon } from '../../../svg';
+import { useToasts } from 'react-toast-notifications';
+import { addGiftcard as submitGiftcard } from '../../../api/shopping';
 
 const AddGiftcard = ({ addGiftcard, setAddGiftcard }) => {
+  const { addToast } = useToasts();
+  const [loadingSubmit, setLoadingSubmit] = useState(false);
+  const [values, setValues] = useState({
+    denomination: '',
+    sell_rate: '',
+    buy_rate: '',
+    name: '',
+  });
+
+  const handleChange = (e) => {
+    setValues({
+      ...values,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+    setLoadingSubmit(true);
+    submitGiftcard(
+      (res) => {
+        setLoadingSubmit(false);
+        addToast('Giftcard added successfully', {
+          appearance: 'success',
+          autoDismiss: true,
+        });
+        setAddGiftcard(false);
+      },
+      (err) => {
+        setLoadingSubmit(false);
+        // console.log(err.message);
+      },
+      values
+    );
+  };
+
   if (!addGiftcard) return null;
   return (
     <div
       onClick={() => setAddGiftcard(null)}
       className='fixed overflow-scroll top-0 left-0 z-50 w-screen md:pt-0 md:px-0 h-screen bg-purple-600 bg-opacity-30 flex items-center justify-center'
     >
-      <div
+      <form
+        onSubmit={(e) => onSubmit(e)}
         onClick={(e) => e.stopPropagation()}
         className='flex flex-col relative rounded-3xl md:rounded-none px-10 py-10 md:px-4 md:py-4 left-0 bg-white opacity-100 min-h-1/2'
       >
@@ -32,15 +71,17 @@ const AddGiftcard = ({ addGiftcard, setAddGiftcard }) => {
         </div>
         <div className='flex w-full md:flex-col'>
           <div className='md:w-full'>
-            <label className='text-sm my-2' htmlFor='cardName'>
+            <label className='text-sm my-2' htmlFor='name'>
               Giftcard Name
             </label>
             <div className='relative w-96 md:w-full'>
               <input
                 type='text'
                 placeholder='Ex; Apple giftcard'
-                name='cardName'
-                id='cardName'
+                name='name'
+                required
+                id='name'
+                onChange={handleChange}
                 className='border w-full border-black rounded-full px-6 py-2 focus:outline-none focus:shadow-xl'
               />
             </div>
@@ -56,6 +97,8 @@ const AddGiftcard = ({ addGiftcard, setAddGiftcard }) => {
                 type='text'
                 placeholder='100'
                 name='denomination'
+                required
+                onChange={handleChange}
                 id='denomination'
                 className='border w-full border-black rounded-full px-6 py-2 focus:outline-none focus:shadow-xl'
               />
@@ -66,15 +109,35 @@ const AddGiftcard = ({ addGiftcard, setAddGiftcard }) => {
             </div>
           </section>
           <section className='mt-4 flex flex-col'>
-            <label className='text-sm my-2' htmlFor='rate'>
-              Rate (NGN)
+            <label className='text-sm my-2' htmlFor='buy_rate'>
+              Buy Rate per USD
             </label>
             <div className='relative w-44 md:w-full'>
               <input
                 type='text'
                 placeholder='Enter price'
-                name='rate'
-                id='rate'
+                name='buy_rate'
+                onChange={handleChange}
+                id='buy_rate'
+                required
+                className='border w-full border-black rounded-full px-6 py-2 focus:outline-none focus:shadow-xl'
+              />
+              <span className='flex items-center absolute top-2 right-3'>
+                &#127475;&#127468;{' '}
+                <span className='text-xs inline-flex ml-2'>NGN</span>
+              </span>
+            </div>
+            <label className='text-sm my-2' htmlFor='sell_rate'>
+              Sell Rate per USD
+            </label>
+            <div className='relative w-44 md:w-full'>
+              <input
+                type='text'
+                placeholder='Enter price'
+                onChange={handleChange}
+                name='sell_rate'
+                required
+                id='sell_rate'
                 className='border w-full border-black rounded-full px-6 py-2 focus:outline-none focus:shadow-xl'
               />
               <span className='flex items-center absolute top-2 right-3'>
@@ -84,10 +147,14 @@ const AddGiftcard = ({ addGiftcard, setAddGiftcard }) => {
             </div>
           </section>
         </div>
-        <div className='md:w-full mt-12 flex flex-col'>
-          <Button primary text='Add Giftcard' roundedFull />
+        <div className='md:w-full mt-12 flex flex-col items-start'>
+          {loadingSubmit ? (
+            'Submitting Giftcard'
+          ) : (
+            <Button primary text='Add Giftcard' submit roundedFull />
+          )}
         </div>
-      </div>
+      </form>
     </div>
   );
 };

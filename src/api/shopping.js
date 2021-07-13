@@ -168,3 +168,10 @@ export const updateGiftcard = (success, failure, id, data) => {
     .then((response) => success(response))
     .catch((error) => failure(error));
 };
+
+export const addGiftcard = (success, failure, data) => {
+  axiosWithAuth()
+    .post(`${baseUrl}/api/v1/admin/giftcard/add`, data)
+    .then((response) => success(response))
+    .catch((error) => failure(error));
+};
