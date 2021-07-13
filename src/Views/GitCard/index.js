@@ -1,7 +1,6 @@
 import React, {
   useEffect,
   useReducer,
-  // useState
 } from 'react';
 import Breadcrumb from '../../components/Breadcrumb';
 import TopStat from '../Delivery/TopStat';
@@ -22,7 +21,6 @@ const Giftcard = () => {
   const [state, dispatch] = useReducer(shoppingReducer, shopping);
   // const [selectedCustomer, setSelectedCustomer] = useState(null);
   const { giftcard, loading } = state;
-
   console.log(giftcard, loading);
 
   useEffect(() => {

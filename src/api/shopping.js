@@ -161,3 +161,10 @@ export const addUser = (success, failure, data) => {
     .then((response) => success(response))
     .catch((error) => failure(error));
 };
+
+export const updateGiftcard = (success, failure, id, data) => {
+  axiosWithAuth()
+    .post(`${baseUrl}/api/v1/admin/giftcard/update/${id}`, data)
+    .then((response) => success(response))
+    .catch((error) => failure(error));
+};
