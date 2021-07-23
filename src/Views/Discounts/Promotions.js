@@ -91,31 +91,8 @@ const Discounts = () => {
         parentText='Discount and Promotions'
         parentLink='/discounts'
       />
-      <h2 className='text-xl'>Discount and Promotion Code</h2>
-      <div className='grid mt-10 mx-16 md:mx-0 grid-cols-2 md:grid-cols-1 gap-40 md:gap-6'>
-        <TopStat
-          linkText='Manage'
-          link='/discounts/code'
-          color='orange'
-          svg={<Discount scale={0.7} />}
-          title='Create Code'
-          subtitle='Create new discount or promotion code'
-          number={discountDash?.codes}
-          numberText='Created codes in the last 3 days'
-          loading={loading}
-        />
-        <TopStat
-          linkText='View'
-          link='/discounts/promotions'
-          color='blue'
-          svg={<Receipt scale={0.7} />}
-          title='Ongoing Promotions'
-          subtitle='Manage Ongoing promotions'
-          number={discountDash?.promotions}
-          numberText='Ongoing Promotions'
-          loading={loading}
-        />
-      </div>
+      <h2 className='text-xl'>Ongoing Promotions</h2>
+      
     </div>
   );
 };
