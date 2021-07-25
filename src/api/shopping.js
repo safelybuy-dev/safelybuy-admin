@@ -175,3 +175,13 @@ export const addGiftcard = (success, failure, data) => {
     .then((response) => success(response))
     .catch((error) => failure(error));
 };
+
+export const createPromotionCode = (success, failure, data) =>
+  axiosWithAuth()
+    .post(`${baseUrl}/api/v1/admin/promotion/create`, data)
+    .then((response) => success(response))
+    .catch((error) => failure(error));
+
+// insert into `promotions`
+// (`code`, `threshold`, `percentage`, `use_case`, `category`, `expires`, `updated_at`, `created_at`) values
+// (RBUDF4556, 234, 43, 33, null, ?, 2021-07-25 11:50:01, 2021-07-25 11:50:01))"

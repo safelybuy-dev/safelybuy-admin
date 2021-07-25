@@ -1,34 +1,18 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { getDiscountDashboard } from '../../api/shopping';
+import React, {
+  useState,
+} from 'react';
+import { useHistory } from 'react-router-dom';
+import { createPromotionCode } from '../../api/shopping';
 import Breadcrumb from '../../components/Breadcrumb';
-import Button from '../../components/Button';
-import { ArrowRight, Discount, Receipt } from '../../svg';
-
-const CheckMark = ({ id, name, state, handleChange }) => (
-  <div className='relative inline-flex my-4 items-center'>
-    <input
-      type='checkbox'
-      name={id}
-      checked={state[id]}
-      onChange={handleChange}
-      id={id}
-      className=' mr-2'
-    />
-    <label
-      htmlFor={id}
-      className={`leading-none text-sm ${
-        state[id] ? 'text-gray-900' : 'text-gray-400'
-      }`}
-    >
-      {name}
-    </label>
-  </div>
-);
+import Category from './Category';
+import { useToasts } from 'react-toast-notifications';
+import CodeInformation from './CodeInformation';
 
 const Discounts = () => {
-  // const [discountDash, setDiscountDash] = useState(3null);
-  // const [loading, setLoading] = useState(false);
+  let history = useHistory();
+  const [loading, setLoading] = useState(false);
+  const { addToast } = useToasts();
+  const [categoryError, setCategoryError] = useState('');
   const [categories, setCategories] = useState({
     all: false,
     tickets: false,
@@ -38,29 +22,82 @@ const Discounts = () => {
   });
 
   const handleCheckbox = (e) => {
-    setCategories({
-      ...categories,
-      [e.target.name]: !categories[e.target.name],
-    });
+    setCategoryError('');
+    if (e.target.name === 'all') {
+      const newCat = {};
+      Object.keys(categories).forEach((v) => (newCat[v] = !categories['all']));
+      setCategories(newCat);
+    } else
+      setCategories({
+        ...categories,
+        [e.target.name]: !categories[e.target.name],
+      });
   };
 
-  // useEffect(() => {
-  //   setLoading(true);
-  //   getDiscountDashboard(
-  //     (res) => {
-  //       setLoading(false);
-  //       console.log(res.data);
-  //       setDiscountDash({
-  //         codes: res.data.codes,
-  //         promotions: res.data.promotions,
-  //       });
-  //     },
-  //     (err) => {
-  //       setLoading(false);
-  //       console.log(err.message);
-  //     }
-  //   );
-  // }, []);
+  function generateCode() {
+    let result = '';
+    let characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    let numbers = '0123456789';
+    let charactersLength = characters.length;
+    for (let i = 0; i < 4; i++) {
+      result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    }
+    for (let i = 0; i < 4; i++) {
+      result += numbers.charAt(Math.floor(Math.random() * numbers.length));
+    }
+    return result;
+  }
+
+  const onSubmit = async (data) => {
+    setLoading(true);
+    let error = true;
+    Object.values(categories).forEach((category) => {
+      if (category) error = false;
+    });
+    if (error) {
+      setCategoryError('Please select at least one category');
+      return;
+    }
+    const selectedCategories = [];
+    Object.entries(categories).forEach((category) => {
+      if (category[1] && category[0] !== 'all')
+        selectedCategories.push(category[0]);
+    });
+
+    Promise.all(
+      selectedCategories.map((category) => {
+        return createPromotionCode(
+          (res) => {
+            return res;
+          },
+          (err) => err,
+          {
+            ...data,
+            category,
+            expires: data.end_date,
+            code: generateCode(),
+          }
+        );
+      })
+    )
+      .then((values) => {
+        setLoading(false);
+        console.log('values', values);
+        addToast('Promotion code created', {
+          appearance: 'success',
+          autoDismiss: true,
+        });
+        history.push('/discounts/promotions');
+      })
+      .catch((err) => {
+        setLoading(false);
+        console.error(err.message);
+        addToast('Error creating promotion code', {
+          appearance: 'error',
+          autoDismiss: true,
+        });
+      });
+  };
 
   return (
     <div className='w-full'>
@@ -71,45 +108,15 @@ const Discounts = () => {
         childLink='#'
       />
       <h2 className='text-xl'>Create Code</h2>
-      <div className='bg-white mt-8 py-12 px-10 rounded-2xl flex shadow-md'>
-        <div className='border-r w-44'>
-          <h4 className='text-purple-500 text-lg'>Category</h4>
-          <div className='my-4 flex flex-col'>
-            <CheckMark
-              handleChange={handleCheckbox}
-              id='all'
-              state={categories}
-              name='All'
-            />
-            <CheckMark
-              handleChange={handleCheckbox}
-              id='shopping'
-              state={categories}
-              name='Shopping'
-            />
-            <CheckMark
-              handleChange={handleCheckbox}
-              id='delivery'
-              name='Delivery'
-              state={categories}
-            />
-            <CheckMark
-              handleChange={handleCheckbox}
-              id='tickets'
-              state={categories}
-              name='Tickets'
-            />
-            <CheckMark
-              handleChange={handleCheckbox}
-              id='giftcard'
-              state={categories}
-              name='Giftcard'
-            />
-          </div>
-        </div>
-        <div className='pl-10'>
-          <h4 className='text-purple-500 text-lg'>Code Information</h4>
-        </div>
+      <div className='bg-white mt-8 py-12 px-10 rounded-2xl flex items-start shadow-md'>
+        <Category categories={categories} handleCheckbox={handleCheckbox} />
+        <CodeInformation
+          categoryError={categoryError}
+          loading={loading}
+          onSubmit={onSubmit}
+          categories={categories}
+          setCategoryError={setCategoryError}
+        />
       </div>
     </div>
   );
