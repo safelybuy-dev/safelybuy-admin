@@ -36,6 +36,13 @@ export const getDeliveryDashboard = (success, failure) => {
     .catch((error) => failure(error));
 };
 
+export const getTicketsDashboard = (success, failure) => {
+  axiosWithAuth()
+    .get(`${baseUrl}/api/v1/admin/tickets`)
+    .then((response) => success(response))
+    .catch((error) => failure(error));
+};
+
 export const getDeliveryOrders = (success, failure) => {
   axiosWithAuth()
     .get(`${baseUrl}/api/v1/admin/delivery/orders`)

@@ -41,6 +41,26 @@ export default function shoppingReducer(state, action) {
         loading: false,
         error: action.payload,
       };
+    
+      case type.GET_TICKETS_DASHBOARD:
+        return {
+          ...state,
+          loading: true,
+          error: '',
+        };
+      case type.GET_TICKETS_DASHBOARD_SUCCESS:
+        return {
+          ...state,
+          loading: false,
+          error: '',
+          ticketsDashboard: action.payload,
+        };
+      case type.GET_TICKETS_DASHBOARD_FAILURE:
+        return {
+          ...state,
+          loading: false,
+          error: action.payload,
+        };
 
     case type.GET_DELIVERY_DASHBOARD:
       return {
