@@ -122,6 +122,26 @@ export default function shoppingReducer(state, action) {
         itemsError: action.payload,
       };
 
+      case type.GET_EVENTS:
+        return {
+          ...state,
+          loadingEvents: true,
+          eventsError: '',
+        };
+      case type.GET_EVENTS_SUCCESS:
+        return {
+          ...state,
+          loadingEvents: false,
+          eventsError: '',
+          events: action.payload.events,
+        };
+      case type.GET_EVENTS_FAILURE:
+        return {
+          ...state,
+          loadingEvents: false,
+          eventsError: action.payload,
+        };
+  
     case type.GET_SHOPPING_ORDERS:
       return {
         ...state,

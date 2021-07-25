@@ -10,6 +10,7 @@ const KeyValue = ({ title, value }) => (
 
 const SellerDetails = ({ selectedSeller, setSelectedSeller }) => {
   if (!selectedSeller) return null;
+  console.log(selectedSeller);
   return (
     <div
       onClick={() => setSelectedSeller(null)}

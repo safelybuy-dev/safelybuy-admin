@@ -26,8 +26,6 @@ const Tickets = () => {
     fetchTicketsDashboard(dispatch);
   }, [dispatch]);
 
-  console.log(ticketsDashboard, loading);
-
   return (
     <ContextShopping.Provider value={[state, dispatch]}>
       <div className='flex flex-col w-full items-start'>
@@ -49,7 +47,7 @@ const Tickets = () => {
             caption='Total tickets sold in the last 24 hours'
             svg={<Invoice color='#8661ff' scale={1.7} />}
             color='purple'
-            link='/tickets/orders'
+            link='/tickets/sales'
             loading={loading}
             linkText='View'
           />

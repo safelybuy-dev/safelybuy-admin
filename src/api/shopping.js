@@ -64,6 +64,13 @@ export const getShoppingItems = (success, failure) => {
     .catch((error) => failure(error));
 };
 
+export const getEvents = (success, failure) => {
+  axiosWithAuth()
+    .get(`${baseUrl}/api/v1/admin/events`)
+    .then((response) => success(response))
+    .catch((error) => failure(error));
+};
+
 export const getSellers = (success, failure) => {
   axiosWithAuth()
     .get(`${baseUrl}/api/v1/admin/users/sellers`)
@@ -144,6 +151,27 @@ export const deleteItem = (success, failure, id) => {
 export const selloutItem = (success, failure, id) => {
   axiosWithAuth()
     .get(`${baseUrl}/api/v1/admin/item/sellout/${id}`)
+    .then((response) => success(response))
+    .catch((error) => failure(error));
+};
+
+export const approveEvent = (success, failure, id) => {
+  axiosWithAuth()
+    .get(`${baseUrl}/api/v1/admin/events/approve/${id}`)
+    .then((response) => success(response))
+    .catch((error) => failure(error));
+};
+
+export const denyEvent = (success, failure, id) => {
+  axiosWithAuth()
+    .get(`${baseUrl}/api/v1/admin/events/deny/${id}`)
+    .then((response) => success(response))
+    .catch((error) => failure(error));
+};
+
+export const deleteEvent = (success, failure, id) => {
+  axiosWithAuth()
+    .get(`${baseUrl}/api/v1/admin/events/delete/${id}`)
     .then((response) => success(response))
     .catch((error) => failure(error));
 };

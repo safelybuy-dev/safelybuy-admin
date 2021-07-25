@@ -7,6 +7,7 @@ import {
   getDeliveryOrders,
   getShoppingOrders,
   getShoppingItems,
+  getEvents,
   getSellers,
   acceptOrder,
   denyOrder,
@@ -17,6 +18,9 @@ import {
   denyItem,
   deleteItem,
   selloutItem,
+  approveEvent,
+  denyEvent,
+  deleteEvent,
   getCustomers,
   getUsers,
   banUser,
@@ -59,6 +63,18 @@ export const DELETE_ITEM = 'DELETE_ITEM';
 export const DELETE_ITEM_SUCCESS = 'DELETE_ITEM_SUCCESS';
 export const DELETE_ITEM_FAILURE = 'DELETE_ITEM_FAILURE';
 
+export const APPROVE_EVENT = 'APPROVE_EVENT';
+export const APPROVE_EVENT_SUCCESS = 'APPROVE_EVENT_SUCCESS';
+export const APPROVE_EVENT_FAILURE = 'APPROVE_EVENT_FAILURE';
+
+export const DENY_EVENT = 'DENY_EVENT';
+export const DENY_EVENT_SUCCESS = 'DENY_EVENT_SUCCESS';
+export const DENY_EVENT_FAILURE = 'DENY_EVENT_FAILURE';
+
+export const DELETE_EVENT = 'DELETE_EVENT';
+export const DELETE_EVENT_SUCCESS = 'DELETE_EVENT_SUCCESS';
+export const DELETE_EVENT_FAILURE = 'DELETE_EVENT_FAILURE';
+
 export const SELLOUT_ITEM = 'SELLOUT_ITEM';
 export const SELLOUT_ITEM_SUCCESS = 'SELLOUT_ITEM_SUCCESS';
 export const SELLOUT_ITEM_FAILURE = 'SELLOUT_ITEM_FAILURE';
@@ -70,6 +86,10 @@ export const GET_SHOPPING_ORDERS_FAILURE = 'GET_SHOPPING_ORDERS_FAILURE';
 export const GET_DELIVERY_ORDERS = 'GET_DELIVERY_ORDERS';
 export const GET_DELIVERY_ORDERS_SUCCESS = 'GET_DELIVERY_ORDERS_SUCCESS';
 export const GET_DELIVERY_ORDERS_FAILURE = 'GET_DELIVERY_ORDERS_FAILURE';
+
+export const GET_EVENTS = 'GET_EVENTS';
+export const GET_EVENTS_SUCCESS = 'GET_EVENTS_SUCCESS';
+export const GET_EVENTS_FAILURE = 'GET_EVENTS_FAILURE';
 
 export const GET_USERS = 'GET_USERS';
 export const GET_USERS_SUCCESS = 'GET_USERS_SUCCESS';
@@ -208,6 +228,18 @@ export const fetchShoppingItems = (dispatch) => {
     },
     (err) => {
       dispatch(action(GET_SHOPPING_ITEMS_FAILURE, err.response));
+    }
+  );
+};
+
+export const fetchEvents = (dispatch) => {
+  dispatch(action(GET_EVENTS));
+  getEvents(
+    (res) => {
+      dispatch(action(GET_EVENTS_SUCCESS, res.data));
+    },
+    (err) => {
+      dispatch(action(GET_EVENTS_FAILURE, err.response));
     }
   );
 };
@@ -368,6 +400,48 @@ export const postSelloutItem = (dispatch, id) => {
     id
   );
 };
+
+export const postApproveEvent = (dispatch, id) => {
+  dispatch(action(APPROVE_EVENT));
+  approveEvent(
+    (res) => {
+      dispatch(action(APPROVE_EVENT_SUCCESS, res.data));
+      fetchEvents(dispatch);
+    },
+    (err) => {
+      dispatch(action(APPROVE_EVENT_FAILURE, err.response));
+    },
+    id
+  );
+};
+
+export const postDenyEvent = (dispatch, id) => {
+  dispatch(action(DENY_EVENT));
+  denyEvent(
+    (res) => {
+      dispatch(action(DENY_EVENT_SUCCESS, res.data));
+      fetchEvents(dispatch);
+    },
+    (err) => {
+      dispatch(action(DENY_EVENT_FAILURE, err.response));
+    },
+    id
+  );
+};
+
+export const postDeleteEvent = (dispatch, id) => {
+  dispatch(action(DELETE_EVENT));
+  deleteEvent(
+    (res) => {
+      dispatch(action(DELETE_EVENT_SUCCESS, res.data));
+      fetchEvents(dispatch);
+    },
+    (err) => {
+      dispatch(action(DELETE_EVENT_FAILURE, err.response));
+    },
+    id
+  );
+}
 
 export const suspendUser = (dispatch, id) => {
   dispatch(action(SUSPEND_USER));

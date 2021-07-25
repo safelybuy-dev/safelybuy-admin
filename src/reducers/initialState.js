@@ -40,6 +40,10 @@ export const shopping = {
   giftcard: {},
 
   ticketsDashboard: {},
+
+  events: [],
+  loadingEvents: false,
+  eventsError: ''
 };
 
 export const bitcoin = {
