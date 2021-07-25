@@ -1,88 +1,28 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { getDiscountDashboard } from '../../api/shopping';
+// import { Link } from 'react-router-dom';
+import { getOngoingPromotions } from '../../api/shopping';
 import Breadcrumb from '../../components/Breadcrumb';
-import Button from '../../components/Button';
-import { ArrowRight, Discount, Receipt } from '../../svg';
-
-export const TopStat = ({
-  title,
-  subtitle,
-  svg,
-  color,
-  link,
-  linkText,
-  number,
-  numberText,
-  loading,
-}) => {
-  if (loading)
-    return (
-      <div className={`px-12 md:px-6 rounded-3xl py-8 md:py-4 bg-white`}>
-        <div className='flex justify-between items-center w-full'>
-          <div className=''>
-            <div className='h-6 my-2 bg-purple-200 rounded w-32'></div>
-            <div className='h-4 my-2 bg-gray-100 rounded w-48'></div>
-          </div>
-          <div
-            className={`bg-${color}-100 p-6 rounded-full top-0 right-0 h-20 w-20`}
-          ></div>
-        </div>
-        <div className='p-12 md:p-6'></div>
-        <div className='flex my-2 justify-between items-center'>
-          <div className='rounded-full bg-gray-300 h-16 w-16'></div>
-          <div className='h-6 bg-green-200 rounded w-1/4'></div>
-        </div>
-      </div>
-    );
-  return (
-    <div className={`px-12 md:px-6 rounded-3xl py-8 md:py-4 bg-white`}>
-      <div className='flex justify-between items-center w-full'>
-        <div className=''>
-          <h3 className='text-purple-500 text-2xl md:text-xl'>{title}</h3>
-          <p className=''>{subtitle}</p>
-        </div>
-        <span className={`bg-${color}-200 p-6 rounded-full`}>{svg}</span>
-      </div>
-      <div className='p-12 md:p-6'></div>
-      <div className='flex justify-between items-center w-full'>
-        <div className='flex flex-col'>
-          <span className='text-7xl'>{number}</span>
-          <span className=''>{numberText}</span>
-        </div>
-        <Link to={link} className='md:ml-2'>
-          <Button
-            primary
-            roundedLg
-            text={linkText}
-            icon={<ArrowRight color='white' />}
-          />
-        </Link>
-      </div>
-    </div>
-  );
-};
+import PromoTable from './PromoTable';
 
 const Discounts = () => {
-  const [discountDash, setDiscountDash] = useState(null);
+  const [promos, setPromos] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
-    setLoading(true);
-    getDiscountDashboard(
+  const fetchData = () =>
+    getOngoingPromotions(
       (res) => {
         setLoading(false);
-        console.log(res.data);
-        setDiscountDash({
-          codes: res.data.codes,
-          promotions: res.data.promotions,
-        });
+        setPromos(res.data.promotions);
       },
       (err) => {
         setLoading(false);
         console.log(err.message);
       }
     );
+
+  useEffect(() => {
+    setLoading(true);
+    fetchData();
   }, []);
 
   return (
@@ -92,7 +32,7 @@ const Discounts = () => {
         parentLink='/discounts'
       />
       <h2 className='text-xl'>Ongoing Promotions</h2>
-      
+      <PromoTable loading={loading} promos={promos} fetchData={fetchData} />
     </div>
   );
 };

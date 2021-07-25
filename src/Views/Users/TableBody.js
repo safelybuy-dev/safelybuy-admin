@@ -5,13 +5,9 @@ import { confirmAlert } from 'react-confirm-alert';
 import { ContextShopping } from '../../context';
 
 import { fetchUsers, terminateUser } from '../../actions/shopping';
-import {LoadingIcon} from '../../svg';
+import { LoadingIcon } from '../../svg';
 
-const TableBody = ({
-  active,
-  setActive,
-  setSelectedSeller,
-}) => {
+const TableBody = ({ active, setActive, setSelectedSeller }) => {
   const [selectedId, setSelectedId] = useState(null);
   const [{ usersArray, loading }, dispatch] = useContext(ContextShopping);
 

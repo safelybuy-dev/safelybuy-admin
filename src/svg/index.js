@@ -697,6 +697,25 @@ export const Inactive = ({ scale = 1, color }) => (
   </svg>
 );
 
+export const Expired = ({ scale = 1, color }) => (
+  <svg
+    width={12 * scale}
+    height={12 * scale}
+    viewBox='0 0 12 12'
+    fill='none'
+    xmlns='http://www.w3.org/2000/svg'
+  >
+    <g opacity='0.6'>
+      <path
+        fillRule='evenodd'
+        clipRule='evenodd'
+        d='M6 11.5C2.96243 11.5 0.5 9.03757 0.5 6C0.5 2.96243 2.96243 0.5 6 0.5C9.03757 0.5 11.5 2.96243 11.5 6C11.5 9.03757 9.03757 11.5 6 11.5ZM9.51595 8.80884C10.1318 8.03901 10.5 7.06251 10.5 6C10.5 3.51472 8.48528 1.5 6 1.5C4.93749 1.5 3.96099 1.86824 3.19116 2.48405L9.51595 8.80884ZM8.80884 9.51595C8.03901 10.1318 7.06251 10.5 6 10.5C3.51472 10.5 1.5 8.48528 1.5 6C1.5 4.93749 1.86824 3.96099 2.48405 3.19116L8.80884 9.51595Z'
+        fill={color || '#8661FF'}
+      />
+    </g>
+  </svg>
+);
+
 export const Active = ({ scale = 1, color }) => (
   <svg
     width={16 * scale}

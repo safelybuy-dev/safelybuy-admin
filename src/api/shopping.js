@@ -182,6 +182,16 @@ export const createPromotionCode = (success, failure, data) =>
     .then((response) => success(response))
     .catch((error) => failure(error));
 
-// insert into `promotions`
-// (`code`, `threshold`, `percentage`, `use_case`, `category`, `expires`, `updated_at`, `created_at`) values
-// (RBUDF4556, 234, 43, 33, null, ?, 2021-07-25 11:50:01, 2021-07-25 11:50:01))"
+export const getOngoingPromotions = (success, failure) => {
+  axiosWithAuth()
+    .get(`${baseUrl}/api/v1/admin/promotions/ongoing`)
+    .then((response) => success(response))
+    .catch((error) => failure(error));
+};
+
+export const endPromo = (success, failure, id) => {
+  axiosWithAuth()
+    .post(`${baseUrl}/api/v1/admin/promotion/end/${id}`)
+    .then((response) => success(response))
+    .catch((error) => failure(error));
+};
