@@ -245,9 +245,16 @@ export const suspendReferrer = (success, failure, id) => {
     .catch((error) => failure(error));
 };
 
-export const addReferralPoint = (success, failure, id, data) => {
+export const addReferralPoint = (success, failure, data) => {
   axiosWithAuth()
     .post(`${baseUrl}/api/v1/admin/referrer/setpoints`, data)
+    .then((response) => success(response))
+    .catch((error) => failure(error));
+};
+
+export const getPointsRedemption = (success, failure) => {
+  axiosWithAuth()
+    .get(`${baseUrl}/api/v1/admin/referral/redemption`)
     .then((response) => success(response))
     .catch((error) => failure(error));
 };

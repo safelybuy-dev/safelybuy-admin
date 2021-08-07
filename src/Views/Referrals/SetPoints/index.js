@@ -42,7 +42,6 @@ export default function PointsRedemption() {
         setLoadingSubmit(false);
         // console.log(err.message);
       },
-      id,
       {
         points: values[id].points,
         amount: values[id].amount,

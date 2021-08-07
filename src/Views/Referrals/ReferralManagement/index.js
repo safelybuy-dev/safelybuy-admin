@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { getReferrals } from '../../../api/shopping';
-import Breadcrumb from '../../../components/Breadcrumb';
+import { getReferrals } from 'api/shopping';
+import Breadcrumb from 'components/Breadcrumb';
 import ReferralTable from './ReferralTable';
 
 const Referrals = () => {
