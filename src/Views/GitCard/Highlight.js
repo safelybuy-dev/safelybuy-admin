@@ -1,5 +1,5 @@
 import React from 'react';
-import { AppleIcon } from 'svg';
+// import { AppleIcon } from 'svg';
 
 export const options = {
   year: 'numeric',

@@ -36,7 +36,7 @@ const addUserSchema = yup.object().shape({
 });
 
 const SellerDetails = ({ selectedSeller, setSelectedSeller }) => {
-  const { addToast } = useToasts();
+  // const { addToast } = useToasts();
   const {
     register,
     handleSubmit,
