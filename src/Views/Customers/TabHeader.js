@@ -1,9 +1,9 @@
 import React, { useContext } from 'react';
-import { ContextShopping } from '../../context';
+import { ContextShopping } from 'context';
 import {
   // Active, Inactive,
   List,
-} from '../../svg';
+} from 'svg';
 
 const TabbedButton = ({ text, position = 1, active, svg, tag }) => {
   return (

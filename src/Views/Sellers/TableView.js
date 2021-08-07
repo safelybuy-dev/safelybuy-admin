@@ -4,7 +4,7 @@ import TabHeader from "./TabHeader";
 import TableBody from './TableBody';
 import SellerDetails from './SellerDetails';
 
-const CustomerTableView = () => {
+const SellersTableView = () => {
   const [active, setActive] = useState('all');
   const [selectedSeller, setSelectedSeller] = useState(null);
   return (
@@ -26,4 +26,4 @@ const CustomerTableView = () => {
   );
 };
 
-export default CustomerTableView;
+export default SellersTableView;

@@ -1,10 +1,10 @@
 import React, { useReducer } from 'react';
-import Breadcrumb from '../../components/Breadcrumb';
-// import Button from '../../components/Button';
+import Breadcrumb from 'components/Breadcrumb';
+// import Button from 'components/Button';
 import CustomersTableView from './TableView';
-import shoppingReducer from '../../reducers/shopping';
-import { shopping } from '../../reducers/initialState';
-import { ContextShopping } from '../../context';
+import shoppingReducer from 'reducers/shopping';
+import { shopping } from 'reducers/initialState';
+import { ContextShopping } from 'context';
 
 const Customers = () => {
   const [state, dispatch] = useReducer(shoppingReducer, shopping);
