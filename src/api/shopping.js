@@ -230,3 +230,24 @@ export const endPromo = (success, failure, id) => {
     .then((response) => success(response))
     .catch((error) => failure(error));
 };
+
+export const getReferrals = (success, failure) => {
+  axiosWithAuth()
+    .get(`${baseUrl}/api/v1/admin/referrals/all`)
+    .then((response) => success(response))
+    .catch((error) => failure(error));
+};
+
+export const suspendReferrer = (success, failure, id) => {
+  axiosWithAuth()
+    .get(`${baseUrl}/api/v1/admin/referrer/suspend/${id}`)
+    .then((response) => success(response))
+    .catch((error) => failure(error));
+};
+
+export const addReferralPoint = (success, failure, id, data) => {
+  axiosWithAuth()
+    .post(`${baseUrl}/api/v1/admin/referrer/setpoints`, data)
+    .then((response) => success(response))
+    .catch((error) => failure(error));
+};

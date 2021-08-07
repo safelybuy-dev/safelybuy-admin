@@ -33,7 +33,7 @@ const index = () => {
       <div className="grid mt-10 grid-cols-3 md:grid-cols-1 gap-12 md:gap-6">
         <TopStat
           linkText="Set Points"
-          link="#"
+          link="/referrals/points"
           color="orange"
           svg={<StarCircle />}
           title="Set Points"
@@ -41,7 +41,7 @@ const index = () => {
         />
         <TopStat
           linkText="View Now"
-          link="#"
+          link="/referrals/redemption"
           color="blue"
           svg={<Money />}
           title="Points Redemption"
@@ -49,7 +49,7 @@ const index = () => {
         />
         <TopStat
           linkText="Manage"
-          link="#"
+          link="/referrals/manage"
           color="purple"
           svg={<UserIcon />}
           title="Manage Referrals"

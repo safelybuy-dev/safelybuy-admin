@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { useTable } from 'react-table';
 import { useToasts } from 'react-toast-notifications';
-import Button from '../../components/Button';
+import Button from '../../../components/Button';
 import { confirmAlert } from 'react-confirm-alert';
-import { LoadingIcon } from '../../svg';
-import { endPromo } from '../../api/shopping';
+import { LoadingIcon } from '../../../svg';
+import { suspendReferrer } from '../../../api/shopping';
 
-const TableBody = ({ promos, loading, fetchData }) => {
+const TableBody = ({ referrals, loading, fetchData }) => {
   const [selectedId, setSelectedId] = useState(null);
   const [removeLoading, setRemoveLoading] = useState(false);
   const { addToast } = useToasts();
@@ -15,18 +15,18 @@ const TableBody = ({ promos, loading, fetchData }) => {
     (id) => {
       const removePromo = (id) => {
         setRemoveLoading(true);
-        endPromo(
+        suspendReferrer(
           (res) => {
             fetchData();
             setRemoveLoading(false);
-            addToast('Promotion ended', {
+            addToast('Referrer suspended', {
               appearance: 'success',
               autoDismiss: true,
             });
           },
           (err) => {
             setRemoveLoading(false);
-            addToast('Error ending promotion', {
+            addToast('Error suspending the referrer', {
               appearance: 'error',
               autoDismiss: true,
             });
@@ -36,8 +36,8 @@ const TableBody = ({ promos, loading, fetchData }) => {
       };
       setSelectedId(id);
       confirmAlert({
-        title: 'End Promotion',
-        message: 'Are you sure you want to remove this promotion?',
+        title: 'Suspend Referrer',
+        message: 'Are you sure you want to remove this referrer?',
         buttons: [
           {
             label: 'Yes',
@@ -53,56 +53,38 @@ const TableBody = ({ promos, loading, fetchData }) => {
     [addToast, fetchData]
   );
 
-  function getNumberOfDays(end) {
-    const date1 = new Date();
-    const date2 = new Date(end);
-
-    // One day in milliseconds
-    const oneDay = 1000 * 60 * 60 * 24;
-
-    // Calculating the time difference between two dates
-    const diffInTime = date2.getTime() - date1.getTime();
-
-    // Calculating the no. of days between two dates
-    const diffInDays = Math.round(diffInTime / oneDay);
-
-    return diffInDays;
-  }
-
-  const promosData = promos
+  const referralsData = referrals
     ?.sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at))
-    .map((promo) => ({
-      code: promo.code,
-      category:
-        promo.category.charAt(0).toUpperCase() + promo.category.slice(1),
-      use_case: promo.use_case,
-      threshold: new Intl.NumberFormat('en-NG', {
+    .filter((e) => e.referred)
+    .map((referral) => ({
+      code: referral.code,
+      referrer:
+        referral.referrer?.firstname + ' ' + referral.referrer?.lastname,
+      referred:
+        referral.referred?.firstname + ' ' + referral.referred?.lastname,
+      amount: new Intl.NumberFormat('en-NG', {
         style: 'currency',
         currency: 'NGN',
-      }).format(promo.threshold),
-      percentage: promo.percentage + '%',
+      }).format(referral.amount),
+      point: referral.point,
       created_at: (
         <div>
           {new Intl.DateTimeFormat('en-GB', {
             year: 'numeric',
             month: 'short',
             day: 'numeric',
-          }).format(Date.parse(promo.created_at))}
-          <br />
-          <span className='text-gray-400 text-xs'>
-            {getNumberOfDays(promo.expires)} days left
-          </span>
+          }).format(Date.parse(referral.created_at))}
         </div>
       ),
       actions: (
         <div className='justify-around'>
-          {promos.length && removeLoading && selectedId === promo.id ? (
+          {referrals.length && removeLoading && selectedId === referral.id ? (
             <LoadingIcon />
           ) : (
             <div className='justify-around'>
-              <span onClick={() => handleDelete(promo.id)}>
+              <span onClick={() => handleDelete(referral.id)}>
                 <Button roundedFull danger>
-                  End Promotion
+                  Suspend
                 </Button>
               </span>
             </div>
@@ -111,36 +93,43 @@ const TableBody = ({ promos, loading, fetchData }) => {
       ),
     }));
 
-  const data = React.useMemo(() => promosData || [], [promosData]);
+  const data = React.useMemo(() => referralsData || [], [referralsData]);
 
   const columns = React.useMemo(
     () => [
       {
-        Header: (
-          <p>
-            Date Created <br />
-            <span className='text-gray-400 text-xs'>Days Left</span>
-          </p>
-        ),
+        Header: 'Date',
         accessor: 'created_at',
       },
-      { Header: 'Discount Code', accessor: 'code' },
-      { Header: 'Threshold', accessor: 'threshold' },
-      { Header: 'Category', accessor: 'category' },
-      { Header: 'Percentage', accessor: 'percentage' },
+      { Header: 'Referrer', accessor: 'referral' },
+      { Header: 'Referrer Code', accessor: 'code' },
+      { Header: 'Purchase Amount', accessor: 'amount' },
+      { Header: 'Points Earned', accessor: 'point' },
       {
-        Header: (
-          <p>
-            Use Case <br />
-            <span className='text-gray-400 text-xs'>For each account</span>
-          </p>
-        ),
-        accessor: 'use_case',
+        Header: 'Referred',
+        accessor: 'referred',
       },
       { Header: 'Actions', accessor: 'actions' },
     ],
     []
   );
+
+  //   amount: 0
+  // created_at: "2021-04-02T16:47:50.000000Z"
+  // id: 1
+  // payment_account: ""
+  // point: "20"
+  // referred:
+  // firstname: "Ayobami"
+  // id: 1
+  // lastname: "Ade"
+  // [[Prototype]]: Object
+  // referred_id: "1"
+  // referrer: null
+  // referrer_id: "119"
+  // status: null
+  // type: "referral"
+  // updated_at: "2021-04-02T16:47:50.000000Z"
 
   const {
     getTableProps,
@@ -150,12 +139,22 @@ const TableBody = ({ promos, loading, fetchData }) => {
     prepareRow,
   } = useTable({ columns, data });
 
-  if (loading && promos.length === 0) {
+  if (loading && referrals.length === 0) {
     return (
       <div className='mt-20 mb-20 flex justify-center'>
         <LoadingIcon />
         <span className='text-purple-500 animate-pulse'>
-          Loading promotions...
+          Loading referrals...
+        </span>
+      </div>
+    );
+  }
+
+  if (!loading && referralsData.length === 0) {
+    return (
+      <div className='mt-20 mb-20 flex justify-center'>
+        <span className='text-purple-500'>
+          No referral data available
         </span>
       </div>
     );
@@ -179,12 +178,12 @@ const TableBody = ({ promos, loading, fetchData }) => {
           {rows.map((row) => {
             prepareRow(row);
             return (
-              <tr {...row.getRowProps()}>
+              <tr {...row.getRowProps()} className='border-b-2 last:border-0'>
                 {row.cells.map((cell) => {
                   return (
                     <td
                       style={{ minWidth: '120px' }}
-                      className='border-b-2 pr-4 min-w-max border-gray-100 py-4'
+                      className='pr-4 min-w-max border-gray-100 py-4'
                       {...cell.getCellProps()}
                     >
                       {cell.render('Cell')}

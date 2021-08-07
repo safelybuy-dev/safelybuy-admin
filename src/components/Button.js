@@ -21,8 +21,11 @@ const Button = ({
   xSmall,
   preTagText,
   submit,
+  onClick = () => {},
+  type = 'button',
 }) => (
   <div
+    onClick={onClick}
     className={`relative inline-block ${
       full ? `w-full` : ''
     }  transform hover:shadow-2xl hover:-translate-y-0.5 active:shadow:sm active:translate-y-0 `}
@@ -37,7 +40,7 @@ const Button = ({
       </div>
     )}
     <button
-      type={submit ? 'submit' : ''}
+      type={submit ? 'submit' : type}
       className={`${
         primary ? `bg-green-500 text-white px-10 py-2 border-green-500` : ''
       } ${alternate ? `text-white bg-black px-6 py-1 text-sm md:px-2` : ''} ${

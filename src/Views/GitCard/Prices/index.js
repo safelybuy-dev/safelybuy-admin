@@ -17,6 +17,7 @@ export default function Prices() {
   // const [error, setError] = useState('');
   const [state, dispatch] = useReducer(shoppingReducer, shopping);
   const [values, setValues] = useState({});
+  const { giftcard, loading } = state;
 
   const handleChange = (e, id) => {
     setValues({
@@ -52,8 +53,6 @@ export default function Prices() {
       }
     );
   };
-
-  const { giftcard, loading } = state;
 
   useEffect(() => {
     if (addGiftcard === false) {
@@ -133,6 +132,20 @@ export default function Prices() {
                           <span className='text-xs inline-flex ml-2'>USD</span>
                         </span>
                       </div>
+                      {/* <label className='text-sm my-2' htmlFor=''>
+                        Card Image
+                      </label>
+                      <div className='relative w-44 md:w-full'>
+                        <input
+                          type='file'
+                          placeholder='100'
+                          name='card_image'
+                          required
+                          value={values[item.id]?.card_image || ''}
+                          onChange={(e) => handleChange(e, item.id)}
+                          className='border w-full border-black rounded-full px-6 py-2 focus:outline-none focus:shadow-xl'
+                        />
+                      </div> */}
                     </section>
                   </div>
                   <div className='flex flex-col w-1/5 md:w-full'>

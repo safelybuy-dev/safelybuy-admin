@@ -25,6 +25,11 @@ const Mails = lazy(() => import('../Mails'));
 const Users = lazy(() => import('../Users'));
 const Contents = lazy(() => import('../Contents'));
 const Referrals = lazy(() => import('../Referrals'));
+const ReferralManagement = lazy(() =>
+  import('../Referrals/ReferralManagement')
+);
+const SetPoints = lazy(() => import('../Referrals/SetPoints'));
+const Redemption = lazy(() => import('../Referrals/PointsRedemption'));
 const Discounts = lazy(() => import('../Discounts'));
 const DiscountsCodes = lazy(() => import('../Discounts/Codes'));
 const DiscountsPromotions = lazy(() => import('../Discounts/Promotions'));
@@ -123,6 +128,15 @@ export default function Dashboard() {
             {/* REFERRALS */}
             <Route exact path='/referrals'>
               <Referrals />
+            </Route>
+            <Route exact path='/referrals/manage'>
+              <ReferralManagement />
+            </Route>
+            <Route exact path='/referrals/points'>
+              <SetPoints />
+            </Route>
+            <Route exact path='/referrals/redemption'>
+              <Redemption />
             </Route>
 
             {/* DISCOUNTS */}
