@@ -1,9 +1,7 @@
-import React, {
-  useState,
-} from 'react';
+import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { createPromotionCode } from '../../api/shopping';
-import Breadcrumb from '../../components/Breadcrumb';
+import { createPromotionCode } from 'api/shopping';
+import Breadcrumb from 'components/Breadcrumb';
 import Category from './Category';
 import { useToasts } from 'react-toast-notifications';
 import CodeInformation from './CodeInformation';

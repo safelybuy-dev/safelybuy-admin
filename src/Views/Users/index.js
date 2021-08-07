@@ -1,10 +1,10 @@
 import React, { useState, useReducer } from 'react';
-import Breadcrumb from '../../components/Breadcrumb';
-import Button from '../../components/Button';
-import { ContextShopping } from '../../context';
-import { shopping } from '../../reducers/initialState';
-import shoppingReducer from '../../reducers/shopping';
-import { PlusIcon } from '../../svg';
+import Breadcrumb from 'components/Breadcrumb';
+import Button from 'components/Button';
+import { ContextShopping } from 'context';
+import { shopping } from 'reducers/initialState';
+import shoppingReducer from 'reducers/shopping';
+import { PlusIcon } from 'svg';
 import AddUser from './AddUser';
 
 import InventoryTableView from './InventoryTableView';

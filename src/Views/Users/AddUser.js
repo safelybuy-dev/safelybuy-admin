@@ -1,13 +1,13 @@
 import React, { useState, useContext } from 'react';
-import Button from '../../components/Button';
-import { CloseIcon, LoadingIcon } from '../../svg';
+import Button from 'components/Button';
+import { CloseIcon, LoadingIcon } from 'svg';
 import { useForm } from 'react-hook-form';
 import { useToasts } from 'react-toast-notifications';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { addUser } from '../../api/shopping';
-import { fetchUsers } from '../../actions/shopping';
-import { ContextShopping } from '../../context';
+import { addUser } from 'api/shopping';
+import { fetchUsers } from 'actions/shopping';
+import { ContextShopping } from 'context';
 
 const isValidEmail = (email) =>
   // eslint-disable-next-line no-useless-escape

@@ -1,4 +1,4 @@
-import * as type from "../actions/auth";
+import * as type from 'actions/auth';
 
 export default function userReducer(state, action) {
   switch (action.type) {
@@ -6,13 +6,13 @@ export default function userReducer(state, action) {
       return {
         ...state,
         loadingUser: true,
-        error: "",
+        error: '',
       };
     case type.LOGIN:
       return {
         ...state,
         loadingUser: false,
-        error: "",
+        error: '',
         user: action.payload.user,
         token: action.payload.token,
       };
@@ -20,7 +20,7 @@ export default function userReducer(state, action) {
       return {
         ...state,
         loadingUser: false,
-        error: "",
+        error: '',
         user: action.payload.data,
       };
     case type.ERROR:

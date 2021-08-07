@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import Button from '../../../components/Button';
-import { CloseIcon } from '../../../svg';
+import Button from 'components/Button';
+import { CloseIcon } from 'svg';
 import { useToasts } from 'react-toast-notifications';
-import { addGiftcard as submitGiftcard } from '../../../api/shopping';
+import { addGiftcard as submitGiftcard } from 'api/shopping';
 
 const AddGiftcard = ({ addGiftcard, setAddGiftcard }) => {
   const { addToast } = useToasts();

@@ -1,10 +1,10 @@
 import React, { useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowDown, ArrowUp, AngleRight, UserAvatar } from '../../../svg';
+import { ArrowDown, ArrowUp, AngleRight, UserAvatar } from 'svg';
 import { buttonStyles } from './Header';
 import { UserMenuMobile } from './UserMenuMobile';
-import { ContextUser } from '../../../context';
-import { fetchUser } from '../../../actions/auth';
+import { ContextUser } from 'context';
+import { fetchUser } from 'actions/auth';
 
 const User = ({ userIsVisible, setUserIsVisible, userRef }) => {
   // const history = useHistory();

@@ -1,10 +1,10 @@
 import React, { useReducer, useEffect } from 'react';
-import Breadcrumb from '../../../components/Breadcrumb';
-// import Button from '../../../components/Button';
+import Breadcrumb from 'components/Breadcrumb';
+// import Button from 'components/Button';
 import InventoryTableView from './InventoryTableView';
-import { shopping } from '../../../reducers/initialState';
-import shoppingReducer from '../../../reducers/shopping';
-import { fetchEvents } from '../../../actions/shopping';
+import { shopping } from 'reducers/initialState';
+import shoppingReducer from 'reducers/shopping';
+import { fetchEvents } from 'actions/shopping';
 
 const Inventory = () => {
   const [state, dispatch] = useReducer(shoppingReducer, shopping);

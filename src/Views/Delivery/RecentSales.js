@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { useTable } from 'react-table';
-import { ContextShopping } from '../../context';
+import { ContextShopping } from 'context';
 
 const RecentSales = ({ setSelectedSender }) => {
   const [state] = useContext(ContextShopping);

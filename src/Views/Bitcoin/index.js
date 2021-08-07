@@ -1,6 +1,6 @@
 import React, { useEffect, useReducer } from 'react';
 import moment from 'moment';
-import Breadcrumb from '../../components/Breadcrumb';
+import Breadcrumb from 'components/Breadcrumb';
 import TopStat from './TopStat';
 import {
   Wallet,
@@ -11,15 +11,12 @@ import {
   ArrowDown,
   ArrowRight,
   LoadingIcon,
-} from '../../svg';
+} from 'svg';
 import RecentSalesTable from './RecentSales';
-import { ContextBitcoin } from '../../context';
-import { bitcoin } from '../../reducers/initialState';
-import bitcoinReducer from '../../reducers/bitcoin';
-import {
-  fetchBitcoinDashboard,
-  fetchBitcoinHistory,
-} from '../../actions/bitcoin';
+import { ContextBitcoin } from 'context';
+import { bitcoin } from 'reducers/initialState';
+import bitcoinReducer from 'reducers/bitcoin';
+import { fetchBitcoinDashboard, fetchBitcoinHistory } from 'actions/bitcoin';
 
 const LiveStat = ({ dollar, percentage, time }) => (
   <div className='flex shadow-md items-center hover:shadow-2xl my-6 py-4 px-6 rounded-md'>

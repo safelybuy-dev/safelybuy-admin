@@ -4,7 +4,7 @@ import TabHeader from './TabHeader';
 import TableBody from './TableBody';
 import ProductDetails from './ProductDetails';
 import SellerDetails from './SellerDetails';
-import { LoadingIcon } from '../../../svg';
+import { LoadingIcon } from 'svg';
 
 const InventoryTableView = ({ loading, items, dispatch }) => {
   const [active, setActive] = useState('all');

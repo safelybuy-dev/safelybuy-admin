@@ -1,29 +1,29 @@
-import React from "react";
-import { AppleIcon } from "../../svg";
+import React from 'react';
+import { AppleIcon } from 'svg';
 
 export const options = {
-  year: "numeric",
-  month: "short",
-  day: "numeric",
+  year: 'numeric',
+  month: 'short',
+  day: 'numeric',
 };
 
 export const optionsAlt = {
-  weekday: "short",
-  year: "numeric",
-  month: "short",
-  day: "numeric",
+  weekday: 'short',
+  year: 'numeric',
+  month: 'short',
+  day: 'numeric',
 };
 
 export default function Highlight() {
   const date = new Date();
 
   return (
-    <div className="rounded-2xl bg-purple-500 md:text-center py-4 px-6 pb-8 text-white mr-8 md:mr-0">
-      <p className="text-xs opacity-70">
-        {new Intl.DateTimeFormat("en-GB", options).format(date)}
+    <div className='rounded-2xl bg-purple-500 md:text-center py-4 px-6 pb-8 text-white mr-8 md:mr-0'>
+      <p className='text-xs opacity-70'>
+        {new Intl.DateTimeFormat('en-GB', options).format(date)}
       </p>
-      <h3 className="text-2xl pb-4">Most sold giftcard</h3>
-      <div className="flex flex-col bg-purple-700 rounded-2xl p-3 divide-y divide-purple-500">
+      <h3 className='text-2xl pb-4'>Most sold giftcard</h3>
+      <div className='flex flex-col bg-purple-700 rounded-2xl p-3 divide-y divide-purple-500'>
         {/* <div className="flex pb-4 items-center md:justify-center">
           <span className="inline-block px-4 py-3 bg-white rounded-full mr-2">
             {<AppleIcon />}

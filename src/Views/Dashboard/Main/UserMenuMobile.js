@@ -1,13 +1,7 @@
 import React from 'react';
-import {
-  AngleRight,
-  CloseIcon,
-  ArrowDown,
-  UserAvatar,
-  LogOut,
-} from '../../../svg';
-import { navMenuItems } from '../../../data';
-import { useComponentVisible } from '../../../hooks';
+import { AngleRight, CloseIcon, ArrowDown, UserAvatar, LogOut } from 'svg';
+import { navMenuItems } from 'data';
+import { useComponentVisible } from 'hooks';
 import { Link, useHistory } from 'react-router-dom';
 
 const NavItem = ({

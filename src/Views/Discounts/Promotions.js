@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 // import { Link } from 'react-router-dom';
-import { getOngoingPromotions } from '../../api/shopping';
-import Breadcrumb from '../../components/Breadcrumb';
+import { getOngoingPromotions } from 'api/shopping';
+import Breadcrumb from 'components/Breadcrumb';
 import PromoTable from './PromoTable';
 
 const Discounts = () => {

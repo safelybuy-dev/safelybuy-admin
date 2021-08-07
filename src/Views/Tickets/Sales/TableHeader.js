@@ -1,7 +1,7 @@
 import React from "react";
-import { AngleRight, SearchIcon } from "../../../svg";
+import { AngleRight, SearchIcon } from "
 import ItemsPerPage from "./ItemsPerPage";
-import { useComponentVisible } from "../../../hooks";
+import { useComponentVisible } from "
 
 export default function TableHeader({ active, setActive }) {
   const {

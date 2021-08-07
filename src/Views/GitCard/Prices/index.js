@@ -1,11 +1,11 @@
 import React, { useState, useReducer, useEffect } from 'react';
-import { fetchGiftcardDashboard } from '../../../actions/shopping';
-import Breadcrumb from '../../../components/Breadcrumb';
-import Button from '../../../components/Button';
-import { shopping } from '../../../reducers/initialState';
-import shoppingReducer from '../../../reducers/shopping';
-import { updateGiftcard } from '../../../api/shopping';
-import { PlusIcon } from '../../../svg';
+import { fetchGiftcardDashboard } from 'actions/shopping';
+import Breadcrumb from 'components/Breadcrumb';
+import Button from 'components/Button';
+import { shopping } from 'reducers/initialState';
+import shoppingReducer from 'reducers/shopping';
+import { updateGiftcard } from 'api/shopping';
+import { PlusIcon } from 'svg';
 import { useToasts } from 'react-toast-notifications';
 import AddGiftCard from './AddGiftCard';
 

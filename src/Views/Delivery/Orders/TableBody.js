@@ -1,6 +1,6 @@
 import React from 'react';
 import { useTable } from 'react-table';
-import Button from '../../../components/Button';
+import Button from 'components/Button';
 
 const TableBody = ({
   setSelectedOrder,

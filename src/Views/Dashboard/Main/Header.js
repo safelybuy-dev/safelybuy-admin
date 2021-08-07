@@ -1,9 +1,9 @@
 import React from 'react';
-import Logo from '../../../components/Logo';
-import { useComponentVisible } from '../../../hooks';
+import Logo from 'components/Logo';
+import { useComponentVisible } from 'hooks';
 import NavItem from './NavItem';
-import { Hamburger, CloseIcon } from '../../../svg';
-import { navMenuItems } from '../../../data';
+import { Hamburger, CloseIcon } from 'svg';
+import { navMenuItems } from 'data';
 import Notifications from './Notifications';
 import NotificationDetails from './NotificationDetails';
 import { Link } from 'react-router-dom';
@@ -90,7 +90,7 @@ const Header = ({ setIsMenuOpen, isMenuOpen }) => {
               hasDropdown={item.hasDropdown}
               svg={
                 <item.SVG
-                  scale={item.text !== 'Gift Card' ? 0.255319148936 : .8}
+                  scale={item.text !== 'Gift Card' ? 0.255319148936 : 0.8}
                   color='white'
                 />
               }

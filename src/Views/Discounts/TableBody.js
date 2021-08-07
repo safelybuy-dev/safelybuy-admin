@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { useTable } from 'react-table';
 import { useToasts } from 'react-toast-notifications';
-import Button from '../../components/Button';
+import Button from 'components/Button';
 import { confirmAlert } from 'react-confirm-alert';
-import { LoadingIcon } from '../../svg';
-import { endPromo } from '../../api/shopping';
+import { LoadingIcon } from 'svg';
+import { endPromo } from 'api/shopping';
 
 const TableBody = ({ promos, loading, fetchData }) => {
   const [selectedId, setSelectedId] = useState(null);

@@ -1,22 +1,22 @@
 import React, { useEffect, useReducer } from 'react';
-import Breadcrumb from '../../components/Breadcrumb';
+import Breadcrumb from 'components/Breadcrumb';
 import TopStat from './TopStat';
 import {
   Archive,
   Wallet,
   Invoice,
   // ArrowRight
-} from '../../svg';
+} from 'svg';
 import Highlight from '../Dashboard/Main/Highlight';
 import RecentSalesTable from './RecentSales';
-import { ContextShopping } from '../../context';
-import { shopping } from '../../reducers/initialState';
-import shoppingReducer from '../../reducers/shopping';
+import { ContextShopping } from 'context';
+import { shopping } from 'reducers/initialState';
+import shoppingReducer from 'reducers/shopping';
 import {
   fetchSellers,
   fetchShoppingDashboard,
   fetchShoppingOrders,
-} from '../../actions/shopping';
+} from 'actions/shopping';
 
 const Shopping = () => {
   const [state, dispatch] = useReducer(shoppingReducer, shopping);

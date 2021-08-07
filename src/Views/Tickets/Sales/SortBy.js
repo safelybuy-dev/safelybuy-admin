@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { ArrowDown } from "../../../svg";
+import { ArrowDown } from "
 
 export default function SortBy({ selectRef, isVisible, setIsVisible }) {
   const options = [

@@ -1,8 +1,8 @@
 import React, { useEffect, useReducer } from 'react';
-import { fetchDeliveryOrders } from '../../../actions/shopping';
-import Breadcrumb from '../../../components/Breadcrumb';
-import { shopping } from '../../../reducers/initialState';
-import shoppingReducer from '../../../reducers/shopping';
+import { fetchDeliveryOrders } from 'actions/shopping';
+import Breadcrumb from 'components/Breadcrumb';
+import { shopping } from 'reducers/initialState';
+import shoppingReducer from 'reducers/shopping';
 import OrdersTableView from './OrdersTableView';
 
 const Orders = () => {

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight } from '../../svg';
+import { ArrowRight } from 'svg';
 
 const TopStat = ({
   title,

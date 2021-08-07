@@ -1,13 +1,13 @@
 import React, { useContext } from 'react';
 import { useTable } from 'react-table';
-import { ContextShopping } from '../../../context';
-import {LoadingIcon} from '../../../svg';
+import { ContextShopping } from 'context';
+import { LoadingIcon } from 'svg';
 
 const RecentSales = () => {
   const [state] = useContext(ContextShopping);
   const { admin, loading, isLoadingCustomers, customers } = state;
   const { resentSales } = admin;
-  
+
   const salesData =
     resentSales &&
     resentSales.slice(-10).map((item) => ({

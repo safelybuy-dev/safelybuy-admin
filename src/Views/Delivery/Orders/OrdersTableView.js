@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import TableBody from './TableBody';
 import OrderDetails from './OrderDetails';
 import SenderDetails from './SenderDetails';
-import {LoadingIcon} from '../../../svg';
+import { LoadingIcon } from 'svg';
 
 const OrdersTableView = ({ loading, orders }) => {
   const [selectedOrder, setSelectedOrder] = useState(null);

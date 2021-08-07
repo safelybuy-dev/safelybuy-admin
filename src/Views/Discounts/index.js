@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { getDiscountDashboard } from '../../api/shopping';
-import Breadcrumb from '../../components/Breadcrumb';
-import Button from '../../components/Button';
-import { ArrowRight, Discount, Receipt } from '../../svg';
+import { getDiscountDashboard } from 'api/shopping';
+import Breadcrumb from 'components/Breadcrumb';
+import Button from 'components/Button';
+import { ArrowRight, Discount, Receipt } from 'svg';
 
 export const TopStat = ({
   title,

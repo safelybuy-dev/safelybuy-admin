@@ -1,10 +1,10 @@
-import React from "react";
-import { CloseIcon, UserAvatar } from "../../svg";
+import React from 'react';
+import { CloseIcon, UserAvatar } from 'svg';
 
 const KeyValue = ({ title, value }) => (
-  <div className="flex my-3 flex-col text-sm">
-    <small className="text-gray-500">{title}</small>
-    <h5 className="">{value}</h5>
+  <div className='flex my-3 flex-col text-sm'>
+    <small className='text-gray-500'>{title}</small>
+    <h5 className=''>{value}</h5>
   </div>
 );
 
@@ -15,35 +15,37 @@ const SellerDetails = ({ selectedSeller, setSelectedSeller }) => {
   return (
     <div
       onClick={() => setSelectedSeller(null)}
-      className="fixed overflow-scroll top-0 left-0 z-50 w-screen pt-40 px-40 md:pt-0 md:px-0 h-screen bg-purple-600 bg-opacity-30"
+      className='fixed overflow-scroll top-0 left-0 z-50 w-screen pt-40 px-40 md:pt-0 md:px-0 h-screen bg-purple-600 bg-opacity-30'
     >
       <div
         onClick={(e) => e.stopPropagation()}
-        style={{ maxWidth: "30rem" }}
-        className="flex flex-col relative rounded-3xl md:rounded-none px-10 py-10 md:px-4 md:py-4 left-0 bg-white opacity-100 min-h-1/2"
+        style={{ maxWidth: '30rem' }}
+        className='flex flex-col relative rounded-3xl md:rounded-none px-10 py-10 md:px-4 md:py-4 left-0 bg-white opacity-100 min-h-1/2'
       >
-        <div className="flex justify-between w-full pb-10 items-start">
-          <h3 className="text-2xl">Customer Information</h3>
+        <div className='flex justify-between w-full pb-10 items-start'>
+          <h3 className='text-2xl'>Customer Information</h3>
           <span
             onClick={() => setSelectedSeller(null)}
-            className="inline-block cursor-pointer rounded-full bg-red-500 p-3"
+            className='inline-block cursor-pointer rounded-full bg-red-500 p-3'
           >
-            <CloseIcon color="white" />
+            <CloseIcon color='white' />
           </span>
         </div>
-        <div className="flex mr-4 md:mr-0 md:flex-col">
-          <div className="flex flex-col w-full">
-            <div className="flex pb-4 items-center w-full">
+        <div className='flex mr-4 md:mr-0 md:flex-col'>
+          <div className='flex flex-col w-full'>
+            <div className='flex pb-4 items-center w-full'>
               <UserAvatar scale={4.65} />
-              <div className="flex ml-3 flex-col">
-                <p className="text-xl">{firstname} {lastname}</p>
-                <p className="text-purple-500">{email}</p>
+              <div className='flex ml-3 flex-col'>
+                <p className='text-xl'>
+                  {firstname} {lastname}
+                </p>
+                <p className='text-purple-500'>{email}</p>
               </div>
             </div>
-            <div className="flex flex-wrap">
-              <KeyValue title="Phone Number" value={phone} />
-              <div className="p-4"></div>
-              <KeyValue title="Referral Code" value={referral_code} />
+            <div className='flex flex-wrap'>
+              <KeyValue title='Phone Number' value={phone} />
+              <div className='p-4'></div>
+              <KeyValue title='Referral Code' value={referral_code} />
             </div>
           </div>
           {/* <div className="flex flex-col w-7/12 ml-10 md:ml-0 md:w-full">

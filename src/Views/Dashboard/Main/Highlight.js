@@ -1,5 +1,5 @@
 import React from 'react';
-import { UserAvatar } from '../../../svg';
+import { UserAvatar } from 'svg';
 
 export const options = {
   year: 'numeric',

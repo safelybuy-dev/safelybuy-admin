@@ -4,7 +4,7 @@ import {
   DeliveryIcon,
   GiftCardIcon,
   Tickets,
-} from '../svg';
+} from 'svg';
 
 export const navMenuItems = [
   {

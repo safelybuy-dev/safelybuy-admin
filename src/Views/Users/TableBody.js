@@ -1,11 +1,11 @@
 import React, { useEffect, useContext, useState } from 'react';
 import { useTable } from 'react-table';
-import Button from '../../components/Button';
+import Button from 'components/Button';
 import { confirmAlert } from 'react-confirm-alert';
-import { ContextShopping } from '../../context';
+import { ContextShopping } from 'context';
 
-import { fetchUsers, terminateUser } from '../../actions/shopping';
-import { LoadingIcon } from '../../svg';
+import { fetchUsers, terminateUser } from 'actions/shopping';
+import { LoadingIcon } from 'svg';
 
 const TableBody = ({ active, setActive, setSelectedSeller }) => {
   const [selectedId, setSelectedId] = useState(null);

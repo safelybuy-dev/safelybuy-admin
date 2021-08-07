@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { useTable } from 'react-table';
 import { useToasts } from 'react-toast-notifications';
-import Button from '../../../components/Button';
+import Button from 'components/Button';
 import { confirmAlert } from 'react-confirm-alert';
-import { LoadingIcon } from '../../../svg';
-import { suspendReferrer } from '../../../api/shopping';
+import { LoadingIcon } from 'svg';
+import { suspendReferrer } from 'api/shopping';
 
 const TableBody = ({ referrals, loading, fetchData }) => {
   const [selectedId, setSelectedId] = useState(null);
@@ -153,9 +153,7 @@ const TableBody = ({ referrals, loading, fetchData }) => {
   if (!loading && referralsData.length === 0) {
     return (
       <div className='mt-20 mb-20 flex justify-center'>
-        <span className='text-purple-500'>
-          No referral data available
-        </span>
+        <span className='text-purple-500'>No referral data available</span>
       </div>
     );
   }

@@ -1,14 +1,14 @@
 import React, { useEffect, useReducer } from 'react';
-import Breadcrumb from '../../components/Breadcrumb';
+import Breadcrumb from 'components/Breadcrumb';
 import TopStat from './TopStat';
-import { Archive, Wallet, Invoice } from '../../svg';
+import { Archive, Wallet, Invoice } from 'svg';
 import Highlight from '../Dashboard/Main/Highlight';
-import { ContextShopping } from '../../context';
-import { shopping } from '../../reducers/initialState';
-import shoppingReducer from '../../reducers/shopping';
-import { fetchTicketsDashboard } from '../../actions/shopping';
+import { ContextShopping } from 'context';
+import { shopping } from 'reducers/initialState';
+import shoppingReducer from 'reducers/shopping';
+import { fetchTicketsDashboard } from 'actions/shopping';
 
-import image6 from '../../assets/images/image6.jpeg';
+import image6 from 'assets/images/image6.jpeg';
 
 const KeyValue = ({ title, value }) => (
   <div className='flex my-3 flex-col'>

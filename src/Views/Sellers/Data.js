@@ -1,58 +1,58 @@
-import React from "react";
-import image4 from "../../../assets/images/image4.png";
-import Button from "../../../components/Button";
+import React from 'react';
+import image4 from 'assets/images/image4.png';
+import Button from 'components/Button';
 
 const Data = () => [
   {
-    status: "Active",
+    status: 'Active',
     image: (
       <img
-        className="w-12 h-12 object-cover rounded-lg"
+        className='w-12 h-12 object-cover rounded-lg'
         src={image4}
-        alt="..."
+        alt='...'
       />
     ),
     sku: (
       <>
         <div>SB-#2123434343</div>
-        <div className="text-sm text-gray-400">New</div>
+        <div className='text-sm text-gray-400'>New</div>
       </>
     ),
     desc: (
       <div>
         <p
           onClick={() => {
-            console.log("Loading");
+            console.log('Loading');
           }}
-          className="text-purple-600 cursor-pointer text-sm"
+          className='text-purple-600 cursor-pointer text-sm'
         >
           Xaomi Pocophone F1
         </p>
-        <p className="text-sm text-gray-400">128GB RAM / 64GB ROM</p>
+        <p className='text-sm text-gray-400'>128GB RAM / 64GB ROM</p>
       </div>
     ),
-    location: "Warri, Delta",
-    seller: <p className="text-purple-500">Kareem Chibuzor</p>,
+    location: 'Warri, Delta',
+    seller: <p className='text-purple-500'>Kareem Chibuzor</p>,
     date: (
       <div>
-        <p className="">
-          {new Intl.DateTimeFormat("en-GB", {
-            year: "numeric",
-            month: "short",
-            day: "numeric",
-            hour: "numeric",
+        <p className=''>
+          {new Intl.DateTimeFormat('en-GB', {
+            year: 'numeric',
+            month: 'short',
+            day: 'numeric',
+            hour: 'numeric',
             hour12: true,
-            minute: "numeric",
+            minute: 'numeric',
           }).format(Date.now())}
         </p>
-        <p className="text-sm text-gray-400">
-          {new Intl.DateTimeFormat("en-GB", {
-            year: "numeric",
-            month: "short",
-            day: "numeric",
-            hour: "numeric",
+        <p className='text-sm text-gray-400'>
+          {new Intl.DateTimeFormat('en-GB', {
+            year: 'numeric',
+            month: 'short',
+            day: 'numeric',
+            hour: 'numeric',
             hour12: true,
-            minute: "numeric",
+            minute: 'numeric',
           }).format(Date.now())}
         </p>
       </div>
@@ -62,7 +62,7 @@ const Data = () => [
         <Button roundedFull primary>
           Approve
         </Button>
-        <span className="inline-block p-1"></span>
+        <span className='inline-block p-1'></span>
         <Button roundedFull danger>
           Deny
         </Button>
@@ -70,69 +70,69 @@ const Data = () => [
     ),
   },
   {
-    status: "Active",
+    status: 'Active',
     image: (
       <img
-        className="w-12 h-12 object-cover rounded-lg"
+        className='w-12 h-12 object-cover rounded-lg'
         src={image4}
-        alt="..."
+        alt='...'
       />
     ),
     sku: (
       <>
         <div>SB-#2123434343</div>
-        <div className="text-sm text-gray-400">New</div>
+        <div className='text-sm text-gray-400'>New</div>
       </>
     ),
     desc: (
       <div>
-        <p className="text-purple-600 text-sm">Xaomi Pocophone F1</p>
-        <p className="text-sm text-gray-400">128GB RAM / 64GB ROM</p>
+        <p className='text-purple-600 text-sm'>Xaomi Pocophone F1</p>
+        <p className='text-sm text-gray-400'>128GB RAM / 64GB ROM</p>
       </div>
     ),
-    location: "Warri, Delta",
-    seller: <p className="text-purple-500">Kareem Chibuzor</p>,
+    location: 'Warri, Delta',
+    seller: <p className='text-purple-500'>Kareem Chibuzor</p>,
     date: (
       <div>
-        <p className="">
-          {new Intl.DateTimeFormat("en-GB", {
-            year: "numeric",
-            month: "short",
-            day: "numeric",
-            hour: "numeric",
+        <p className=''>
+          {new Intl.DateTimeFormat('en-GB', {
+            year: 'numeric',
+            month: 'short',
+            day: 'numeric',
+            hour: 'numeric',
             hour12: true,
-            minute: "numeric",
+            minute: 'numeric',
           }).format(Date.now())}
         </p>
-        <p className="text-sm text-gray-400">
-          {new Intl.DateTimeFormat("en-GB", {
-            year: "numeric",
-            month: "short",
-            day: "numeric",
-            hour: "numeric",
+        <p className='text-sm text-gray-400'>
+          {new Intl.DateTimeFormat('en-GB', {
+            year: 'numeric',
+            month: 'short',
+            day: 'numeric',
+            hour: 'numeric',
             hour12: true,
-            minute: "numeric",
+            minute: 'numeric',
           }).format(Date.now())}
         </p>
       </div>
     ),
     actions: (
-      <div className="min-w-max">
-        <div className="justify-around">
+      <div className='min-w-max'>
+        <div className='justify-around'>
           <Button rounded secondary>
             Edit
           </Button>
-          <span className="inline-block p-2"></span>
+          <span className='inline-block p-2'></span>
           <Button rounded primary>
             Print Details
           </Button>
         </div>
-        <span className="inline-block p-px"></span>
-        <div className="justify-around">
+        <span className='inline-block p-px'></span>
+        <div className='justify-around'>
           <Button rounded alternate>
             Sold Out
           </Button>
-          <span className="inline-block p-2"></span>
+          <span className='inline-block p-2'></span>
           <Button rounded danger>
             Delete
           </Button>
@@ -141,69 +141,69 @@ const Data = () => [
     ),
   },
   {
-    status: "Active",
+    status: 'Active',
     image: (
       <img
-        className="w-12 h-12 object-cover rounded-lg"
+        className='w-12 h-12 object-cover rounded-lg'
         src={image4}
-        alt="..."
+        alt='...'
       />
     ),
     sku: (
       <>
         <div>SB-#2123434343</div>
-        <div className="text-sm text-gray-400">New</div>
+        <div className='text-sm text-gray-400'>New</div>
       </>
     ),
     desc: (
       <div>
-        <p className="text-purple-600 text-sm">Xaomi Pocophone F1</p>
-        <p className="text-sm text-gray-400">128GB RAM / 64GB ROM</p>
+        <p className='text-purple-600 text-sm'>Xaomi Pocophone F1</p>
+        <p className='text-sm text-gray-400'>128GB RAM / 64GB ROM</p>
       </div>
     ),
-    location: "Warri, Delta",
-    seller: <p className="text-purple-500">Kareem Chibuzor</p>,
+    location: 'Warri, Delta',
+    seller: <p className='text-purple-500'>Kareem Chibuzor</p>,
     date: (
       <div>
-        <p className="">
-          {new Intl.DateTimeFormat("en-GB", {
-            year: "numeric",
-            month: "short",
-            day: "numeric",
-            hour: "numeric",
+        <p className=''>
+          {new Intl.DateTimeFormat('en-GB', {
+            year: 'numeric',
+            month: 'short',
+            day: 'numeric',
+            hour: 'numeric',
             hour12: true,
-            minute: "numeric",
+            minute: 'numeric',
           }).format(Date.now())}
         </p>
-        <p className="text-sm text-gray-400">
-          {new Intl.DateTimeFormat("en-GB", {
-            year: "numeric",
-            month: "short",
-            day: "numeric",
-            hour: "numeric",
+        <p className='text-sm text-gray-400'>
+          {new Intl.DateTimeFormat('en-GB', {
+            year: 'numeric',
+            month: 'short',
+            day: 'numeric',
+            hour: 'numeric',
             hour12: true,
-            minute: "numeric",
+            minute: 'numeric',
           }).format(Date.now())}
         </p>
       </div>
     ),
     actions: (
       <>
-        <div className="justify-around">
+        <div className='justify-around'>
           <Button rounded secondary>
             Edit
           </Button>
-          <span className="inline-block p-2"></span>
+          <span className='inline-block p-2'></span>
           <Button rounded primary>
             Print Details
           </Button>
         </div>
-        <span className="inline-block p-px"></span>
-        <div className="justify-around">
+        <span className='inline-block p-px'></span>
+        <div className='justify-around'>
           <Button rounded alternate>
             Sold Out
           </Button>
-          <span className="inline-block p-2"></span>
+          <span className='inline-block p-2'></span>
           <Button rounded danger>
             Delete
           </Button>
@@ -212,69 +212,69 @@ const Data = () => [
     ),
   },
   {
-    status: "Active",
+    status: 'Active',
     image: (
       <img
-        className="w-12 h-12 object-cover rounded-lg"
+        className='w-12 h-12 object-cover rounded-lg'
         src={image4}
-        alt="..."
+        alt='...'
       />
     ),
     sku: (
       <>
         <div>SB-#2123434343</div>
-        <div className="text-sm text-gray-400">New</div>
+        <div className='text-sm text-gray-400'>New</div>
       </>
     ),
     desc: (
       <div>
-        <p className="text-purple-600 text-sm">Xaomi Pocophone F1</p>
-        <p className="text-sm text-gray-400">128GB RAM / 64GB ROM</p>
+        <p className='text-purple-600 text-sm'>Xaomi Pocophone F1</p>
+        <p className='text-sm text-gray-400'>128GB RAM / 64GB ROM</p>
       </div>
     ),
-    location: "Warri, Delta",
-    seller: <p className="text-purple-500">Kareem Chibuzor</p>,
+    location: 'Warri, Delta',
+    seller: <p className='text-purple-500'>Kareem Chibuzor</p>,
     date: (
       <div>
-        <p className="">
-          {new Intl.DateTimeFormat("en-GB", {
-            year: "numeric",
-            month: "short",
-            day: "numeric",
-            hour: "numeric",
+        <p className=''>
+          {new Intl.DateTimeFormat('en-GB', {
+            year: 'numeric',
+            month: 'short',
+            day: 'numeric',
+            hour: 'numeric',
             hour12: true,
-            minute: "numeric",
+            minute: 'numeric',
           }).format(Date.now())}
         </p>
-        <p className="text-sm text-gray-400">
-          {new Intl.DateTimeFormat("en-GB", {
-            year: "numeric",
-            month: "short",
-            day: "numeric",
-            hour: "numeric",
+        <p className='text-sm text-gray-400'>
+          {new Intl.DateTimeFormat('en-GB', {
+            year: 'numeric',
+            month: 'short',
+            day: 'numeric',
+            hour: 'numeric',
             hour12: true,
-            minute: "numeric",
+            minute: 'numeric',
           }).format(Date.now())}
         </p>
       </div>
     ),
     actions: (
       <>
-        <div className="justify-around">
+        <div className='justify-around'>
           <Button rounded secondary>
             Edit
           </Button>
-          <span className="inline-block p-2"></span>
+          <span className='inline-block p-2'></span>
           <Button rounded primary>
             Print Details
           </Button>
         </div>
-        <span className="inline-block p-px"></span>
-        <div className="justify-around">
+        <span className='inline-block p-px'></span>
+        <div className='justify-around'>
           <Button rounded alternate>
             Sold Out
           </Button>
-          <span className="inline-block p-2"></span>
+          <span className='inline-block p-2'></span>
           <Button rounded danger>
             Delete
           </Button>
@@ -283,69 +283,69 @@ const Data = () => [
     ),
   },
   {
-    status: "Active",
+    status: 'Active',
     image: (
       <img
-        className="w-12 h-12 object-cover rounded-lg"
+        className='w-12 h-12 object-cover rounded-lg'
         src={image4}
-        alt="..."
+        alt='...'
       />
     ),
     sku: (
       <>
         <div>SB-#2123434343</div>
-        <div className="text-sm text-gray-400">New</div>
+        <div className='text-sm text-gray-400'>New</div>
       </>
     ),
     desc: (
       <div>
-        <p className="text-purple-600 text-sm">Xaomi Pocophone F1</p>
-        <p className="text-sm text-gray-400">128GB RAM / 64GB ROM</p>
+        <p className='text-purple-600 text-sm'>Xaomi Pocophone F1</p>
+        <p className='text-sm text-gray-400'>128GB RAM / 64GB ROM</p>
       </div>
     ),
-    location: "Warri, Delta",
-    seller: <p className="text-purple-500">Kareem Chibuzor</p>,
+    location: 'Warri, Delta',
+    seller: <p className='text-purple-500'>Kareem Chibuzor</p>,
     date: (
       <div>
-        <p className="">
-          {new Intl.DateTimeFormat("en-GB", {
-            year: "numeric",
-            month: "short",
-            day: "numeric",
-            hour: "numeric",
+        <p className=''>
+          {new Intl.DateTimeFormat('en-GB', {
+            year: 'numeric',
+            month: 'short',
+            day: 'numeric',
+            hour: 'numeric',
             hour12: true,
-            minute: "numeric",
+            minute: 'numeric',
           }).format(Date.now())}
         </p>
-        <p className="text-sm text-gray-400">
-          {new Intl.DateTimeFormat("en-GB", {
-            year: "numeric",
-            month: "short",
-            day: "numeric",
-            hour: "numeric",
+        <p className='text-sm text-gray-400'>
+          {new Intl.DateTimeFormat('en-GB', {
+            year: 'numeric',
+            month: 'short',
+            day: 'numeric',
+            hour: 'numeric',
             hour12: true,
-            minute: "numeric",
+            minute: 'numeric',
           }).format(Date.now())}
         </p>
       </div>
     ),
     actions: (
       <>
-        <div className="justify-around">
+        <div className='justify-around'>
           <Button rounded secondary>
             Edit
           </Button>
-          <span className="inline-block p-2"></span>
+          <span className='inline-block p-2'></span>
           <Button rounded primary>
             Print Details
           </Button>
         </div>
-        <span className="inline-block p-px"></span>
-        <div className="justify-around">
+        <span className='inline-block p-px'></span>
+        <div className='justify-around'>
           <Button rounded alternate>
             Sold Out
           </Button>
-          <span className="inline-block p-2"></span>
+          <span className='inline-block p-2'></span>
           <Button rounded danger>
             Delete
           </Button>

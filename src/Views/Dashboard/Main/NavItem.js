@@ -1,7 +1,7 @@
-import React from "react";
-import { Link, useHistory } from "react-router-dom";
-import { useComponentVisible } from "../../../hooks";
-import { ArrowDown } from "../../../svg";
+import React from 'react';
+import { Link, useHistory } from 'react-router-dom';
+import { useComponentVisible } from 'hooks';
+import { ArrowDown } from 'svg';
 
 const NavItem = ({
   color,
@@ -20,7 +20,7 @@ const NavItem = ({
   const history = useHistory();
 
   return (
-    <div className="relative">
+    <div className='relative'>
       <button
         onClick={(e) => {
           if (url) {
@@ -32,7 +32,7 @@ const NavItem = ({
           e.stopPropagation();
         }}
         className={`flex ${
-          !last ? "mr-14" : "mr-0"
+          !last ? 'mr-14' : 'mr-0'
         } items-center focus:outline-none cursor-pointer hover:bg-${color}-100 transform active:shadow-sm active:bg-${color}-200 hover:scale-105 active:scale-100 hover:shadow-xl rounded-full pr-4 text-sm`}
       >
         <div className={`bg-${color}-400 mr-2 rounded-full inline-block p-2`}>
@@ -42,10 +42,10 @@ const NavItem = ({
         {hasDropdown && (
           <span
             className={`mt-px ml-2 inline-block transform duration-200 ${
-              isComponentVisible ? "rotate-180" : "rotate-0"
+              isComponentVisible ? 'rotate-180' : 'rotate-0'
             }`}
           >
-            <ArrowDown className="bg-red-500" color="#000" />
+            <ArrowDown className='bg-red-500' color='#000' />
           </span>
         )}
       </button>

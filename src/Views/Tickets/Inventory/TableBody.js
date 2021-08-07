@@ -1,6 +1,6 @@
 import React from 'react';
 import { useTable } from 'react-table';
-import Button from '../../../components/Button';
+import Button from 'components/Button';
 import { confirmAlert } from 'react-confirm-alert'; // Import
 // import TableHeader from './TableHeader';
 import {
@@ -8,7 +8,7 @@ import {
   postDenyEvent,
   postDeleteEvent,
   // postSelloutItem,
-} from '../../../actions/shopping';
+} from 'actions/shopping';
 
 const KeyValue = ({ title, value }) => (
   <div className='flex my-3 flex-col'>

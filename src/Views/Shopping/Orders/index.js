@@ -1,9 +1,9 @@
 import React, { useReducer, useEffect } from 'react';
-import Breadcrumb from '../../../components/Breadcrumb';
+import Breadcrumb from 'components/Breadcrumb';
 import OrdersTableView from './OrdersTableView';
-import { shopping } from '../../../reducers/initialState';
-import { fetchShoppingOrders } from '../../../actions/shopping';
-import shoppingReducer from '../../../reducers/shopping';
+import { shopping } from 'reducers/initialState';
+import { fetchShoppingOrders } from 'actions/shopping';
+import shoppingReducer from 'reducers/shopping';
 
 const Orders = () => {
   const [state, dispatch] = useReducer(shoppingReducer, shopping);

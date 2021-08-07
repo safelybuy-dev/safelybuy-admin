@@ -1,9 +1,9 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React from "react";
-import { CloseIcon } from "../../../svg";
-import moment from "moment";
-import { Invoice, Settings } from "../../../svg";
-import {Link} from "react-router-dom";
+import React from 'react';
+import { CloseIcon } from 'svg';
+import moment from 'moment';
+import { Invoice, Settings } from 'svg';
+import { Link } from 'react-router-dom';
 
 export const isToday = (someDate) => {
   const today = new Date();
@@ -24,8 +24,8 @@ const isYesterday = (someDate) => {
 };
 
 const colors = {
-  profile: "purple",
-  orders: "orange",
+  profile: 'purple',
+  orders: 'orange',
 };
 
 const svgs = {
@@ -35,52 +35,52 @@ const svgs = {
 
 const data = [
   {
-    type: "orders",
-    message: "Order #1233434434 has been delivered.",
+    type: 'orders',
+    message: 'Order #1233434434 has been delivered.',
     time: new Date(Date.now() - 60 * 1000),
-    url: "#",
+    url: '#',
   },
   {
-    type: "orders",
-    message: "Order #1233434434 has been delivered.",
+    type: 'orders',
+    message: 'Order #1233434434 has been delivered.',
     time: new Date(Date.now() - 2 * 3600 * 1000),
-    url: "#",
+    url: '#',
   },
   {
-    type: "profile",
-    message: "Do ensure you complete your profile.",
+    type: 'profile',
+    message: 'Do ensure you complete your profile.',
     time: new Date(Date.now() - 26 * 3600 * 1000),
-    url: "#",
+    url: '#',
   },
   {
-    type: "profile",
-    message: "Do ensure you complete your profile.",
+    type: 'profile',
+    message: 'Do ensure you complete your profile.',
     time: new Date(Date.now() - 29 * 3600 * 1000),
-    url: "#",
+    url: '#',
   },
   {
-    type: "orders",
-    message: "Order #1233434434 has been delivered.",
+    type: 'orders',
+    message: 'Order #1233434434 has been delivered.',
     time: new Date(Date.now() - 44 * 3600 * 1000),
-    url: "#",
+    url: '#',
   },
   {
-    type: "profile",
-    message: "Do ensure you complete your profile.",
+    type: 'profile',
+    message: 'Do ensure you complete your profile.',
     time: new Date(Date.now() - 45 * 3600 * 1000),
-    url: "#",
+    url: '#',
   },
   {
-    type: "orders",
-    message: "Order #1233434434 has been delivered.",
+    type: 'orders',
+    message: 'Order #1233434434 has been delivered.',
     time: new Date(Date.now() - 80 * 3600 * 1000),
-    url: "#",
+    url: '#',
   },
   {
-    type: "profile",
-    message: "Do ensure you complete your profile.",
+    type: 'profile',
+    message: 'Do ensure you complete your profile.',
     time: new Date(Date.now() - 90 * 3600 * 1000),
-    url: "#",
+    url: '#',
   },
 ];
 
@@ -98,9 +98,9 @@ const dataByDay = (data) => {
     // If it has, add it to it
     // else create a key for the date and the item to it.
     else {
-      if (!obj[new Date(e.time).toLocaleDateString("en-GB")])
-        obj[new Date(e.time).toLocaleDateString("en-GB")] = [];
-      obj[new Date(e.time).toLocaleDateString("en-GB")].push(e);
+      if (!obj[new Date(e.time).toLocaleDateString('en-GB')])
+        obj[new Date(e.time).toLocaleDateString('en-GB')] = [];
+      obj[new Date(e.time).toLocaleDateString('en-GB')].push(e);
     }
   });
   return obj;
@@ -109,14 +109,12 @@ const dataByDay = (data) => {
 
 const NotificationItem = ({ color, text, svg, time, url }) => (
   <Link key={Date.now() + Math.random()} to={url}>
-    <div
-      className={`py-3 mr-10 md:mr-5 hover:bg-${color}-50`}
-    >
+    <div className={`py-3 mr-10 md:mr-5 hover:bg-${color}-50`}>
       <div className={`flex text-gray-800 w-full items-center`}>
         <div className={`bg-${color}-100 mr-3 rounded-full p-2`}>{svg}</div>
-        <div className="flex justify-between items-center w-full">
+        <div className='flex justify-between items-center w-full'>
           {text}
-          <span className="text-xs text-gray-400 ml-2 text-right">{time}</span>
+          <span className='text-xs text-gray-400 ml-2 text-right'>{time}</span>
         </div>
       </div>
     </div>
@@ -126,33 +124,33 @@ const NotificationItem = ({ color, text, svg, time, url }) => (
 const NotificationDetails = ({ closeNav }) => {
   return (
     <div
-      id="myNav"
-      className="h-full flex flex-row-reverse w-0 fixed bg-white z-40 top-0 right-0 overflow-x-hidden transition-all duration-300 ease-in-out"
+      id='myNav'
+      className='h-full flex flex-row-reverse w-0 fixed bg-white z-40 top-0 right-0 overflow-x-hidden transition-all duration-300 ease-in-out'
     >
-      <div className="overlay-content pl-8 py-16 md:py-6 relative flex flex-col opacity-100 relative w-4/12 lg:w-7/12 md:w-full bg-white min-h-full">
-        <div className="flex justify-between items-center w-full pr-6 text-3xl tracking-wide">
-          <h3 className="text-purple-500">Notifications</h3>
+      <div className='overlay-content pl-8 py-16 md:py-6 relative flex flex-col opacity-100 relative w-4/12 lg:w-7/12 md:w-full bg-white min-h-full'>
+        <div className='flex justify-between items-center w-full pr-6 text-3xl tracking-wide'>
+          <h3 className='text-purple-500'>Notifications</h3>
           <a
-            className="closebtn opacity-40 hover:opacity-90 z-20 cursor-pointer"
+            className='closebtn opacity-40 hover:opacity-90 z-20 cursor-pointer'
             onClick={closeNav}
           >
             <CloseIcon scale={1.3} />
           </a>
         </div>
-        <div className="flex flex-col pt-10 md:pt-4">
+        <div className='flex flex-col pt-10 md:pt-4'>
           {Object.keys(dataByDay(data)).map((e, n) => {
             if (isNaN(Date.parse(e)))
               return (
                 <div
                   className={`${
-                    n === 0 ? "border-t-0" : "border-t-2"
+                    n === 0 ? 'border-t-0' : 'border-t-2'
                   } border-gray-200 my-4`}
                   key={Math.random()}
                 >
-                  <div className="capitalize text-sm text-gray-400 py-6">
+                  <div className='capitalize text-sm text-gray-400 py-6'>
                     {e}
                   </div>
-                  <div className="flex flex-col">
+                  <div className='flex flex-col'>
                     {dataByDay(data)[e].map((i) => (
                       <NotificationItem
                         key={Math.random()}
@@ -161,7 +159,7 @@ const NotificationDetails = ({ closeNav }) => {
                         url={i.url}
                         time={moment(
                           i.time,
-                          "MMMM Do YYYY, h:mm:ss a"
+                          'MMMM Do YYYY, h:mm:ss a'
                         ).fromNow()}
                         svg={svgs[i.type]}
                       />
@@ -172,15 +170,15 @@ const NotificationDetails = ({ closeNav }) => {
             else
               return (
                 <div
-                  className="border-t-2 mb-2 border-gray-200 first:border-t-0"
+                  className='border-t-2 mb-2 border-gray-200 first:border-t-0'
                   key={Math.random()}
                 >
-                  <div className="text-sm text-gray-400 py-6 md:py-3">
-                    {moment(new Date(e.split("/").reverse().join("/"))).format(
-                      "dddd Do MMM, YYYY"
+                  <div className='text-sm text-gray-400 py-6 md:py-3'>
+                    {moment(new Date(e.split('/').reverse().join('/'))).format(
+                      'dddd Do MMM, YYYY'
                     )}
                   </div>
-                  <div className="flex flex-col">
+                  <div className='flex flex-col'>
                     {dataByDay(data)[e].map((i) => (
                       <NotificationItem
                         key={Math.random()}
@@ -189,7 +187,7 @@ const NotificationDetails = ({ closeNav }) => {
                         url={i.url}
                         time={moment(
                           i.time,
-                          "MMMM Do YYYY, h:mm:ss a"
+                          'MMMM Do YYYY, h:mm:ss a'
                         ).fromNow()}
                         svg={svgs[i.type]}
                       />
@@ -202,7 +200,7 @@ const NotificationDetails = ({ closeNav }) => {
       </div>
       <div
         onClick={closeNav}
-        className="flex-grow bg-purple-200 opacity-70"
+        className='flex-grow bg-purple-200 opacity-70'
       ></div>
     </div>
   );

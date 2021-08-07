@@ -1,7 +1,7 @@
 import { useForm } from 'react-hook-form';
-import Button from '../../components/Button';
-import { LoadingIcon } from '../../svg';
-import Input from '../../components/Input';
+import Button from 'components/Button';
+import { LoadingIcon } from 'svg';
+import Input from 'components/Input';
 import { useState } from 'react';
 
 export default function CodeInformation({ categoryError, loading, onSubmit }) {

@@ -1,4 +1,4 @@
-import * as type from '../actions/shopping';
+import * as type from 'actions/shopping';
 
 export default function shoppingReducer(state, action) {
   switch (action.type) {
@@ -41,26 +41,26 @@ export default function shoppingReducer(state, action) {
         loading: false,
         error: action.payload,
       };
-    
-      case type.GET_TICKETS_DASHBOARD:
-        return {
-          ...state,
-          loading: true,
-          error: '',
-        };
-      case type.GET_TICKETS_DASHBOARD_SUCCESS:
-        return {
-          ...state,
-          loading: false,
-          error: '',
-          ticketsDashboard: action.payload,
-        };
-      case type.GET_TICKETS_DASHBOARD_FAILURE:
-        return {
-          ...state,
-          loading: false,
-          error: action.payload,
-        };
+
+    case type.GET_TICKETS_DASHBOARD:
+      return {
+        ...state,
+        loading: true,
+        error: '',
+      };
+    case type.GET_TICKETS_DASHBOARD_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        error: '',
+        ticketsDashboard: action.payload,
+      };
+    case type.GET_TICKETS_DASHBOARD_FAILURE:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
+      };
 
     case type.GET_DELIVERY_DASHBOARD:
       return {
@@ -122,26 +122,26 @@ export default function shoppingReducer(state, action) {
         itemsError: action.payload,
       };
 
-      case type.GET_EVENTS:
-        return {
-          ...state,
-          loadingEvents: true,
-          eventsError: '',
-        };
-      case type.GET_EVENTS_SUCCESS:
-        return {
-          ...state,
-          loadingEvents: false,
-          eventsError: '',
-          events: action.payload.events,
-        };
-      case type.GET_EVENTS_FAILURE:
-        return {
-          ...state,
-          loadingEvents: false,
-          eventsError: action.payload,
-        };
-  
+    case type.GET_EVENTS:
+      return {
+        ...state,
+        loadingEvents: true,
+        eventsError: '',
+      };
+    case type.GET_EVENTS_SUCCESS:
+      return {
+        ...state,
+        loadingEvents: false,
+        eventsError: '',
+        events: action.payload.events,
+      };
+    case type.GET_EVENTS_FAILURE:
+      return {
+        ...state,
+        loadingEvents: false,
+        eventsError: action.payload,
+      };
+
     case type.GET_SHOPPING_ORDERS:
       return {
         ...state,

@@ -1,13 +1,12 @@
-import React 
-// { useState } 
-from 'react';
+import React from // { useState }
+'react';
 import {
   useTable,
   // useFilters,
   // useGlobalFilter,
   // useAsyncDebounce,
 } from 'react-table';
-import Button from '../../../components/Button';
+import Button from 'components/Button';
 import { confirmAlert } from 'react-confirm-alert'; // Import
 // import TableHeader from './TableHeader';
 import {
@@ -15,7 +14,7 @@ import {
   postDenyItem,
   postDeleteItem,
   // postSelloutItem,
-} from '../../../actions/shopping';
+} from 'actions/shopping';
 
 const TableBody = ({
   active,
@@ -274,9 +273,10 @@ const TableBody = ({
     // visibleColumns,
     // preGlobalFilteredRows,
     // setGlobalFilter,
-  } = useTable({ columns, data }, 
+  } = useTable(
+    { columns, data }
     // useFilters,  useGlobalFilter
-    );
+  );
 
   // const [filterInput, setFilterInput] = useState(state.globalFilter);
   // const handleFilterChange = useAsyncDebounce((value) => {

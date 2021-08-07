@@ -1,5 +1,5 @@
 import React from 'react';
-import { Active, Inactive, List } from '../../../svg';
+import { Active, Inactive, List } from 'svg';
 
 const TabbedButton = ({ text, position = 1, active, svg, tag }) => {
   return (

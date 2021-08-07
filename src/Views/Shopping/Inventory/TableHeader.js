@@ -1,8 +1,8 @@
 import React from 'react';
-import { SearchIcon } from '../../../svg';
+import { SearchIcon } from 'svg';
 // import SortBy from './SortBy';
 // import ItemsPerPage from './ItemsPerPage';
-// import { useComponentVisible } from '../../../hooks';
+// import { useComponentVisible } from 'hooks';
 
 export default function TableHeader({
   active,

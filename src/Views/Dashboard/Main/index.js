@@ -8,11 +8,11 @@ import {
   Tickets as TicketsSVG,
   DeliveryIcon,
   // ArrowRight,
-} from '../../../svg';
-import { fetchCustomers, fetchMainDashboard } from '../../../actions/shopping';
-import shoppingReducer from '../../../reducers/shopping';
-import { shopping } from '../../../reducers/initialState';
-import { ContextShopping } from '../../../context';
+} from 'svg';
+import { fetchCustomers, fetchMainDashboard } from 'actions/shopping';
+import shoppingReducer from 'reducers/shopping';
+import { shopping } from 'reducers/initialState';
+import { ContextShopping } from 'context';
 
 const Main = () => {
   const [state, dispatch] = useReducer(shoppingReducer, shopping);

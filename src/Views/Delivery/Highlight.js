@@ -1,5 +1,5 @@
 import React from 'react';
-import { Location } from '../../svg';
+import { Location } from 'svg';
 
 export const options = {
   year: 'numeric',

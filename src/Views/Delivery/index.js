@@ -1,21 +1,18 @@
 import React, { useReducer, useEffect } from 'react';
-import Breadcrumb from '../../components/Breadcrumb';
+import Breadcrumb from 'components/Breadcrumb';
 import TopStat from './TopStat';
 import {
   Archive,
   Wallet,
   DeliveryIcon,
   //  ArrowRight
-} from '../../svg';
+} from 'svg';
 import Highlight from './Highlight';
 import RecentSalesTable from './RecentSales';
-import { ContextShopping } from '../../context';
-import { shopping } from '../../reducers/initialState';
-import shoppingReducer from '../../reducers/shopping';
-import {
-  fetchDeliveryOrders,
-  fetchDeliveryDashboard,
-} from '../../actions/shopping';
+import { ContextShopping } from 'context';
+import { shopping } from 'reducers/initialState';
+import shoppingReducer from 'reducers/shopping';
+import { fetchDeliveryOrders, fetchDeliveryDashboard } from 'actions/shopping';
 
 const Delivery = () => {
   const [state, dispatch] = useReducer(shoppingReducer, shopping);

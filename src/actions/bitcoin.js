@@ -2,7 +2,7 @@ import {
   getBitcoinDashboard,
   getBitcoinHistory,
   setBitcoinRates,
-} from '../api/bitcoin';
+} from 'api/bitcoin';
 
 export const GET_BITCOIN_DASHBOARD = 'GET_BITCOIN_DASHBOARD';
 export const GET_BITCOIN_DASHBOARD_SUCCESS = 'GET_BITCOIN_DASHBOARD_SUCCESS';

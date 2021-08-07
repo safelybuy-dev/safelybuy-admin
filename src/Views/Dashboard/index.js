@@ -1,5 +1,5 @@
 import React, { useState, Suspense, lazy } from 'react';
-import Footer from '../../components/Footer';
+import Footer from 'components/Footer';
 import Header from './Main/Header';
 import { MobileMenu } from './Main/MobileMenu';
 import { Route, Switch } from 'react-router-dom';

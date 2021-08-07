@@ -1,11 +1,11 @@
-import React from "react";
-import { Hamburger } from "../../../svg";
-import { mainMenuItems } from "../../../data";
-import { buttonStyles } from "./Header";
-import {Link} from "react-router-dom";
+import React from 'react';
+import { Hamburger } from 'svg';
+import { mainMenuItems } from 'data';
+import { buttonStyles } from './Header';
+import { Link } from 'react-router-dom';
 
 const MenuBar = ({ barIsVisible, setBarIsVisible, barRef }) => (
-  <div className="relative">
+  <div className='relative'>
     <button
       onClick={(e) => {
         if (barIsVisible) setBarIsVisible(false);

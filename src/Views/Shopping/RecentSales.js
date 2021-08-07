@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { useTable } from 'react-table';
-import { ContextShopping } from '../../context';
+import { ContextShopping } from 'context';
 
 const RecentSales = () => {
   const [state] = useContext(ContextShopping);
@@ -51,8 +51,8 @@ const RecentSales = () => {
                 <a href={`tel:${item.buyer?.phone}`}>
                   <span className='text-purple-500 capitalize'>
                     {item.buyer?.firstname} {item.buyer?.lastname}
-                  </span><br />
-                  ({item.buyer?.phone})
+                  </span>
+                  <br />({item.buyer?.phone})
                 </a>
               </div>
             )}
@@ -63,8 +63,8 @@ const RecentSales = () => {
                   <span className='text-purple-500 capitalize'>
                     {sellers[item.seller_id]?.firstname}{' '}
                     {sellers[item.seller_id]?.lastname}
-                  </span><br />
-                  ({sellers[item.seller_id]?.phone})
+                  </span>
+                  <br />({sellers[item.seller_id]?.phone})
                 </a>
               </div>
             )}

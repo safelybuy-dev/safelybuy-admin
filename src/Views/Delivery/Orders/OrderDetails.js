@@ -1,5 +1,5 @@
 import React from 'react';
-import { UserAvatar, CloseIcon } from '../../../svg';
+import { UserAvatar, CloseIcon } from 'svg';
 
 const KeyValue = ({ title, value }) => (
   <div className='flex my-3 flex-col'>

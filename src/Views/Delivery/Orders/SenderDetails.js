@@ -1,5 +1,5 @@
 import React from 'react';
-import { CloseIcon, UserAvatar } from '../../../svg';
+import { CloseIcon, UserAvatar } from 'svg';
 
 const KeyValue = ({ title, value }) => (
   <div className='flex my-3 flex-col text-sm'>
@@ -10,7 +10,6 @@ const KeyValue = ({ title, value }) => (
 
 const SenderDetails = ({ selectedSender, setSelectedSender }) => {
   if (!selectedSender) return null;
-
 
   const { firstname, lastname, email, phone, dob, location } = selectedSender;
 
@@ -60,10 +59,7 @@ const SenderDetails = ({ selectedSender, setSelectedSender }) => {
                 <KeyValue title='Phone Number' value={phone} />
               </div>
               <div className='flex flex-col w-6/12'>
-                <KeyValue
-                  title='Address'
-                  value={location}
-                />
+                <KeyValue title='Address' value={location} />
               </div>
             </div>
             {/* <h4 className='text-xl text-purple-500'>Bank Details</h4>

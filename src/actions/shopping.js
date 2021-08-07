@@ -25,7 +25,7 @@ import {
   getUsers,
   banUser,
   deleteUser,
-} from '../api/shopping';
+} from 'api/shopping';
 
 export const GET_MAIN_DASHBOARD = 'GET_MAIN_DASHBOARD';
 export const GET_MAIN_DASHBOARD_SUCCESS = 'GET_MAIN_DASHBOARD_SUCCESS';
@@ -441,7 +441,7 @@ export const postDeleteEvent = (dispatch, id) => {
     },
     id
   );
-}
+};
 
 export const suspendUser = (dispatch, id) => {
   dispatch(action(SUSPEND_USER));

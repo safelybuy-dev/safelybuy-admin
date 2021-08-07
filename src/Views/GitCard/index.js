@@ -1,21 +1,18 @@
-import React, {
-  useEffect,
-  useReducer,
-} from 'react';
-import Breadcrumb from '../../components/Breadcrumb';
+import React, { useEffect, useReducer } from 'react';
+import Breadcrumb from 'components/Breadcrumb';
 import TopStat from '../Delivery/TopStat';
 import {
   Wallet,
   History,
   AreaChart,
   //  ArrowRight
-} from '../../svg';
+} from 'svg';
 import Highlight from './Highlight';
 // import RecentSalesTable from './RecentSales';
-import { ContextShopping } from '../../context';
-import shoppingReducer from '../../reducers/shopping';
-import { shopping } from '../../reducers/initialState';
-import { fetchGiftcardDashboard } from '../../actions/shopping';
+import { ContextShopping } from 'context';
+import shoppingReducer from 'reducers/shopping';
+import { shopping } from 'reducers/initialState';
+import { fetchGiftcardDashboard } from 'actions/shopping';
 
 const Giftcard = () => {
   const [state, dispatch] = useReducer(shoppingReducer, shopping);

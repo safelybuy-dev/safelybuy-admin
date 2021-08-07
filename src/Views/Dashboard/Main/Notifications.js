@@ -1,9 +1,9 @@
-import React from "react";
-import {Link} from "react-router-dom";
-import { AngleRight, Bell, ArrowRight, Invoice, Archive } from "../../../svg";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { AngleRight, Bell, ArrowRight, Invoice, Archive } from 'svg';
 
 const Notifications = ({ notIsVisible, setNotIsVisible, notRef, openNav }) => (
-  <div className="relative">
+  <div className='relative'>
     <button
       onClick={(e) => {
         if (notIsVisible) setNotIsVisible(false);
@@ -19,31 +19,31 @@ const Notifications = ({ notIsVisible, setNotIsVisible, notRef, openNav }) => (
         <div
           className={`absolute w-80 -right-24 md:-right-14 mt-2 bg-white z-10 rounded-xl border-gray-100 border-2`}
         >
-          <div className="flex justify-between px-6 py-4 border-gray-100 border-b-2">
-            <span className="text-purple-500">Notifications</span>
-            <div className="relative inline-block px-2 py-px text-sm bg-purple-500 text-white rounded-full">
+          <div className='flex justify-between px-6 py-4 border-gray-100 border-b-2'>
+            <span className='text-purple-500'>Notifications</span>
+            <div className='relative inline-block px-2 py-px text-sm bg-purple-500 text-white rounded-full'>
               3
             </div>
           </div>
           <ul>
             {[
               {
-                url: "#",
-                text: "Order #1233434434 has been delivered.",
+                url: '#',
+                text: 'Order #1233434434 has been delivered.',
                 svg: <Invoice scale={1.2} />,
-                color: "orange",
+                color: 'orange',
               },
               {
-                url: "#",
-                text: "Order #1233434434 has been delivered.",
+                url: '#',
+                text: 'Order #1233434434 has been delivered.',
                 svg: <Invoice scale={1.2} />,
-                color: "orange",
+                color: 'orange',
               },
               {
-                url: "#",
-                text: "One or more products are out of stock.",
+                url: '#',
+                text: 'One or more products are out of stock.',
                 svg: <Archive scale={1.2} />,
-                color: "blue",
+                color: 'blue',
               },
             ].map((e) => (
               <Link key={Date.now() + Math.random()} to={e.url}>
@@ -59,15 +59,15 @@ const Notifications = ({ notIsVisible, setNotIsVisible, notRef, openNav }) => (
                           {e.svg}
                         </div>
                       </div>
-                      <div className="flex flex-col">
+                      <div className='flex flex-col'>
                         {e.text}
-                        <span className="text-xs text-gray-300">
+                        <span className='text-xs text-gray-300'>
                           a min. ago
                         </span>
                       </div>
                     </div>
                   </div>
-                  <div className="inline-block ml-4">
+                  <div className='inline-block ml-4'>
                     <AngleRight scale={1.7} />
                   </div>
                 </li>
@@ -79,9 +79,9 @@ const Notifications = ({ notIsVisible, setNotIsVisible, notRef, openNav }) => (
               setNotIsVisible(false);
               openNav();
             }}
-            className="align-center rounded-b-xl hover:bg-purple-100 w-full p-4 border-gray-100 border-t-2"
+            className='align-center rounded-b-xl hover:bg-purple-100 w-full p-4 border-gray-100 border-t-2'
           >
-            <span className="text-purple-500 inline-block mr-4">See more</span>
+            <span className='text-purple-500 inline-block mr-4'>See more</span>
             <ArrowRight />
           </button>
         </div>

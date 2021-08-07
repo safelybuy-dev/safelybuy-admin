@@ -1,4 +1,4 @@
-import * as type from '../actions/bitcoin';
+import * as type from 'actions/bitcoin';
 
 export default function bitcoinReducer(state, action) {
   switch (action.type) {
