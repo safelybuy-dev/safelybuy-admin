@@ -211,6 +211,13 @@ export const addGiftcard = (success, failure, data) => {
     .catch((error) => failure(error));
 };
 
+export const getGiftCardHistory = (success, failure) => {
+  axiosWithAuth()
+    .get(`${baseUrl}/api/v1/admin/giftcard/history`)
+    .then((response) => success(response))
+    .catch((error) => failure(error));
+};
+
 export const createPromotionCode = (success, failure, data) =>
   axiosWithAuth()
     .post(`${baseUrl}/api/v1/admin/promotion/create`, data)
