@@ -2,16 +2,20 @@ import React, { useReducer, useEffect } from 'react';
 import Breadcrumb from 'components/Breadcrumb';
 import OrdersTableView from './OrdersTableView';
 import { shopping } from 'reducers/initialState';
-import { fetchShoppingOrders } from 'actions/shopping';
+import {
+  fetchCustomers,
+  fetchSellers,
+  fetchShoppingOrders,
+} from 'actions/shopping';
 import shoppingReducer from 'reducers/shopping';
 
 const Orders = () => {
   const [state, dispatch] = useReducer(shoppingReducer, shopping);
 
-  console.log(state.orders);
-
   useEffect(() => {
     fetchShoppingOrders(dispatch);
+    fetchSellers(dispatch);
+    fetchCustomers(dispatch);
   }, [dispatch]);
 
   return (
@@ -29,6 +33,8 @@ const Orders = () => {
         orders={state.orders}
         loading={state.isLoadingOrders}
         dispatch={dispatch}
+        sellers={state.sellers}
+        customers={state.customers}
       />
     </div>
   );

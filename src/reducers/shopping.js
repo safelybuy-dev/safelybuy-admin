@@ -153,6 +153,7 @@ export default function shoppingReducer(state, action) {
         ...state,
         isLoadingOrders: false,
         ordersError: '',
+        orders: action.payload.orders
       };
     case type.GET_SHOPPING_ORDERS_FAILURE:
       return {

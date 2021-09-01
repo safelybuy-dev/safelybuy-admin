@@ -108,21 +108,21 @@ export const denyOrder = (success, failure, id) => {
 
 export const shipOrder = (success, failure, id) => {
   axiosWithAuth()
-    .post(`${baseUrl}/api/v1/admin/orders/ship/${id}`)
+    .get(`${baseUrl}/api/v1/admin/orders/ship/${id}`)
     .then((response) => success(response))
     .catch((error) => failure(error));
 };
 
 export const deliverOrder = (success, failure, id) => {
   axiosWithAuth()
-    .post(`${baseUrl}/api/v1/admin/orders/deliver/${id}`)
+    .get(`${baseUrl}/api/v1/admin/orders/deliver/${id}`)
     .then((response) => success(response))
     .catch((error) => failure(error));
 };
 
 export const returnOrder = (success, failure, id) => {
   axiosWithAuth()
-    .post(`${baseUrl}/api/v1/admin/orders/return/${id}`)
+    .get(`${baseUrl}/api/v1/admin/orders/return/${id}`)
     .then((response) => success(response))
     .catch((error) => failure(error));
 };

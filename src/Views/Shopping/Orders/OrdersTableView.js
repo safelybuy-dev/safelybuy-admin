@@ -4,7 +4,7 @@ import TableBody from './TableBody';
 import OrderDetails from './OrderDetails';
 import { LoadingIcon } from 'svg';
 
-const OrdersTableView = ({ loading, orders, dispatch }) => {
+const OrdersTableView = ({ loading, orders, dispatch, sellers, customers }) => {
   const [selectedOrder, setSelectedOrder] = useState(null);
   return (
     <div className='w-full mt-8'>
@@ -22,12 +22,19 @@ const OrdersTableView = ({ loading, orders, dispatch }) => {
             No order available
           </div>
         ) : (
-          <TableBody setSelectedOrder={setSelectedOrder} />
+          <TableBody
+            orders={orders}
+            setSelectedOrder={setSelectedOrder}
+            dispatch={dispatch}
+            sellers={sellers}
+            customers={customers}
+          />
         )}
       </div>
       <OrderDetails
         selectedOrder={selectedOrder}
         setSelectedOrder={setSelectedOrder}
+        customers={customers}
       />
     </div>
   );

@@ -1,5 +1,4 @@
-import React from // { useState }
-'react';
+import React from 'react'; // { useState }
 import {
   useTable,
   // useFilters,
@@ -103,6 +102,7 @@ const TableBody = ({
   //   },
   //   [dispatch]
   // );
+  console.log(items);
 
   const itemsData =
     items &&
@@ -124,7 +124,7 @@ const TableBody = ({
         sku: (
           <div>
             <div>{item.seller_sku}</div>
-            <div className='text-sm text-gray-400'>{item.condition}</div>
+            <div className='text-sm text-gray-400'>{item.item_condition}</div>
           </div>
         ),
         desc: (
