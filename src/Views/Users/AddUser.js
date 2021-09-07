@@ -31,6 +31,7 @@ const addUserSchema = yup.object().shape({
     .min(8, 'Password must be at least 8 characters long'),
 });
 
+
 const SellerDetails = ({ selectedSeller, setSelectedSeller }) => {
   const [, dispatch] = useContext(ContextShopping);
   const [loading, setLoading] = useState(false);
@@ -73,7 +74,7 @@ const SellerDetails = ({ selectedSeller, setSelectedSeller }) => {
   };
 
   const togglePassword = () => {
-    const password = document.querySelector('#userPassword');
+    const password = document.querySelector('#password');
     const passwordHide = document.querySelector('#userPasswordHide');
     password.type = password.type === 'password' ? 'text' : 'password';
     passwordHide.hidden = password.type === 'password' ? true : false;
