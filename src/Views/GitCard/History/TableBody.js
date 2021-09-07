@@ -22,7 +22,7 @@ const TableBody = ({
           {hist.description}
         </div>
       ),
-      customer: <span className='text-purple-500 capitalize'>Don Norman</span>,
+      customer: <span className='text-purple-500 capitalize'>{hist.user?.firstname} {hist.user?.lastname}</span>,
       desc: (
         <div>
           <p className='text-purple-600 text-sm'>#{hist.id}</p>
