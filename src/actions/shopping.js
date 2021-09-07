@@ -285,6 +285,7 @@ export const postAcceptOrder = (dispatch, id) => {
   acceptOrder(
     (res) => {
       dispatch(action(ACCEPT_ORDER_SUCCESS, res.data));
+      fetchShoppingOrders(dispatch)
     },
     (err) => {
       dispatch(action(ACCEPT_ORDER_FAILURE, err.response));
@@ -298,6 +299,7 @@ export const postDenyOrder = (dispatch, id) => {
   denyOrder(
     (res) => {
       dispatch(action(DENY_ORDER_SUCCESS, res.data));
+      fetchShoppingOrders(dispatch)
     },
     (err) => {
       dispatch(action(DENY_ORDER_FAILURE, err.response));
@@ -311,6 +313,7 @@ export const postShipOrder = (dispatch, id) => {
   shipOrder(
     (res) => {
       dispatch(action(SHIP_ORDER_SUCCESS, res.data));
+      fetchShoppingOrders(dispatch)
     },
     (err) => {
       dispatch(action(SHIP_ORDER_FAILURE, err.response));
@@ -324,6 +327,7 @@ export const postDeliverOrder = (dispatch, id) => {
   deliverOrder(
     (res) => {
       dispatch(action(DELIVER_ORDER_SUCCESS, res.data));
+      fetchShoppingOrders(dispatch)
     },
     (err) => {
       dispatch(action(DELIVER_ORDER_FAILURE, err.response));
@@ -337,6 +341,7 @@ export const postReturnOrder = (dispatch, id) => {
   returnOrder(
     (res) => {
       dispatch(action(RETURN_ORDER_SUCCESS, res.data));
+      fetchShoppingOrders(dispatch)
     },
     (err) => {
       dispatch(action(RETURN_ORDER_FAILURE, err.response));

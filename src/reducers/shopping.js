@@ -260,59 +260,59 @@ export default function shoppingReducer(state, action) {
     case type.ACCEPT_ORDER:
       return {
         ...state,
-        orderActionLoading: true,
+        isLoadingOrders: true,
         orderActionError: '',
       };
     case type.ACCEPT_ORDER_SUCCESS:
       return {
         ...state,
-        orderActionLoading: false,
+        isLoadingOrders: false,
         orderActionError: '',
         // orders: state.orders.map(e => e)
       };
     case type.ACCEPT_ORDER_FAILURE:
       return {
         ...state,
-        orderActionLoading: false,
+        isLoadingOrders: false,
         orderActionError: action.payload,
       };
 
     case type.DENY_ORDER:
       return {
         ...state,
-        orderActionLoading: true,
+        isLoadingOrders: true,
         orderActionError: '',
       };
     case type.DENY_ORDER_SUCCESS:
       return {
         ...state,
-        orderActionLoading: false,
+        isLoadingOrders: false,
         orderActionError: '',
         // orders: state.orders.map(e => e)
       };
     case type.DENY_ORDER_FAILURE:
       return {
         ...state,
-        orderActionLoading: false,
+        isLoadingOrders: false,
         orderActionError: action.payload,
       };
 
     case type.SHIP_ORDER:
       return {
         ...state,
-        orderActionLoading: true,
+        isLoadingOrders: true,
         orderActionError: '',
       };
     case type.SHIP_ORDER_FAILURE:
       return {
         ...state,
-        orderActionLoading: false,
+        isLoadingOrders: false,
         orderActionError: action.payload,
       };
     case type.SHIP_ORDER_SUCCESS:
       return {
         ...state,
-        orderActionLoading: false,
+        isLoadingOrders: false,
         orderActionError: '',
         // orders: state.orders.map(e => e)
       };
@@ -320,40 +320,40 @@ export default function shoppingReducer(state, action) {
     case type.DELIVER_ORDER:
       return {
         ...state,
-        orderActionLoading: true,
+        isLoadingOrders: true,
         orderActionError: '',
       };
     case type.DELIVER_ORDER_SUCCESS:
       return {
         ...state,
-        orderActionLoading: false,
+        isLoadingOrders: false,
         orderActionError: '',
         // orders: state.orders.map(e => e)
       };
     case type.DELIVER_ORDER_FAILURE:
       return {
         ...state,
-        orderActionLoading: false,
+        isLoadingOrders: false,
         orderActionError: action.payload,
       };
 
     case type.RETURN_ORDER:
       return {
         ...state,
-        orderActionLoading: true,
+        isLoadingOrders: true,
         orderActionError: '',
       };
     case type.RETURN_ORDER_SUCCESS:
       return {
         ...state,
-        orderActionLoading: false,
+        isLoadingOrders: false,
         orderActionError: '',
         // orders: state.orders.map(e => e)
       };
     case type.RETURN_ORDER_FAILURE:
       return {
         ...state,
-        orderActionLoading: false,
+        isLoadingOrders: false,
         orderActionError: action.payload,
       };
 

@@ -101,7 +101,7 @@ export default function Prices() {
           <>
             {giftcard?.giftcardRates
               ?.sort((a, b) => new Date(b.updated_at) - new Date(a))
-              ?.map((item) => (
+              ?.map((item, i) => (
                 <form
                   onSubmit={(e) => onSubmit(e, item.id)}
                   key={item.id}
@@ -110,6 +110,14 @@ export default function Prices() {
                   <div className='flex flex-col w-1/5 md:w-full'>
                     <header className='mb-10'>Giftcard</header>
                     <h4 className='text-xl capitalize'>{item.name}</h4>
+                    {item.card_image && (
+                      <img
+                        src={item.card_image}
+                        width={100}
+                        height={100}
+                        alt={item.name}
+                      />
+                    )}
                   </div>
                   <div className='flex flex-col w-1/5 md:w-full'>
                     <h4 className=''>Denomination</h4>

@@ -7,6 +7,7 @@ import { addGiftcard as submitGiftcard } from 'api/shopping';
 const AddGiftcard = ({ addGiftcard, setAddGiftcard }) => {
   const { addToast } = useToasts();
   const [loadingSubmit, setLoadingSubmit] = useState(false);
+  const [selectedFile, setSelectedFile] = useState('');
   const [values, setValues] = useState({
     denomination: '',
     sell_rate: '',
@@ -21,8 +22,19 @@ const AddGiftcard = ({ addGiftcard, setAddGiftcard }) => {
     });
   };
 
+  const handleFileChange = (e) => {
+    setSelectedFile(e.target.files[0]);
+  };
+
   const onSubmit = (e) => {
     e.preventDefault();
+    const formData = new FormData();
+    formData.append('denomination', values.denomination);
+    formData.append('sell_rate', values.sell_rate);
+    formData.append('buy_rate', values.buy_rate);
+    formData.append('name', values.name);
+    formData.append('card_image', selectedFile);
+    console.log(formData);
     setLoadingSubmit(true);
     submitGiftcard(
       (res) => {
@@ -37,7 +49,7 @@ const AddGiftcard = ({ addGiftcard, setAddGiftcard }) => {
         setLoadingSubmit(false);
         // console.log(err.message);
       },
-      values
+      formData
     );
   };
 
@@ -106,6 +118,20 @@ const AddGiftcard = ({ addGiftcard, setAddGiftcard }) => {
                 &#127482;&#127480;{' '}
                 <span className='text-xs inline-flex ml-2'>USD</span>
               </span>
+            </div>
+            <label className='text-sm my-2' htmlFor='denomination'>
+              Upload Image
+            </label>
+            <div className='relative w-44 md:w-full'>
+              <input
+                type='file'
+                name='card_image'
+                required
+                // value={selectedFile}
+                onChange={handleFileChange}
+                id='card_image'
+                className='border w-full border-black rounded-full px-6 py-2 focus:outline-none focus:shadow-xl'
+              />
             </div>
           </section>
           <section className='mt-4 flex flex-col'>

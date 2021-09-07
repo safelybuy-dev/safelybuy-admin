@@ -23,6 +23,7 @@ const TableBody = ({
   dispatch,
   sellers,
   customers,
+  loading,
 }) => {
   const handleShipping = React.useCallback(
     (id) => {
@@ -284,7 +285,7 @@ const TableBody = ({
         ),
         actions:
           order.status === 'processed' ? (
-            <div onClick={() => handleDelivery(order.order_id)}>
+            <div onClick={() => handleShipping(order.order_id)}>
               <Button roundedFull secondary>
                 Confirm Shipping
               </Button>
