@@ -10,6 +10,8 @@ import Button from 'components/Button';
 import Logo from 'components/Logo';
 import Footer from 'components/Footer';
 import SpotlightCard from 'components/SpotlightCard';
+import deviceIcon from 'assets/images/devices-iconn.png';
+import deviceMobile from 'assets/images/devices-mobile.png';
 
 const SamplePage = () => (
   <div className='relative justify-between flex flex-col min-h-screen text-center'>
@@ -82,10 +84,10 @@ const SamplePage = () => (
     </div>
     <div className='relative z-10'>
       <div className='relative hidden justify-center mt-10 md:flex'>
-        {<image src={'devices mobile'} />}
+        {<img src={deviceMobile} alt="devices" />}
       </div>
       <div className='px-12 relative flex justify-center mt-10 md:hidden'>
-        {<image src={'device icon'} />}
+      {<img src={deviceIcon} alt="devices" />}
       </div>
       <Footer />
     </div>
