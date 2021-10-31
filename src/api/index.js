@@ -1,1 +1,1 @@
-export const baseUrl = "https://api.safelybuy.com";
+export const baseUrl = "https://safelybuy-api.herokuapp.com";
