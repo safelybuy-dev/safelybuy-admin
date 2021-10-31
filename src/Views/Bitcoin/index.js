@@ -83,7 +83,7 @@ const Bitcoin = () => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      console.log('Bitcoin rates updated');
+      // console.log('Bitcoin rates updated');
       fetchBitcoinDashboard(dispatch);
     }, 60000);
     return () => clearInterval(interval);

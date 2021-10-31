@@ -34,7 +34,7 @@ const AddGiftcard = ({ addGiftcard, setAddGiftcard }) => {
     formData.append('buy_rate', values.buy_rate);
     formData.append('name', values.name);
     formData.append('card_image', selectedFile);
-    console.log(formData);
+    // console.log(formData);
     setLoadingSubmit(true);
     submitGiftcard(
       (res) => {

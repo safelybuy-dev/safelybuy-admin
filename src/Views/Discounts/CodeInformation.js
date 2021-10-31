@@ -17,11 +17,11 @@ export default function CodeInformation({ categoryError, loading, onSubmit }) {
       <h4 className='text-purple-500 text-lg'>Code Information</h4>
       <form
         onSubmit={(e) => {
-          console.log(
-            getValues('start_date'),
-            getValues('end_date'),
-            getValues('start_date') < getValues('end_date')
-          );
+          // console.log(
+          //   getValues('start_date'),
+          //   getValues('end_date'),
+          //   getValues('start_date') < getValues('end_date')
+          // );
           if (getValues('start_date') > getValues('end_date')) {
             e.preventDefault();
             setEndDateKey(endDateKey + 1);

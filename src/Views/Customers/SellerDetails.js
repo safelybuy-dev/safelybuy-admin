@@ -10,7 +10,7 @@ const KeyValue = ({ title, value }) => (
 
 const SellerDetails = ({ selectedSeller, setSelectedSeller }) => {
   if (!selectedSeller) return null;
-  console.log(selectedSeller);
+  // console.log(selectedSeller);
   const { firstname, lastname, email, phone, referral_code } = selectedSeller;
   return (
     <div

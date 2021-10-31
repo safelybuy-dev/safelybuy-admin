@@ -18,7 +18,6 @@ const Giftcard = () => {
   const [state, dispatch] = useReducer(shoppingReducer, shopping);
   // const [selectedCustomer, setSelectedCustomer] = useState(null);
   const { giftcard, loading } = state;
-  console.log(giftcard, loading);
 
   useEffect(() => {
     fetchGiftcardDashboard(dispatch);

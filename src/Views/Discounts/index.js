@@ -72,7 +72,6 @@ const Discounts = () => {
     getDiscountDashboard(
       (res) => {
         setLoading(false);
-        console.log(res.data);
         setDiscountDash({
           codes: res.data.codes,
           promotions: res.data.promotions,

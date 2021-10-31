@@ -22,7 +22,7 @@ const Data = () => [
       <div>
         <p
           onClick={() => {
-            console.log('Loading');
+            // console.log('Loading');
           }}
           className='text-purple-600 cursor-pointer text-sm'
         >

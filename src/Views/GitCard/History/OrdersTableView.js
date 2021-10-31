@@ -26,7 +26,6 @@ const OrdersTableView = () => {
     fetchData();
   }, []);
 
-  console.log(history);
 
   return (
     <div className='w-full mt-8'>

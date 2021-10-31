@@ -11,7 +11,6 @@ const KeyValue = ({ title, value }) => (
 const ProductDetails = ({ selectedOrder, setSelectedOrder }) => {
   if (!selectedOrder) return null;
 
-  console.log(selectedOrder);
 
   const {
     receiver_name,

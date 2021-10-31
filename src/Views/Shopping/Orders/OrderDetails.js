@@ -33,7 +33,7 @@ const ProductDetails = ({ selectedOrder, setSelectedOrder, customers }) => {
     order_details,
     shipping_address,
   } = selectedOrder;
-  console.log(selectedOrder);
+  // console.log(selectedOrder);
   return (
     <div
       onClick={() => setSelectedOrder(null)}

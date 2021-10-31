@@ -14,7 +14,7 @@ const RecentSales = () => {
 
   const { recentSales } = dashboard;
 
-  console.log(recentSales, sellers);
+  // console.log(recentSales, sellers);
 
   const salesData =
     recentSales &&

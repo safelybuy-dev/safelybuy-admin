@@ -15,7 +15,7 @@ const Inventory = () => {
     fetchEvents(dispatch);
   }, [dispatch]);
 
-  console.log(events, loadingEvents);
+  // console.log(events, loadingEvents);
 
   return (
     <div className='flex flex-col w-full items-start'>

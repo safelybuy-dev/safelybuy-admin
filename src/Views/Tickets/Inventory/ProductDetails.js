@@ -10,7 +10,7 @@ const KeyValue = ({ title, value }) => (
 
 const ProductDetails = ({ selectedProduct, setSelectedProduct }) => {
   if (!selectedProduct) return null;
-  console.log(selectedProduct);
+  // console.log(selectedProduct);
   return (
     <div
       onClick={() => setSelectedProduct(null)}

@@ -80,7 +80,6 @@ const Discounts = () => {
     )
       .then((values) => {
         setLoading(false);
-        console.log('values', values);
         addToast('Promotion code created', {
           appearance: 'success',
           autoDismiss: true,

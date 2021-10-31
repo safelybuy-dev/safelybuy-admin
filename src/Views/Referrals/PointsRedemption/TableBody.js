@@ -4,7 +4,7 @@ import Button from 'components/Button';
 import { LoadingIcon } from 'svg';
 
 const TableBody = ({ pointsRedeemed, loading }) => {
-  console.log(pointsRedeemed);
+  // console.log(pointsRedeemed);
   const referralsData = pointsRedeemed
     ?.sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at))
     .map((referral) => ({

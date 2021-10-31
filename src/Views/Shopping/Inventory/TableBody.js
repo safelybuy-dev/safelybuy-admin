@@ -102,7 +102,7 @@ const TableBody = ({
   //   },
   //   [dispatch]
   // );
-  console.log(items);
+  // console.log(items);
 
   const itemsData =
     items &&

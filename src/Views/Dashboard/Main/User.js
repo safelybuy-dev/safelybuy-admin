@@ -72,7 +72,6 @@ const User = ({ userIsVisible, setUserIsVisible, userRef }) => {
                   text: 'Logout',
                   onClick: (e) => {
                     localStorage.removeItem('safelybuy_admin_token');
-                    console.log('object =>.>>>>>>>');
                   },
                   color: 'red',
                 },
