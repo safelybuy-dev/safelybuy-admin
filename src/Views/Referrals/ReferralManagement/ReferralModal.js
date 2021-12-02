@@ -24,9 +24,10 @@ const ReferralModal = ({ viewModal, setViewModal, refererId }) => {
   }, [refererId]);
 
   if (!viewModal) return null;
+  
   return (
     <div
-      onClick={() => setViewModal(null)}
+      // onClick={() => setViewModal(null)}
       className="fixed overflow-scroll top-0 left-0 z-50 w-screen md:pt-0 md:px-0 h-screen bg-purple-600 bg-opacity-30 flex items-center justify-center"
     >
       <div className="flex flex-col relative rounded-3xl w-auto md:rounded-none px-10 py-10 md:px-4 md:py-4 left-0 bg-white opacity-100 h-screen mt-16">
@@ -70,7 +71,7 @@ const ReferralModal = ({ viewModal, setViewModal, refererId }) => {
                     Date of Birth
                   </span>
                   <h3 className="font-medium text-lg">
-                    {data.dob ? data.dob : "--|--|--"}
+                    {data.dob ? data.dob : "-- -- --"}
                   </h3>
                 </div>
               </div>
@@ -84,7 +85,7 @@ const ReferralModal = ({ viewModal, setViewModal, refererId }) => {
                     Bank Details
                   </h1>
                 </div>
-                { data.banks && data.banks.length  ?
+                { data.banks && data.banks.length && loading  ?
                 (<>
                 <div className="w-full mt-4 flex flex-row justify-between">
                   <div>
