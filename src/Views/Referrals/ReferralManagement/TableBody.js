@@ -1,16 +1,23 @@
-import React, { useState } from 'react';
-import { useTable } from 'react-table';
-import { useToasts } from 'react-toast-notifications';
-import Button from 'components/Button';
-import { confirmAlert } from 'react-confirm-alert';
-import { LoadingIcon } from 'svg';
-import { suspendReferrer } from 'api/shopping';
+import React, { useState } from "react";
+import { useTable } from "react-table";
+import { useToasts } from "react-toast-notifications";
+import Button from "components/Button";
+import { confirmAlert } from "react-confirm-alert";
+import { LoadingIcon } from "svg";
+import { suspendReferrer } from "api/shopping";
+import ReferralModal from "./ReferralModal";
 
 const TableBody = ({ referrals, loading, fetchData }) => {
   const [selectedId, setSelectedId] = useState(null);
+  const [viewModal, setViewModal] = useState(false);
   const [removeLoading, setRemoveLoading] = useState(false);
+  const [refererId, setReferrerId] = useState(null);
   const { addToast } = useToasts();
 
+  const openModal = (id) => {
+    setViewModal(true);
+    setReferrerId(id);
+  };
   const handleDelete = React.useCallback(
     (id) => {
       const removePromo = (id) => {
@@ -19,15 +26,15 @@ const TableBody = ({ referrals, loading, fetchData }) => {
           (res) => {
             fetchData();
             setRemoveLoading(false);
-            addToast('Referrer suspended', {
-              appearance: 'success',
+            addToast("Referrer suspended", {
+              appearance: "success",
               autoDismiss: true,
             });
           },
           (err) => {
             setRemoveLoading(false);
-            addToast('Error suspending the referrer', {
-              appearance: 'error',
+            addToast("Error suspending the referrer", {
+              appearance: "error",
               autoDismiss: true,
             });
           },
@@ -36,15 +43,15 @@ const TableBody = ({ referrals, loading, fetchData }) => {
       };
       setSelectedId(id);
       confirmAlert({
-        title: 'Suspend Referrer',
-        message: 'Are you sure you want to remove this referrer?',
+        title: "Suspend Referrer",
+        message: "Are you sure you want to remove this referrer?",
         buttons: [
           {
-            label: 'Yes',
+            label: "Yes",
             onClick: () => removePromo(id),
           },
           {
-            label: 'No',
+            label: "No",
             onClick: () => {},
           },
         ],
@@ -57,33 +64,45 @@ const TableBody = ({ referrals, loading, fetchData }) => {
     ?.sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at))
     .filter((e) => e.referred)
     .map((referral) => ({
-      code: referral.code,
-      referrer:
-        referral.referrer?.firstname + ' ' + referral.referrer?.lastname,
-      referred:
-        referral.referred?.firstname + ' ' + referral.referred?.lastname,
-      amount: new Intl.NumberFormat('en-NG', {
-        style: 'currency',
-        currency: 'NGN',
+      code: referral?.referrer?.referral_code,
+      referrer: (
+        <button
+          className="text-purple-500"
+          onClick={() => openModal(referral.referrer?.id)}
+        >
+          {referral.referrer?.firstname + " " + referral.referrer?.lastname}
+        </button>
+      ),
+      referred: (
+        <button className="text-purple-500">
+          {" "}
+          {referral.referred?.firstname +
+            " " +
+            referral.referred?.lastname}{" "}
+        </button>
+      ),
+      amount: new Intl.NumberFormat("en-NG", {
+        style: "currency",
+        currency: "NGN",
       }).format(referral.amount),
       point: referral.point,
       created_at: (
         <div>
-          {new Intl.DateTimeFormat('en-GB', {
-            year: 'numeric',
-            month: 'short',
-            day: 'numeric',
+          {new Intl.DateTimeFormat("en-GB", {
+            year: "numeric",
+            month: "short",
+            day: "numeric",
           }).format(Date.parse(referral.created_at))}
         </div>
       ),
       actions: (
-        <div className='justify-around'>
+        <div className="justify-around">
           {referrals.length && removeLoading && selectedId === referral.id ? (
             <LoadingIcon />
           ) : (
-            <div className='justify-around'>
+            <div className="justify-around">
               <span onClick={() => handleDelete(referral.id)}>
-                <Button roundedFull danger>
+                <Button roundedFull orange>
                   Suspend
                 </Button>
               </span>
@@ -98,18 +117,18 @@ const TableBody = ({ referrals, loading, fetchData }) => {
   const columns = React.useMemo(
     () => [
       {
-        Header: 'Date',
-        accessor: 'created_at',
+        Header: "Date",
+        accessor: "created_at",
       },
-      { Header: 'Referrer', accessor: 'referral' },
-      { Header: 'Referrer Code', accessor: 'code' },
-      { Header: 'Purchase Amount', accessor: 'amount' },
-      { Header: 'Points Earned', accessor: 'point' },
+      { Header: "Referrer", accessor: "referrer" },
+      { Header: "Referrer Code", accessor: "code" },
+      { Header: "Purchase Amount", accessor: "amount" },
+      { Header: "Points Earned", accessor: "point" },
       {
-        Header: 'Referred',
-        accessor: 'referred',
+        Header: "Referred",
+        accessor: "referred",
       },
-      { Header: 'Actions', accessor: 'actions' },
+      { Header: "Actions", accessor: "actions" },
     ],
     []
   );
@@ -131,19 +150,14 @@ const TableBody = ({ referrals, loading, fetchData }) => {
   // type: "referral"
   // updated_at: "2021-04-02T16:47:50.000000Z"
 
-  const {
-    getTableProps,
-    getTableBodyProps,
-    headerGroups,
-    rows,
-    prepareRow,
-  } = useTable({ columns, data });
+  const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
+    useTable({ columns, data });
 
   if (loading && referrals.length === 0) {
     return (
-      <div className='mt-20 mb-20 flex justify-center'>
+      <div className="mt-20 mb-20 flex justify-center">
         <LoadingIcon />
-        <span className='text-purple-500 animate-pulse'>
+        <span className="text-purple-500 animate-pulse">
           Loading referrals...
         </span>
       </div>
@@ -152,48 +166,53 @@ const TableBody = ({ referrals, loading, fetchData }) => {
 
   if (!loading && referralsData.length === 0) {
     return (
-      <div className='mt-20 mb-20 flex justify-center'>
-        <span className='text-purple-500'>No referral data available</span>
+      <div className="mt-20 mb-20 flex justify-center">
+        <span className="text-purple-500">No referral data available</span>
       </div>
     );
   }
 
   return (
-    <div className='overflow-x-scroll mt-8'>
-      <table {...getTableProps()} className='w-full text-sm'>
-        <thead className='text-left border-b-2 border-gray-100'>
-          {headerGroups.map((headerGroup) => (
-            <tr {...headerGroup.getHeaderGroupProps()}>
-              {headerGroup.headers.map((column) => (
-                <th className='pb-4 font-normal' {...column.getHeaderProps()}>
-                  {column.render('Header')}
-                </th>
-              ))}
-            </tr>
-          ))}
-        </thead>
-        <tbody {...getTableBodyProps()}>
-          {rows.map((row) => {
-            prepareRow(row);
-            return (
-              <tr {...row.getRowProps()} className='border-b-2 last:border-0'>
-                {row.cells.map((cell) => {
-                  return (
-                    <td
-                      style={{ minWidth: '120px' }}
-                      className='pr-4 min-w-max border-gray-100 py-4'
-                      {...cell.getCellProps()}
-                    >
-                      {cell.render('Cell')}
-                    </td>
-                  );
-                })}
+      <div className="overflow-hidden mt-8 h-auto">
+        <table {...getTableProps()} className="w-full text-sm">
+          <thead className="text-left border-b-2 border-gray-100">
+            {headerGroups.map((headerGroup) => (
+              <tr {...headerGroup.getHeaderGroupProps()}>
+                {headerGroup.headers.map((column) => (
+                  <th className="pb-4 font-normal" {...column.getHeaderProps()}>
+                    {column.render("Header")}
+                  </th>
+                ))}
               </tr>
-            );
-          })}
-        </tbody>
-      </table>
-    </div>
+            ))}
+          </thead>
+          <tbody {...getTableBodyProps()}>
+            {rows.map((row) => {
+              prepareRow(row);
+              return (
+                <tr {...row.getRowProps()} className="border-b-2 last:border-0">
+                  {row.cells.map((cell) => {
+                    return (
+                      <td
+                        style={{ minWidth: "120px" }}
+                        className="pr-4 min-w-max border-gray-100 py-4"
+                        {...cell.getCellProps()}
+                      >
+                        {cell.render("Cell")}
+                      </td>
+                    );
+                  })}
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+        <ReferralModal
+          refererId={refererId}
+          setViewModal={setViewModal}
+          viewModal={viewModal}
+        />
+      </div>
   );
 };
 

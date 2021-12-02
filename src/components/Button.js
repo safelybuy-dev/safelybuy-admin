@@ -6,6 +6,7 @@ const Button = ({
   secondary,
   full,
   alternate,
+  orange,
   primaryOutline,
   secondaryOutline,
   dangerOutline,
@@ -41,7 +42,9 @@ const Button = ({
     )}
     <button
       type={submit ? 'submit' : type}
-      className={`${
+      className={`
+      ${orange ? `bg-orange-400 text-white px-10 py-2` : ""}
+      ${
         primary ? `bg-green-500 text-white px-10 py-2 border-green-500` : ''
       } ${alternate ? `text-white bg-black px-6 py-1 text-sm md:px-2` : ''} ${
         underlined ? `border-b-2 border-black pb-1 mr-3` : ''
