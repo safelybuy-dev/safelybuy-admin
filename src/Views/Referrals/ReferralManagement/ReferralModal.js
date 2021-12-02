@@ -70,7 +70,7 @@ const ReferralModal = ({ viewModal, setViewModal, refererId }) => {
                     Date of Birth
                   </span>
                   <h3 className="font-medium text-lg">
-                    {data.dob ? data.dob : "--/--/--"}
+                    {data.dob ? data.dob : "--|--|--"}
                   </h3>
                 </div>
               </div>
