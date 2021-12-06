@@ -60,6 +60,7 @@ const TableBody = ({ referrals, loading, fetchData }) => {
     [addToast, fetchData]
   );
 
+  console.log(referrals)
   const referralsData = referrals
     ?.sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at))
     .filter((e) => e.referred)
@@ -74,7 +75,7 @@ const TableBody = ({ referrals, loading, fetchData }) => {
         </button>
       ),
       referred: (
-        <button className="text-purple-500">
+        <button className="text-purple-500" onClick={() => openModal(referral.referred?.id)}>
           {" "}
           {referral.referred?.firstname +
             " " +
