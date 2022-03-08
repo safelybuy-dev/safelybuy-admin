@@ -1,5 +1,5 @@
-import { axiosWithAuth } from 'auth';
-import { baseUrl } from './';
+import { axiosWithAuth } from "auth";
+import { baseUrl } from "./";
 
 export const getMainDashboard = (success, failure) => {
   axiosWithAuth()
@@ -46,6 +46,20 @@ export const getTicketsDashboard = (success, failure) => {
 export const getDeliveryOrders = (success, failure) => {
   axiosWithAuth()
     .get(`${baseUrl}/api/v1/admin/delivery/orders`)
+    .then((response) => success(response))
+    .catch((error) => failure(error));
+};
+
+export const getAllRestaurants = (success, failure) => {
+  axiosWithAuth()
+    .get(`${baseUrl}/api/v1/restuarants`)
+    .then((response) => success(response))
+    .catch((error) => failure(error));
+};
+
+export const getAllMenus = (success, failure) => {
+  axiosWithAuth()
+    .get(`${baseUrl}/api/v1/menus`)
     .then((response) => success(response))
     .catch((error) => failure(error));
 };

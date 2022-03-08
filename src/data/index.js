@@ -4,35 +4,35 @@ import {
   DeliveryIcon,
   GiftCardIcon,
   Tickets,
-} from 'svg';
+} from "svg";
 
 export const navMenuItems = [
   {
-    color: 'lime',
+    color: "lime",
     hasDropdown: true,
     SVG: Bag,
     dropdownLinks: [
-      { text: 'Manage Inventory', url: '/shopping/inventory' },
-      { text: 'Order Mannagement', url: '/shopping/orders' },
+      { text: "Manage Inventory", url: "/shopping/inventory" },
+      { text: "Order Mannagement", url: "/shopping/orders" },
     ],
-    text: 'Shopping',
+    text: "Shopping",
   },
   {
-    color: 'green',
+    color: "green",
     hasDropdown: false,
     SVG: DeliveryIcon,
-    text: 'Delivery',
-    url: '/delivery',
+    text: "Delivery",
+    url: "/delivery",
   },
   {
-    color: 'purple',
+    color: "purple",
     hasDropdown: true,
     SVG: Tickets,
     dropdownLinks: [
-      { text: 'Manage Inventory', url: '/tickets/inventory' },
-      { text: 'Tickets Mannagement', url: '/tickets/sales' },
+      { text: "Manage Inventory", url: "/tickets/inventory" },
+      { text: "Tickets Mannagement", url: "/tickets/sales" },
     ],
-    text: 'Tickets',
+    text: "Tickets",
   },
   // {
   //   color: "yellow",
@@ -45,24 +45,34 @@ export const navMenuItems = [
   //   text: "Bitcoin",
   // },
   {
-    color: 'orange',
+    color: "orange",
     hasDropdown: true,
     SVG: GiftCardIcon,
     dropdownLinks: [
-      { text: 'Gift Card History', url: '/giftcard/history' },
-      { text: 'Set Giftcard Prices', url: '/giftcard/prices' },
+      { text: "Gift Card History", url: "/giftcard/history" },
+      { text: "Set Giftcard Prices", url: "/giftcard/prices" },
     ],
-    text: 'Gift Card',
+    text: "Gift Card",
+  },
+  {
+    color: "blue",
+    hasDropdown: true,
+    SVG: Tickets,
+    dropdownLinks: [
+      { text: "View Restaurants", url: "/food/restuarants" },
+      { text: "View Orders", url: "/food/orders" },
+    ],
+    text: "Food Orders",
   },
 ];
 
 export const mainMenuItems = [
-  { url: '/users', text: 'Administrator Management' },
-  { url: '/customers', text: 'Customer Management' },
-  { url: '/contents', text: 'Content Management' },
-  { url: '/discounts', text: 'Discount Promotion Management' },
-  { url: '/sellers', text: 'Seller Management' },
-  { url: '/mails', text: 'Email Marketing' },
-  { url: '/referrals', text: 'Referral Management' },
-  { url: '/payments', text: 'Payment Request' },
+  { url: "/users", text: "Administrator Management" },
+  { url: "/customers", text: "Customer Management" },
+  { url: "/contents", text: "Content Management" },
+  { url: "/discounts", text: "Discount Promotion Management" },
+  { url: "/sellers", text: "Seller Management" },
+  { url: "/mails", text: "Email Marketing" },
+  { url: "/referrals", text: "Referral Management" },
+  { url: "/payments", text: "Payment Request" },
 ];

@@ -1,38 +1,38 @@
 export const shopping = {
   orders: [],
   isLoadingOrders: false,
-  ordersError: '',
+  ordersError: "",
 
   items: [],
   isLoadingItems: false,
-  itemsError: '',
+  itemsError: "",
 
   sellers: {},
   isLoadingSellers: false,
-  sellersError: '',
+  sellersError: "",
   sellersArray: [],
 
   customers: {},
   customersArray: [],
   isLoadingCustomers: false,
-  customersError: '',
+  customersError: "",
 
   users: {},
   usersArray: [],
 
   dashboard: {},
   isLoadingDashboard: false,
-  dashboardError: '',
+  dashboardError: "",
 
   admin: {},
   loading: false,
-  error: '',
+  error: "",
 
   orderActionLoading: false,
-  orderActionError: '',
+  orderActionError: "",
 
   itemActionLoading: false,
-  itemActionError: '',
+  itemActionError: "",
 
   deliveryDashboard: {},
   deliveryOrders: [],
@@ -43,28 +43,36 @@ export const shopping = {
 
   events: [],
   loadingEvents: false,
-  eventsError: ''
+  eventsError: "",
+
+  restuarants: [],
+  loadingRestuarants: false,
+  restuarantsError: "",
+
+  menus: [],
+  loadingMenus: false,
+  menusError: "",
 };
 
 export const bitcoin = {
   history: [],
   loadingHistory: false,
-  historyError: '',
+  historyError: "",
 
   dashboard: {},
   loadingDashboard: false,
-  dashboardError: '',
+  dashboardError: "",
 
   rates: {},
   loading: false,
-  error: '',
+  error: "",
 
   recent_rates: [],
 };
 
 export const auth = {
   user: {},
-  token: '',
+  token: "",
   loadingUser: false,
-  error: '',
+  error: "",
 };

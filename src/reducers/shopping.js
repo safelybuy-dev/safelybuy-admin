@@ -422,6 +422,46 @@ export default function shoppingReducer(state, action) {
         sellersError: "",
       };
 
+    case type.GET_RESTUARANTS:
+      return {
+        ...state,
+        loadingRestuarants: true,
+      };
+    case type.GET_RESTUARANTS_SUCCESS:
+      return {
+        ...state,
+        restuarants: action.payload,
+        restuarantsError: "",
+        loadingRestuarants: false,
+      };
+    case type.GET_RESTUARANTS_FAILURE:
+      return {
+        ...state,
+        restuarantsError: action.payload,
+        restuarants: [],
+        loadingRestuarants: false,
+      };
+
+    case type.GET_MENUS:
+      return {
+        ...state,
+        loadingMenus: true,
+      };
+    case type.GET_MENUS_SUCCESS:
+      return {
+        ...state,
+        menus: action.payload,
+        menusError: "",
+        loadingMenus: false,
+      };
+    case type.GET_MENUS_FAILURE:
+      return {
+        ...state,
+        menusError: action.payload,
+        menus: [],
+        loadingMenus: false,
+      };
+
     default:
       return state;
   }

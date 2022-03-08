@@ -9,6 +9,7 @@ import {
   getShoppingItems,
   getEvents,
   getSellers,
+  getAllRestaurants,
   acceptOrder,
   denyOrder,
   shipOrder,
@@ -25,6 +26,7 @@ import {
   getUsers,
   banUser,
   deleteUser,
+  getAllMenus,
 } from "api/shopping";
 
 export const GET_MAIN_DASHBOARD = "GET_MAIN_DASHBOARD";
@@ -111,6 +113,14 @@ export const DENY_ORDER = "DENY_ORDER";
 export const DENY_ORDER_SUCCESS = "DENY_ORDER_SUCCESS";
 export const DENY_ORDER_FAILURE = "DENY_ORDER_FAILURE";
 
+export const GET_RESTUARANTS = "GET_RESTUARANTS";
+export const GET_RESTUARANTS_SUCCESS = "GET_RESTUARANTS_SUCCESS";
+export const GET_RESTUARANTS_FAILURE = "GET_RESTUARANTS_FAILURE";
+
+export const GET_MENUS = "GET_MENUS";
+export const GET_MENUS_SUCCESS = "GET_MENUS_SUCCESS";
+export const GET_MENUS_FAILURE = "GET_MENUS_FAILURE";
+
 export const SHIP_ORDER = "SHIP_ORDER";
 export const SHIP_ORDER_SUCCESS = "SHIP_ORDER_SUCCESS";
 export const SHIP_ORDER_FAILURE = "SHIP_ORDER_FAILURE";
@@ -135,6 +145,30 @@ export const action = (type, payload) => ({
   type,
   payload,
 });
+
+export const fetchRestuarants = (dispatch) => {
+  dispatch(action(GET_RESTUARANTS));
+  getAllRestaurants(
+    (response) => {
+      dispatch(action(GET_RESTUARANTS_SUCCESS, response.data.data));
+    },
+    (error) => {
+      dispatch(action(GET_RESTUARANTS_FAILURE, error.response));
+    }
+  );
+};
+
+export const fetchMenus = (dispatch) => {
+  dispatch(action(GET_MENUS));
+  getAllMenus(
+    (response) => {
+      dispatch(action(GET_MENUS_SUCCESS, response.data.data));
+    },
+    (error) => {
+      dispatch(action(GET_MENUS_FAILURE, error.response));
+    }
+  );
+};
 
 export const fetchShoppingDashboard = (dispatch) => {
   dispatch(action(GET_SHOPPING_DASHBOARD));
@@ -249,6 +283,7 @@ export const fetchSellers = (dispatch) => {
   dispatch(action(GET_SELLERS));
   getSellers(
     (res) => {
+      console.log(res.data);
       dispatch(action(GET_SELLERS_SUCCESS, res.data));
     },
     (err) => {
