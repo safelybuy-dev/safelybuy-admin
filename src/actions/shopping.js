@@ -27,11 +27,22 @@ import {
   banUser,
   deleteUser,
   getAllMenus,
+  getFoodOrders,
+  getMealPlan,
+  getMealPlanOrders,
 } from "api/shopping";
 
 export const GET_MAIN_DASHBOARD = "GET_MAIN_DASHBOARD";
 export const GET_MAIN_DASHBOARD_SUCCESS = "GET_MAIN_DASHBOARD_SUCCESS";
 export const GET_MAIN_DASHBOARD_FAILURE = "GET_MAIN_DASHBOARD_FAILURE";
+
+export const GET_MEAL_PLAN = "GET_MEAL_PLAN";
+export const GET_MEAL_PLAN_SUCCESS = "GET_MEAL_PLAN_SUCCESS";
+export const GET_MEAL_PLAN_FAILURE = "GET_MEAL_PLAN_FAILURE";
+
+export const GET_MEAL_PLAN_ORDERS = "GET_MEAL_PLAN_ORDERS";
+export const GET_MEAL_PLAN_ORDERS_SUCCESS = "GET_MEAL_PLAN_ORDERS_SUCCESS";
+export const GET_MEAL_PLAN_ORDERS_FAILURE = "GET_MEAL_PLAN_ORDERS_FAILURE";
 
 export const GET_DELIVERY_DASHBOARD = "GET_DELIVERY_DASHBOARD";
 export const GET_DELIVERY_DASHBOARD_SUCCESS = "GET_DELIVERY_DASHBOARD_SUCCESS";
@@ -141,10 +152,53 @@ export const DELETE_USER = "DELETE_USER";
 export const DELETE_USER_SUCCESS = "DELETE_USER_SUCCESS";
 export const DELETE_USER_FAILURE = "DELETE_USER_FAILURE";
 
+export const GET_FOOD_ORDERS = "GET_ORDERS";
+export const GET_FOOD_ORDERS_SUCCESS = "GET_ORDERS_SUCCESS";
+export const GET_FOOD_ORDERS_FAILURE = "GET_ORDERS_FAILURE";
+
 export const action = (type, payload) => ({
   type,
   payload,
 });
+
+export const fetchFoodOrders = (dispatch, pageNumber) => {
+  dispatch(action(GET_FOOD_ORDERS));
+  getFoodOrders(
+    pageNumber,
+    (response) => {
+      dispatch(action(GET_FOOD_ORDERS_SUCCESS, response.data.data));
+    },
+    (error) => {
+      dispatch(action(GET_FOOD_ORDERS_FAILURE, error.response));
+    }
+  );
+};
+
+export const fetchMealPlan = (dispatch, pageNumber) => {
+  dispatch(action(GET_MEAL_PLAN));
+  getMealPlan(
+    pageNumber,
+    (response) => {
+      dispatch(action(GET_MEAL_PLAN_SUCCESS, response.data.data));
+    },
+    (error) => {
+      dispatch(action(GET_MEAL_PLAN_FAILURE, error.response));
+    }
+  );
+};
+
+export const fetchMealPlanOrders = (dispatch, pageNumber) => {
+  dispatch(action(GET_MEAL_PLAN_ORDERS));
+  getMealPlanOrders(
+    pageNumber,
+    (response) => {
+      dispatch(action(GET_MEAL_PLAN_ORDERS_SUCCESS, response.data.data));
+    },
+    (error) => {
+      dispatch(action(GET_MEAL_PLAN_ORDERS_FAILURE, error.response));
+    }
+  );
+};
 
 export const fetchRestuarants = (dispatch) => {
   dispatch(action(GET_RESTUARANTS));

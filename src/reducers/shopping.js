@@ -461,6 +461,71 @@ export default function shoppingReducer(state, action) {
         menus: [],
         loadingMenus: false,
       };
+    case type.GET_FOOD_ORDERS:
+      return {
+        ...state,
+        loadingFoodOrders: true,
+      };
+
+    case type.GET_FOOD_ORDERS_SUCCESS:
+      return {
+        ...state,
+        foodOrders: action.payload,
+        foodOrdersError: "",
+        loadingFoodOrders: false,
+      };
+
+    case type.GET_FOOD_ORDERS_FAILURE:
+      return {
+        ...state,
+        foodOrdersError: action.payload,
+        foodOrders: {},
+        loadingFoodOrders: false,
+      };
+
+    case type.GET_MEAL_PLAN:
+      return {
+        ...state,
+        loadingMealPlan: true,
+      };
+
+    case type.GET_MEAL_PLAN_SUCCESS:
+      return {
+        ...state,
+        mealPlan: action.payload,
+        loadingMealPlan: false,
+        mealPlanError: "",
+      };
+
+    case type.GET_MEAL_PLAN_FAILURE:
+      return {
+        ...state,
+        mealPlanError: action.payload,
+        mealPlan: {},
+        loadingMealPlan: false,
+      };
+
+    case type.GET_MEAL_PLAN_ORDERS:
+      return {
+        ...state,
+        loadingMealPlanOrders: true,
+      };
+
+    case type.GET_MEAL_PLAN_ORDERS_SUCCESS:
+      return {
+        ...state,
+        mealPlanOrders: action.payload,
+        loadingMealPlanOrders: false,
+        mealPlanOrdersError: "",
+      };
+
+    case type.GET_MEAL_PLAN_ORDERS_FAILURE:
+      return {
+        ...state,
+        mealPlanOrdersError: action.payload,
+        mealPlanOrders: {},
+        loadingMealPlanOrders: false,
+      };
 
     default:
       return state;

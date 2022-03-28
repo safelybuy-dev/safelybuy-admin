@@ -8,6 +8,29 @@ export const getMainDashboard = (success, failure) => {
     .catch((error) => failure(error));
 };
 
+export const getFoodOrders = (pageNumber, success, failure) => {
+  axiosWithAuth()
+    .get(`${baseUrl}/api/v1/admin/food/orders/all?page=${pageNumber}`)
+    .then((response) => success(response))
+    .catch((error) => failure(error));
+};
+
+export const getMealPlan = (pageNumber, success, failure) => {
+  axiosWithAuth()
+    .get(`${baseUrl}/api/v1/meal-plans/all?page=${pageNumber}`)
+    .then((response) => success(response))
+    .catch((error) => failure(error));
+};
+
+export const getMealPlanOrders = (pageNumber, success, failure) => {
+  axiosWithAuth()
+    .get(
+      `${baseUrl}/api/v1/meal-plans-orders/admin/all-meal-plans?page${pageNumber}`
+    )
+    .then((response) => success(response))
+    .catch((error) => failure(error));
+};
+
 export const getShoppingDashboard = (success, failure) => {
   axiosWithAuth()
     .get(`${baseUrl}/api/v1/admin/shopping`)

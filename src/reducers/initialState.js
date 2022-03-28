@@ -52,6 +52,18 @@ export const shopping = {
   menus: [],
   loadingMenus: false,
   menusError: "",
+
+  foodOrders: {},
+  loadingFoodOrders: false,
+  foodOrdersError: "",
+
+  mealPlan: {},
+  loadingMealPlan: false,
+  mealPlanError: "",
+
+  mealPlanOrders: {},
+  loadingMealPlanOrders: false,
+  mealPlanOrdersError: "",
 };
 
 export const bitcoin = {

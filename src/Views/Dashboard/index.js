@@ -14,6 +14,9 @@ const Tickets = lazy(() => import("../Tickets"));
 const TicketsInventory = lazy(() => import("../Tickets/Inventory"));
 const RestuarantInventory = lazy(() => import("../Food/Inventory"));
 const MenuInventory = lazy(() => import("../Food/Menu"));
+const FoodOrdersInventory = lazy(() => import("../Food/orders"));
+const MealPlan = lazy(() => import("../Food/mealplan"));
+const MealPlanOrders = lazy(() => import("../Food/mealplan-orders"));
 const TicketSales = lazy(() => import("../Tickets/Sales"));
 const Bitcoin = lazy(() => import("../Bitcoin"));
 const BitcoinHistory = lazy(() => import("../Bitcoin/History"));
@@ -90,6 +93,19 @@ export default function Dashboard() {
               path={["/food/restuarants/all", "/food/restuarant/:id"]}
             >
               <MenuInventory />
+            </Route>
+
+            <Route exact path="/food/orders">
+              <FoodOrdersInventory />
+            </Route>
+
+            {/* MEAL-PLAN */}
+
+            <Route exact path="/food/meal-plan/orders">
+              <MealPlanOrders />
+            </Route>
+            <Route expact path="/food/meal-plan">
+              <MealPlan />
             </Route>
 
             {/* BITCOIN */}

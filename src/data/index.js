@@ -60,9 +60,11 @@ export const navMenuItems = [
     SVG: Tickets,
     dropdownLinks: [
       { text: "View Restaurants", url: "/food/restuarants" },
-      { text: "View Orders", url: "/food/orders" },
+      { text: "View Restaurant Orders", url: "/food/orders" },
+      { text: "View Meal Plans", url: "/food/meal-plan" },
+      { text: "View Meal Plan Orders", url: "/food/meal-plan/orders" },
     ],
-    text: "Food Orders",
+    text: "Food",
   },
 ];
 
