@@ -64,6 +64,10 @@ export const shopping = {
   mealPlanOrders: {},
   loadingMealPlanOrders: false,
   mealPlanOrdersError: "",
+
+  mealPlanExtras: [],
+  loadingMealPlanExtras: false,
+  mealPlanExtrasError: "",
 };
 
 export const bitcoin = {

@@ -30,6 +30,7 @@ import {
   getFoodOrders,
   getMealPlan,
   getMealPlanOrders,
+  getMealPlanExtras,
 } from "api/shopping";
 
 export const GET_MAIN_DASHBOARD = "GET_MAIN_DASHBOARD";
@@ -156,10 +157,26 @@ export const GET_FOOD_ORDERS = "GET_ORDERS";
 export const GET_FOOD_ORDERS_SUCCESS = "GET_ORDERS_SUCCESS";
 export const GET_FOOD_ORDERS_FAILURE = "GET_ORDERS_FAILURE";
 
+export const GET_MEAL_PLAN_EXTRAS = "GET_MEAL_PLAN_EXTRAS";
+export const GET_MEAL_PLAN_EXTRAS_SUCCESS = "GET_MEAL_PLAN_EXTRAS_SUCCESS";
+export const GET_MEAL_PLAN_EXTRAS_FAILURE = "GET_MEAL_PLAN_EXTRAS_FAILURE";
+
 export const action = (type, payload) => ({
   type,
   payload,
 });
+
+export const fetchMealPlanExtras = (dispatch) => {
+  dispatch(action(GET_MEAL_PLAN_EXTRAS));
+  getMealPlanExtras(
+    (response) => {
+      dispatch(action(GET_MEAL_PLAN_EXTRAS_SUCCESS, response.data.data));
+    },
+    (error) => {
+      dispatch(action(GET_MEAL_PLAN_EXTRAS_SUCCESS, error.response));
+    }
+  );
+};
 
 export const fetchFoodOrders = (dispatch, pageNumber) => {
   dispatch(action(GET_FOOD_ORDERS));

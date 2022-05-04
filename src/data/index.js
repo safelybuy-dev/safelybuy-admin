@@ -63,6 +63,7 @@ export const navMenuItems = [
       { text: "View Restaurant Orders", url: "/food/orders" },
       { text: "View Meal Plans", url: "/food/meal-plan" },
       { text: "View Meal Plan Orders", url: "/food/meal-plan/orders" },
+      { text: "Meal Plan Extras", url: "/food/meal-plan/extras" },
     ],
     text: "Food",
   },

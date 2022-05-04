@@ -8,6 +8,13 @@ export const getMainDashboard = (success, failure) => {
     .catch((error) => failure(error));
 };
 
+export const getMealPlanExtras = (success, failure) => {
+  axiosWithAuth()
+    .get(`${baseUrl}/api/v1/drinks-and-xtras/all`)
+    .then((response) => success(response))
+    .catch((error) => failure(error));
+};
+
 export const getFoodOrders = (pageNumber, success, failure) => {
   axiosWithAuth()
     .get(`${baseUrl}/api/v1/admin/food/orders/all?page=${pageNumber}`)

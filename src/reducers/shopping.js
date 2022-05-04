@@ -527,6 +527,28 @@ export default function shoppingReducer(state, action) {
         loadingMealPlanOrders: false,
       };
 
+    case type.GET_MEAL_PLAN_EXTRAS:
+      return {
+        ...state,
+        loadingMealPlanExtras: true,
+      };
+
+    case type.GET_MEAL_PLAN_EXTRAS_SUCCESS:
+      return {
+        ...state,
+        mealPlanExtras: action.payload,
+        mealPlanExtrasError: "",
+        loadingMealPlanExtras: false,
+      };
+
+    case type.GET_MEAL_PLAN_EXTRAS_FAILURE:
+      return {
+        ...state,
+        mealPlanExtras: [],
+        mealPlanExtrasError: action.payload,
+        loadingMealPlanExtras: false,
+      };
+
     default:
       return state;
   }
