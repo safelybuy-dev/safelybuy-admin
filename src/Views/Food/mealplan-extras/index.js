@@ -28,6 +28,7 @@ const Inventory = () => {
     if (!isInArray && extra) {
       setExtras((prevExtras) => [...prevExtras, { name: extra }]);
     }
+    setExtra("");
   };
 
   const addExtra = async () => {
@@ -43,6 +44,7 @@ const Inventory = () => {
         autoDismiss: true,
       });
       setExtras([]);
+      fetchMealPlanExtras(dispatch);
     } catch (error) {
       setLoading(false);
       addToast(error.response.data.message || error.message, {
@@ -60,7 +62,7 @@ const Inventory = () => {
   const deleteExtra = useCallback(
     async (id) => {
       try {
-        await axiosWithAuth().delete(
+        await axiosWithAuth().post(
           `https://api.safelybuy.com/api/v1/drinks-and-xtras/delete/${id}`
         );
         addToast("DELETE SUCCESS", {
